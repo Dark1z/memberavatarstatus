@@ -1,0 +1,345 @@
+<!-- INCLUDE overall_header.html -->
+<!-- INCLUDECSS @dark1_memberavatarstatus/mas_acp_style.css -->
+
+<h1>{L_ACP_MAS_TITLE}</h1>
+<div>{L_ACP_MAS_BY}&nbsp;{L_ACP_MAS_DEV}</div>
+<hr style="margin: 5px 0px 0px 0px; padding: 5px 0px 0px 0px; border-top: 2px solid #888;" />
+<h2>{L_ACP_MAS_MODE_MAIN}</h2>
+
+<form class="mas_main_form" id="acp_board" method="post" action="{U_ACTION}">
+
+	<table>
+		<tr>
+			<td colspan="2">
+				<fieldset>
+					<div class="mas-credit">
+						<div class="mas-credit-ext">{L_ACP_MAS_TITLE}</div>
+						<div class="mas-credit-by">{L_ACP_MAS_DEV_BY}</div>
+						<div class="mas-credit-dev">{L_ACP_MAS_DEV}</div>
+					</div>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<fieldset>
+					<legend>{L_ACP_MAS_PHPBB_AV_SET}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_PHPBB_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="allow_avatar" disabled="disabled" <!-- IF MAS_PHPBB_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="allow_avatar" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<!-- IF not MAS_PHPBB_AVATAR -->
+						<div>{L_ACP_MAS_PHPBB_AV_EXPLAIN}<a href="{MAS_PHPBB_LK_AV}">{L_ACP_MAS_PHPBB_AV_SET}</a></div>
+					<!-- ENDIF -->
+				</fieldset>
+			</td>
+			<td>
+				<fieldset>
+					<legend>{L_ACP_MAS_PHPBB_OL_SET}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_PHPBB_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="load_onlinetrack" disabled="disabled" <!-- IF MAS_PHPBB_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="load_onlinetrack" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<!-- IF not MAS_PHPBB_ONLINE -->
+						<div>{L_ACP_MAS_PHPBB_OL_EXPLAIN}<a href="{MAS_PHPBB_LK_OL}">{L_ACP_MAS_PHPBB_OL_SET}</a></div>
+					<!-- ENDIF -->
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<fieldset>
+					<legend>{L_ACP_MAS_MODE_MEMBERLIST}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_ML_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_ml_av" disabled="disabled" <!-- IF MAS_ML_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_ml_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_ML_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_ML_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_ML_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_ml_ol" disabled="disabled" <!-- IF MAS_ML_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_ml_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+				</fieldset>
+			</td> 
+			<td>
+				<fieldset>
+					<legend>{L_ACP_MAS_MODE_VIEWONLINE}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VO_PG_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vo_pg_av" disabled="disabled" <!-- IF MAS_VO_PG_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vo_pg_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VO_PG_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_VO_PG_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<hr />
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VO_SB_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vo_sb_av" disabled="disabled" <!-- IF MAS_VO_SB_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vo_sb_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VO_SB_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_VO_SB_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<fieldset>
+					<legend>{L_ACP_MAS_MODE_VIEWFORUM}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_FP_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vf_fp_av" disabled="disabled" <!-- IF MAS_VF_FP_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vf_fp_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_FP_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_VF_FP_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_FP_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vf_fp_ol" disabled="disabled" <!-- IF MAS_VF_FP_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vf_fp_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<hr />
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_LP_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vf_lp_av" disabled="disabled" <!-- IF MAS_VF_LP_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vf_lp_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_LP_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_VF_LP_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_VF_LP_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_vf_lp_ol" disabled="disabled" <!-- IF MAS_VF_LP_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_vf_lp_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+				</fieldset>
+			</td>
+			<td>
+			<fieldset>
+				<legend>{L_ACP_MAS_MODE_SEARCH}</legend>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_FP_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_fp_av" disabled="disabled" <!-- IF MAS_SH_FP_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_fp_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_FP_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_SH_FP_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_FP_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_fp_ol" disabled="disabled" <!-- IF MAS_SH_FP_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_fp_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<hr />
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_LP_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_lp_av" disabled="disabled" <!-- IF MAS_SH_LP_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_lp_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_LP_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_SH_LP_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_LP_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_lp_ol" disabled="disabled" <!-- IF MAS_SH_LP_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_lp_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<hr />
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_UP_AV_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_up_av" disabled="disabled" <!-- IF MAS_SH_UP_AVATAR -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_up_av" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_UP_AV_SZ_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<input type="number" value="{MAS_SH_UP_AV_SIZE}" disabled="disabled"/>&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+						</dd>
+					</dl>
+					<dl>
+						<dt>
+							<label>{L_ACP_MAS_SH_UP_OL_LB}{L_COLON}</label>
+						</dt>
+						<dd>
+							<div class="toggleWrapper">
+								<input type="checkbox" id="dark1_mas_sh_up_ol" disabled="disabled" <!-- IF MAS_SH_UP_ONLINE -->checked="checked"<!-- ENDIF --> />
+								<label for="dark1_mas_sh_up_ol" class="toggle">
+									<span class="toggle_handle"></span>
+								</label>
+							</div>
+						</dd>
+					</dl>
+			</fieldset>
+			</td>
+		</tr>
+	</table>
+
+</form>
+
+<!-- INCLUDE overall_footer.html -->
