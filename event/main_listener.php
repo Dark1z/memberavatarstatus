@@ -332,7 +332,7 @@ class main_listener implements EventSubscriberInterface
 				{
 					// Get Avatar
 					$avatar = $this->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
-					$username = $this->mas_get_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar, '', 'span');
+					$username = $this->mas_get_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar, '');
 					$user_online_link[$row['user_id']] = str_replace('div', 'span', $username);
 				}
 			}
@@ -791,7 +791,7 @@ class main_listener implements EventSubscriberInterface
 /**
  * MAS Get Online Status DOT
  *
- * @param Bool $online takes User Online Status
+ * @param String $online takes User Online Status
  * @return String with Wrapped User Online Status
  * @access private
  *
