@@ -3,6 +3,12 @@
 This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* .  ;)   
    
    
+#### Status Badge for Member Avatar & Status [MAS] on phpBB v3.2.x :   
+![Travis-CI](https://img.shields.io/badge/Travis-CI-8000FF.svg) : [![Build Status](https://travis-ci.com/dark-1/memberavatarstatus.svg?branch=master)](https://travis-ci.com/dark-1/memberavatarstatus)   
+![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/build-status/master)   
+![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : ![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square) ![Github All Releases](https://img.shields.io/github/downloads/dark-1/memberavatarstatus/total.svg?style=flat-square)   
+   
+   
 ## **Features:**   
    
 1. Option to Display Only User Avatar.   
