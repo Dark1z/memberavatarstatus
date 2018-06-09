@@ -1,0 +1,5 @@
+# Set the default behavior for files detected as text to have LF line endings on checkout.
+* text	eol=lf
+
+# Declare files that will always have LF line endings on checkout.
+*.php	text eol=lf
