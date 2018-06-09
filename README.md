@@ -5,6 +5,8 @@
    
 1. English [en] :   
    1. Dark❶ [dark1] .   
+1. Slovak [sk] :   
+   1. GrgoPitic ([GrgoPitic@phpbb.com](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1765796)) .   
    
 ### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)   
    
