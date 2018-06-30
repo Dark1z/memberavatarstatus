@@ -5,6 +5,7 @@ services:
             - '@auth'
             - '@config'
             - '@dbal.conn'
+            - '@user'
             - '@language'
             - '@request'
             - '@template'
