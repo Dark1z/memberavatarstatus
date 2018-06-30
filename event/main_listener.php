@@ -37,6 +37,9 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var \phpbb\user */
+	protected $user;
+
 	/** @var \phpbb\language\language */
 	protected $language;
 
@@ -58,6 +61,7 @@ class main_listener implements EventSubscriberInterface
  * @param \phpbb\auth\auth					$auth		phpBB auth
  * @param \phpbb\config\config				$config		phpBB config
  * @param \phpbb\db\driver\driver_interface	$db			phpBB DBAL object
+ * @param \phpbb\user						$user		phpBB user
  * @param \phpbb\language\language			$language	phpBB language
  * @param \phpbb\request\request			$request	phpBB request
  * @param \phpbb\template\template			$template	phpBB template
@@ -68,6 +72,7 @@ class main_listener implements EventSubscriberInterface
 		\phpbb\auth\auth					$auth,
 		\phpbb\config\config				$config,
 		\phpbb\db\driver\driver_interface	$db,
+		\phpbb\user							$user,
 		\phpbb\language\language			$language,
 		\phpbb\request\request_interface	$request,
 		\phpbb\template\template			$template,
@@ -77,6 +82,7 @@ class main_listener implements EventSubscriberInterface
 		$this->auth				= $auth;
 		$this->config			= $config;
 		$this->db				= $db;
+		$this->user				= $user;
 		$this->language			= $language;
 		$this->request			= $request;
 		$this->template			= $template;
@@ -319,16 +325,17 @@ class main_listener implements EventSubscriberInterface
  */
 	public function mas_viewonline_stat_block_template($event)
 	{
-		// Get Event Array `rowset` & `user_online_link`
+		// Get Event Array `rowset` , `online_users` & `user_online_link`
 		$rowset = $event['rowset'];
+		$online_users = $event['online_users'];
 		$user_online_link = $event['user_online_link'];
 
 		if ($this->config['allow_avatar'] && $this->config['dark1_mas_vo_sb_av'])
 		{
 			foreach ($rowset as $row)
 			{
-				// Add avatar only for logged in User
-				if ($row['user_id'] != ANONYMOUS)
+				// Add avatar only for logged in User and not for Hidden User
+				if ($row['user_id'] != ANONYMOUS && (!isset($online_users['hidden_users'][$row['user_id']]) || $this->auth->acl_get('u_viewonline') || $row['user_id'] === $this->user->data['user_id']))
 				{
 					// Get Avatar
 					$avatar = $this->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
