@@ -10,14 +10,6 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 class mas_0003_viewforum extends \phpbb\db\migration\migration
 {
 	static public function depends_on()

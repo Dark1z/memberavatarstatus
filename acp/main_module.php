@@ -11,14 +11,6 @@
 namespace dark1\memberavatarstatus\acp;
 
 /**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
-/**
  * Member Avatar & Status ACP module.
  */
 class main_module
@@ -29,7 +21,10 @@ class main_module
 
 	public function main($id, $mode)
 	{
-		global $config, $template, $user, $phpbb_admin_path, $phpEx;
+		global $phpbb_container, $config, $template, $user, $phpbb_admin_path, $phpEx;
+		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');
+		$ext_name_mas = 'Member Avatar & Status [MAS]';
+		$ext_by_dark1 = 'Dark❶ [dark1]';
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_main';
@@ -38,6 +33,8 @@ class main_module
 		add_form_key('acp_mas_main');
 
 		$template->assign_vars(array(
+			'MAS_EXT_NAME'		=> $ext_name_mas,
+			'MAS_EXT_DEV'		=> $ext_by_dark1,
 			'MAS_PHPBB_LK_AV'	=> append_sid($main_adm_path, 'i=acp_board&mode=avatar#allow_avatar', false),
 			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&mode=load#load_onlinetrack', false),
 			'MAS_PHPBB_AVATAR'	=> $config['allow_avatar'],
@@ -68,20 +65,7 @@ class main_module
 			'MAS_SH_UP_AVATAR'	=> $config['dark1_mas_sh_up_av'],
 			'MAS_SH_UP_AV_SIZE'	=> $config['dark1_mas_sh_up_av_sz'],
 			'MAS_SH_UP_ONLINE'	=> $config['dark1_mas_sh_up_ol'],
-			// No Avatar IMG
-			'MAS_NO_AVATAR_IMG'	=> $this->mas_get_no_avatar_img(),
 		));
 	}
 
-	private function mas_get_no_avatar_img()
-	{
-		global $user, $phpbb_root_path;
-		$avatar_row = array(
-						'avatar'		=> $phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
-						'avatar_type'	=> AVATAR_REMOTE,
-						'avatar_width'	=> 1000,
-						'avatar_height'	=> 1000,
-						);
-		return str_replace('" />', '" title="' . $user->lang('MAS_NO_AVATAR_TEXT') . '" />', phpbb_get_user_avatar($avatar_row, $user->lang('MAS_NO_AVATAR_TEXT')));
-	}
 }

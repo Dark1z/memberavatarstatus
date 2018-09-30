@@ -1,15 +1,20 @@
 services:
-    dark1.memberavatarstatus.listener:
-        class: dark1\memberavatarstatus\event\main_listener
+    dark1.memberavatarstatus:
+        class: dark1\memberavatarstatus\core\memberavatarstatus
         arguments:
             - '@auth'
             - '@config'
-            - '@dbal.conn'
-            - '@user'
             - '@language'
-            - '@request'
-            - '@template'
             - '@log'
             - '%core.root_path%'
+    dark1.memberavatarstatus.listener:
+        class: dark1\memberavatarstatus\event\main_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+            - '@auth'
+            - '@config'
+            - '@user'
+            - '@language'
+            - '@template'
         tags:
             - { name: event.listener }

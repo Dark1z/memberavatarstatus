@@ -10,14 +10,6 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-/**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
 class mas_0000_main extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
