@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) $this->mas_func::AV_DEF_SZ_SML18, Dark❶ [dark1]
+ * @copyright (c) 2018, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -24,9 +24,9 @@ use phpbb\template\template;
 /**
  * Member Avatar & Status Event listener.
  */
-class main_listener implements EventSubscriberInterface
+class listener implements EventSubscriberInterface
 {
-	/** @var dark1\memberavatarstatus\core\memberavatarstatus */
+	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
 	protected $mas_func;
 
 	/** @var \phpbb\auth\auth */
@@ -47,12 +47,12 @@ class main_listener implements EventSubscriberInterface
 /**
  * Constructor for listener
  *
- * @param \core\memberavatarstatus			$mas_func	dark1 mas_func
- * @param \phpbb\auth\auth					$auth		phpBB auth
- * @param \phpbb\config\config				$config		phpBB config
- * @param \phpbb\user						$user		phpBB user
- * @param \phpbb\language\language			$language	phpBB language
- * @param \phpbb\template\template			$template	phpBB template
+ * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+ * @param \phpbb\auth\auth										$auth		phpBB auth
+ * @param \phpbb\config\config									$config		phpBB config
+ * @param \phpbb\user											$user		phpBB user
+ * @param \phpbb\language\language								$language	phpBB language
+ * @param \phpbb\template\template								$template	phpBB template
  * @access public
  */
 	public function __construct(
@@ -82,7 +82,7 @@ class main_listener implements EventSubscriberInterface
 	{
 		return array(
 			// Main Setup
-			'core.user_setup_after'							=> 'load_language_on_setup',
+			'core.user_setup_after'							=> 'mas_load_lang',
 			'core.page_header_after'						=> 'mas_header',
 			// MemberList Team Setup
 			'core.memberlist_team_modify_query'				=> 'mas_memberlist_team_query',
@@ -115,13 +115,13 @@ class main_listener implements EventSubscriberInterface
 
 
 /**
- * Load language files during user setup after
+ * MAS Load language files during user setup after
  *
  * @param object $event The event object
  * @return null
  * @access public
  */
-	public function load_language_on_setup($event)
+	public function mas_load_lang($event)
 	{
 		$this->language->add_lang(array('lang_mas',), 'dark1/memberavatarstatus');
 	}
@@ -129,7 +129,7 @@ class main_listener implements EventSubscriberInterface
 
 
 /**
- * MAS Header Setup
+ * MAS Header setup during page header after
  *
  * @param object $event The event object
  * @return null

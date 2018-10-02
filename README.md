@@ -43,6 +43,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
    
    
 GitHub Repository: [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
+phpBB Customisation Database Extension: [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status/)   
 For more Details Go Here : [[3.2][RC] Member Avatar & Status [MAS]](https://www.phpbb.com/community/viewtopic.php?t=2474156)   
    
 ## License  [GPLv2](license.txt)

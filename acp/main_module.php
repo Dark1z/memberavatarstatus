@@ -22,7 +22,6 @@ class main_module
 	public function main($id, $mode)
 	{
 		global $phpbb_container, $config, $template, $user, $phpbb_admin_path, $phpEx;
-		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 

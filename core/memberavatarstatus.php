@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) self::AV_DEF_SZ_SML18, Dark❶ [dark1]
+ * @copyright (c) 2018, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
  */
