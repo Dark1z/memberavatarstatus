@@ -30,10 +30,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_MAS_BY'				=> 'By',
 	'ACP_MAS_DEV_BY'			=> 'Developed By',
-	// Err0r Messages
-	'ACP_MAS_SET_SAV'			=> 'saved successfully!',
-	'ACP_MAS_ERR_AV_SZ_BIG'		=> 'BUT Avatar Size is Not Between 9px to 999px, Hence Default’ed to 50px',
-	'ACP_MAS_ERR_AV_SZ_SML'		=> 'BUT Avatar Size is Not Between 9px to 99px, Hence Default’ed to 20px',
 
 	// ACP MAS Setting Page Common Elements
 	'ACP_MAS_AVATAR'			=> 'Avatar Enable',

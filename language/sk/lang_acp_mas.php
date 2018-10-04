@@ -30,10 +30,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_MAS_BY'				=> 'Od',
 	'ACP_MAS_DEV_BY'			=> 'Vyvinutý',
-	// Err0r Messages
-	'ACP_MAS_SET_SAV'			=> 'úspešne uložené!',
-	'ACP_MAS_ERR_AV_SZ_BIG'		=> 'Veľkosť Avatar nie je medzi 9px do 999px, Preto je to predvolené na 50px',
-	'ACP_MAS_ERR_AV_SZ_SML'		=> 'Veľkosť Avatar nie je medzi 9px do 99px, Preto je to predvolené na 20px',
 
 	// ACP MAS Setting Page Common Elements
 	'ACP_MAS_AVATAR'			=> 'Povoliť Avatar',

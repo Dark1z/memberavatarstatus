@@ -29,7 +29,6 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACP_MAS_TITLE'				=> 'Member Avatar & Status [MAS]',
-	'ACP_MAS_DEV'				=> 'Dark❶ [dark1]',
 
 	// Log Message
 	'ACP_MAS_LOG_TITLE'			=> '<strong>Member Avatar & Status [MAS]</strong> %s',
