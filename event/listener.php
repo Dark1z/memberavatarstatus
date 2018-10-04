@@ -18,7 +18,6 @@ use dark1\memberavatarstatus\core\memberavatarstatus;
 use phpbb\auth\auth;
 use phpbb\config\config;
 use phpbb\user;
-use phpbb\language\language;
 use phpbb\template\template;
 
 /**
@@ -38,9 +37,6 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\user */
 	protected $user;
 
-	/** @var \phpbb\language\language */
-	protected $language;
-
 	/** @var \phpbb\template\twig\twig */
 	protected $template;
 
@@ -51,7 +47,6 @@ class listener implements EventSubscriberInterface
  * @param \phpbb\auth\auth										$auth		phpBB auth
  * @param \phpbb\config\config									$config		phpBB config
  * @param \phpbb\user											$user		phpBB user
- * @param \phpbb\language\language								$language	phpBB language
  * @param \phpbb\template\template								$template	phpBB template
  * @access public
  */
@@ -60,14 +55,12 @@ class listener implements EventSubscriberInterface
 		auth				$auth,
 		config				$config,
 		user				$user,
-		language			$language,
 		template			$template
 	){
 		$this->mas_func		= $mas_func;
 		$this->auth			= $auth;
 		$this->config		= $config;
 		$this->user			= $user;
-		$this->language		= $language;
 		$this->template		= $template;
 	}
 
@@ -82,7 +75,7 @@ class listener implements EventSubscriberInterface
 	{
 		return array(
 			// Main Setup
-			'core.user_setup_after'							=> 'mas_load_lang',
+			'core.user_setup'								=> 'mas_load_lang',
 			'core.page_header_after'						=> 'mas_header',
 			// MemberList Team Setup
 			'core.memberlist_team_modify_query'				=> 'mas_memberlist_team_query',
@@ -123,7 +116,12 @@ class listener implements EventSubscriberInterface
  */
 	public function mas_load_lang($event)
 	{
-		$this->language->add_lang(array('lang_mas',), 'dark1/memberavatarstatus');
+		$lang_set_ext = $event['lang_set_ext'];
+		$lang_set_ext[] = array(
+			'ext_name' => 'dark1/memberavatarstatus',
+			'lang_set' => 'lang_mas',
+		);
+		$event['lang_set_ext'] = $lang_set_ext;
 	}
 
 

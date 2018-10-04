@@ -4,7 +4,7 @@ services:
         arguments:
             - '@auth'
             - '@config'
-            - '@language'
+            - '@user'
             - '@log'
             - '%core.root_path%'
     dark1.memberavatarstatus.listener:
@@ -14,7 +14,6 @@ services:
             - '@auth'
             - '@config'
             - '@user'
-            - '@language'
             - '@template'
         tags:
             - { name: event.listener }
