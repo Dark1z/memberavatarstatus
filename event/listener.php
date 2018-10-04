@@ -222,6 +222,15 @@ class listener implements EventSubscriberInterface
 		// Modify "USERNAME_FULL"
 		$template_vars['USERNAME_FULL'] = $this->mas_func->mas_get_username_wrap($template_vars['USERNAME_FULL'], 'dark1_mas_ml', $avatar, $online);
 
+		// Add Avatar & Online Status to template_vars
+		$template_vars = array_merge(
+			$template_vars,
+			array(
+				'AVATAR_IMG'	=> $avatar,
+				'S_ONLINE'		=> $online,
+			)
+		);
+
 		// Assign template_vars to event -> template_vars
 		$event['template_vars'] = $template_vars;
 	}
@@ -259,7 +268,7 @@ class listener implements EventSubscriberInterface
  */
 	public function mas_viewonline_page_template($event)
 	{
-		// Get Event Array `row` & `template_vars`
+		// Get Event Array `row` & `template_row`
 		$row = $event['row'];
 		$template_row = $event['template_row'];
 
@@ -269,7 +278,15 @@ class listener implements EventSubscriberInterface
 		// Add Avatar to "USERNAME_FULL"
 		$template_row['USERNAME_FULL'] = $this->mas_func->mas_get_username_wrap($template_row['USERNAME_FULL'], 'dark1_mas_vo_pg', $avatar, '');
 
-		// Assign template_vars to event -> template_vars
+		// Add Avatar to template_row
+		$template_row = array_merge(
+			$template_row,
+			array(
+				'AVATAR_IMG'	=> $avatar,
+			)
+		);
+
+		// Assign template_row to event -> template_row
 		$event['template_row'] = $template_row;
 	}
 
@@ -376,6 +393,15 @@ class listener implements EventSubscriberInterface
 		// Modify "LAST_POSTER_FULL"
 		$forum_row['LAST_POSTER_FULL'] = $this->mas_func->mas_get_username_wrap($forum_row['LAST_POSTER_FULL'], 'dark1_mas_vf_lp', $avatar, $online);
 
+		// Add Avatar & Online Status to forum_row
+		$forum_row = array_merge(
+			$forum_row,
+			array(
+				'LAST_POSTER_AVATAR_IMG'	=> $avatar,
+				'LAST_POSTER_S_ONLINE'		=> $online,
+			)
+		);
+
 		// Assign forum_row to event -> forum_row
 		$event['forum_row'] = $forum_row;
 	}
@@ -430,6 +456,17 @@ class listener implements EventSubscriberInterface
 		// Modify Both "-X-_AUTHOR_FULL"
 		$topic_row['TOPIC_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($topic_row['TOPIC_AUTHOR_FULL'], 'dark1_mas_vf_fp', $avatar_first_poster, $online_first_poster);
 		$topic_row['LAST_POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($topic_row['LAST_POST_AUTHOR_FULL'], 'dark1_mas_vf_lp', $avatar_last_poster, $online_last_poster);
+
+		// Add Both of Avatar & Online Status to topic_row
+		$topic_row = array_merge(
+			$topic_row,
+			array(
+				'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
+				'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
+				'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
+				'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
+			)
+		);
 
 		// Assign topic_row to event -> topic_row
 		$event['topic_row'] = $topic_row;
@@ -498,7 +535,7 @@ class listener implements EventSubscriberInterface
  */
 	public function mas_search_template($event)
 	{
-		// Get Event Array `row` & `topic_row`
+		// Get Event Array `row` & `tpl_ary`
 		$row = $event['row'];
 		$tpl_ary = $event['tpl_ary'];
 
@@ -512,6 +549,15 @@ class listener implements EventSubscriberInterface
 
 			// Modify "POST_AUTHOR_FULL"
 			$tpl_ary['POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['POST_AUTHOR_FULL'], 'dark1_mas_sh_up', $avatar, $online);
+
+			// Add Avatar & Online Status to tpl_ary
+			$tpl_ary = array_merge(
+				$tpl_ary,
+				array(
+					'POST_AUTHOR_AVATAR_IMG'		=> $avatar,
+					'POST_AUTHOR_S_ONLINE'			=> $online,
+				)
+			);
 		}
 		else
 		{
@@ -526,6 +572,17 @@ class listener implements EventSubscriberInterface
 			// Modify Both "-X-_AUTHOR_FULL"
 			$tpl_ary['TOPIC_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['TOPIC_AUTHOR_FULL'], 'dark1_mas_sh_fp', $avatar_first_poster, $online_first_poster);
 			$tpl_ary['LAST_POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['LAST_POST_AUTHOR_FULL'], 'dark1_mas_sh_lp', $avatar_last_poster, $online_last_poster);
+
+			// Add Both of Avatar & Online Status to tpl_ary
+			$tpl_ary = array_merge(
+				$tpl_ary,
+				array(
+					'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
+					'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
+					'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
+					'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
+				)
+			);
 		}
 
 		// Assign tpl_ary to event -> tpl_ary
