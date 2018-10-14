@@ -21,7 +21,7 @@ class search_module
 
 	public function main($id, $mode)
 	{
-		global $phpbb_container, $config, $request, $template, $user, $phpbb_log, $phpbb_root_path;
+		global $phpbb_container, $config, $request, $template, $user, $phpbb_log;
 		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
@@ -47,9 +47,9 @@ class search_module
 			$config->set('dark1_mas_sh_up_ol', $request->variable('dark1_mas_sh_up_ol', 0));
 
 			// Check Avatar Size Before Assigning
-			$config->set('dark1_mas_sh_fp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_fp_av_sz', $mas_func::AV_DEF_SZ_SML), $mas_func::AV_DEF_SZ_SML, $mas_func::AV_MAX_SZ_SML));
-			$config->set('dark1_mas_sh_lp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_lp_av_sz', $mas_func::AV_DEF_SZ_SML), $mas_func::AV_DEF_SZ_SML, $mas_func::AV_MAX_SZ_SML));
-			$config->set('dark1_mas_sh_up_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_up_av_sz', $mas_func::AV_DEF_SZ_SML), $mas_func::AV_DEF_SZ_SML, $mas_func::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_fp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_fp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_lp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_lp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_up_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_up_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
 
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($user->lang('ACP_MAS_MODE_SEARCH')));
 			trigger_error(sprintf($user->lang('ACP_MAS_LOG_SET_SAV'), $user->lang('ACP_MAS_MODE_SEARCH')) . adm_back_link($this->u_action), E_USER_NOTICE);

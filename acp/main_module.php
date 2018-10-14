@@ -21,7 +21,7 @@ class main_module
 
 	public function main($id, $mode)
 	{
-		global $phpbb_container, $config, $template, $user, $phpbb_admin_path, $phpEx;
+		global $config, $template, $user, $phpbb_admin_path, $phpEx;
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
@@ -29,13 +29,12 @@ class main_module
 		$this->tpl_name = 'acp_mas_main';
 		$this->page_title = $user->lang('ACP_MAS_TITLE') . '&nbsp;-&nbsp;' . $user->lang('ACP_MAS_MODE_MAIN');
 		$main_adm_path = $phpbb_admin_path . 'index.' . $phpEx;
-		add_form_key('acp_mas_main');
 
 		$template->assign_vars(array(
 			'MAS_EXT_NAME'		=> $ext_name_mas,
 			'MAS_EXT_DEV'		=> $ext_by_dark1,
-			'MAS_PHPBB_LK_AV'	=> append_sid($main_adm_path, 'i=acp_board&mode=avatar#allow_avatar', false),
-			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&mode=load#load_onlinetrack', false),
+			'MAS_PHPBB_LK_AV'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=avatar#allow_avatar'),
+			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=load#load_onlinetrack'),
 			'MAS_PHPBB_AVATAR'	=> $config['allow_avatar'],
 			'MAS_PHPBB_ONLINE'	=> $config['load_onlinetrack'],
 			// MemberList

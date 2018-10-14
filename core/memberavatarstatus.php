@@ -84,6 +84,30 @@ class memberavatarstatus
 
 
 /**
+ * MAS Get No Avatar IMG
+ *
+ * @param Void
+ * @return String with No Avatar IMG
+ * @access public
+ */
+	public function mas_get_no_avatar_img()
+	{
+		$avatar_row = array(
+				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
+				'avatar_type'	=> AVATAR_REMOTE,
+				'avatar_width'	=> self::NO_AVATAR_SIZE,
+				'avatar_height'	=> self::NO_AVATAR_SIZE,
+			);
+		return str_replace(
+			'" />',
+			'" title="' . $this->user->lang('MAS_NO_AVATAR_TEXT') . '" />',
+			phpbb_get_user_avatar($avatar_row, $this->user->lang('MAS_NO_AVATAR_TEXT'), true)
+		);
+	}
+
+
+
+/**
  * MAS Get Avatar SQL Query
  *
  * @param String $config_key takes Config Key String
@@ -155,26 +179,6 @@ class memberavatarstatus
 			$this->phpbb_log->add('admin', '', '', 'MAS_LOG_CONFIG', time(), array($config_key, $this->user->lang('MAS_ERR_AV_SIZE'), $av_default_sz));
 		}
 		return $this->config[$config_key];
-	}
-
-
-
-/**
- * MAS Get No Avatar IMG
- *
- * @param Void
- * @return String with No Avatar IMG
- * @access public
- */
-	public function mas_get_no_avatar_img()
-	{
-		$avatar_row = array(
-				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
-				'avatar_type'	=> AVATAR_REMOTE,
-				'avatar_width'	=> self::NO_AVATAR_SIZE,
-				'avatar_height'	=> self::NO_AVATAR_SIZE,
-			);
-		return str_replace('" />', '" title="' . $this->user->lang('MAS_NO_AVATAR_TEXT') . '" />', phpbb_get_user_avatar($avatar_row, $this->user->lang('MAS_NO_AVATAR_TEXT')));
 	}
 
 
@@ -339,7 +343,7 @@ class memberavatarstatus
 	{
 		$start_avatar = '<div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
 		$end_avatar = '</div>';
-		return $start_avatar . (($avatar) ? $avatar : $this->mas_get_no_avatar_img()) . $end_avatar;
+		return $start_avatar . (($avatar) ? $avatar : self::$NO_AVATAR_IMG) . $end_avatar;
 	}
 
 

@@ -21,7 +21,7 @@ class memberlist_module
 
 	public function main($id, $mode)
 	{
-		global $phpbb_container, $config, $request, $template, $user, $phpbb_log, $phpbb_root_path;
+		global $phpbb_container, $config, $request, $template, $user, $phpbb_log;
 		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
@@ -41,7 +41,7 @@ class memberlist_module
 			// Get Setting from ACP
 			$config->set('dark1_mas_ml_av', $request->variable('dark1_mas_ml_av', 0));
 			$config->set('dark1_mas_ml_ol', $request->variable('dark1_mas_ml_ol', 0));
-			$config->set('dark1_mas_ml_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_ml_av_sz', $mas_func::AV_DEF_SZ_BIG), $mas_func::AV_DEF_SZ_BIG, $mas_func::AV_MAX_SZ_BIG));
+			$config->set('dark1_mas_ml_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_ml_av_sz', memberavatarstatus::AV_DEF_SZ_BIG), memberavatarstatus::AV_DEF_SZ_BIG, memberavatarstatus::AV_MAX_SZ_BIG));
 
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($user->lang('ACP_MAS_MODE_MEMBERLIST')));
 			trigger_error(sprintf($user->lang('ACP_MAS_LOG_SET_SAV'), $user->lang('ACP_MAS_MODE_MEMBERLIST')) . adm_back_link($this->u_action), E_USER_NOTICE);
