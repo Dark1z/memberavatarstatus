@@ -343,7 +343,7 @@ class memberavatarstatus
 	{
 		$start_avatar = '<div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
 		$end_avatar = '</div>';
-		return $start_avatar . (($avatar) ? $avatar : self::$NO_AVATAR_IMG) . $end_avatar;
+		return $start_avatar . (($avatar) ? $avatar : $this->mas_get_no_avatar_img()) . $end_avatar;
 	}
 
 
