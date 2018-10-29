@@ -11,11 +11,6 @@
 namespace dark1\memberavatarstatus\acp;
 
 /**
- * @ignore
- */
-use dark1\memberavatarstatus\core\memberavatarstatus;
-
-/**
  * Member Avatar & Status ACP module.
  */
 class main_module
