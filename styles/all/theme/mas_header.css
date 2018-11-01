@@ -65,9 +65,6 @@
 	height: 6px;
 	border-radius: 50%;
 	-webkit-animation: mas-status-pulse 2s linear infinite reverse;
-	-moz-animation: mas-status-pulse 2s linear infinite reverse;
-	-ms-animation: mas-status-pulse 2s linear infinite reverse;
-	-o-animation: mas-status-pulse 2s linear infinite reverse;
 	animation: mas-status-pulse 2s linear infinite reverse;
 }
 
@@ -77,79 +74,16 @@
 .mas-status-online .mas-status-dot:after {
 	background-color: #00FF00;
 	-webkit-animation: mas-status-pulse 1s linear infinite normal;
-	-moz-animation: mas-status-pulse 1s linear infinite normal;
-	-ms-animation: mas-status-pulse 1s linear infinite normal;
-	-o-animation: mas-status-pulse 1s linear infinite normal;
 	animation: mas-status-pulse 1s linear infinite normal;
 }
 
 @-webkit-keyframes mas-status-pulse {
-	000% {
-	transform: scale(0);
-	opacity: 1;
-	}
-	025% {
-	transform: scale(1);
-	opacity: 0.75;
-	}
-	100% {
-	transform: scale(3);
-	opacity: 0;
-	}
-}
-@-moz-keyframes mas-status-pulse {
-	000% {
-	transform: scale(0);
-	opacity: 1;
-	}
-	025% {
-	transform: scale(1);
-	opacity: 0.75;
-	}
-	100% {
-	transform: scale(3);
-	opacity: 0;
-	}
-}
-@-ms-keyframes mas-status-pulse {
-	000% {
-	transform: scale(0);
-	opacity: 1;
-	}
-	025% {
-	transform: scale(1);
-	opacity: 0.75;
-	}
-	100% {
-	transform: scale(3);
-	opacity: 0;
-	}
-}
-@-o-keyframes mas-status-pulse {
-	000% {
-	transform: scale(0);
-	opacity: 1;
-	}
-	025% {
-	transform: scale(1);
-	opacity: 0.75;
-	}
-	100% {
-	transform: scale(3);
-	opacity: 0;
-	}
+	000% { transform: scale(0); opacity: 1; }
+	025% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(3); opacity: 0; }
 }
 @keyframes mas-status-pulse {
-	000% {
-	transform: scale(0);
-	opacity: 1;
-	}
-	025% {
-	transform: scale(1);
-	opacity: 0.75;
-	}
-	100% {
-	transform: scale(3);
-	opacity: 0;
-	}
+	000% { transform: scale(0); opacity: 1; }
+	025% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(3); opacity: 0; }
 }

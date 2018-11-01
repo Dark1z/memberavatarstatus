@@ -49,9 +49,6 @@
 	height: 6px;
 	border-radius: 50%;
 	-webkit-animation: acp-mas-status-pulse 2s linear infinite reverse;
-	-moz-animation: acp-mas-status-pulse 2s linear infinite reverse;
-	-ms-animation: acp-mas-status-pulse 2s linear infinite reverse;
-	-o-animation: acp-mas-status-pulse 2s linear infinite reverse;
 	animation: acp-mas-status-pulse 2s linear infinite reverse;
 }
 
@@ -61,81 +58,18 @@
 .mas-status-online .acp-mas-status-dot:after {
 	background-color: #00FF00;
 	-webkit-animation: acp-mas-status-pulse 1s linear infinite normal;
-	-moz-animation: acp-mas-status-pulse 1s linear infinite normal;
-	-ms-animation: acp-mas-status-pulse 1s linear infinite normal;
-	-o-animation: acp-mas-status-pulse 1s linear infinite normal;
 	animation: acp-mas-status-pulse 1s linear infinite normal;
 }
 
 @-webkit-keyframes acp-mas-status-pulse {
-	000% {
-		transform: scale(0);
-		opacity: 1;
-	}
-	025% {
-		transform: scale(1);
-		opacity: 0.75;
-	}
-	100% {
-		transform: scale(3);
-		opacity: 0;
-	}
-}
-@-moz-keyframes acp-mas-status-pulse {
-	000% {
-		transform: scale(0);
-		opacity: 1;
-	}
-	025% {
-		transform: scale(1);
-		opacity: 0.75;
-	}
-	100% {
-		transform: scale(3);
-		opacity: 0;
-	}
-}
-@-ms-keyframes acp-mas-status-pulse {
-	000% {
-		transform: scale(0);
-		opacity: 1;
-	}
-	025% {
-		transform: scale(1);
-		opacity: 0.75;
-	}
-	100% {
-		transform: scale(3);
-		opacity: 0;
-	}
-}
-@-o-keyframes acp-mas-status-pulse {
-	000% {
-		transform: scale(0);
-		opacity: 1;
-	}
-	025% {
-		transform: scale(1);
-		opacity: 0.75;
-	}
-	100% {
-		transform: scale(3);
-		opacity: 0;
-	}
+	000% { transform: scale(0); opacity: 1; }
+	025% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(3); opacity: 0; }
 }
 @keyframes acp-mas-status-pulse {
-	000% {
-		transform: scale(0);
-		opacity: 1;
-	}
-	025% {
-		transform: scale(1);
-		opacity: 0.75;
-	}
-	100% {
-		transform: scale(3);
-		opacity: 0;
-	}
+	000% { transform: scale(0); opacity: 1; }
+	025% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(3); opacity: 0; }
 }
 
 /* Main Overview*/
@@ -163,8 +97,15 @@
 	cursor: not-allowed !important;
 }
 
-.mas_main_form input[disabled="disabled"] {
+.numSize {
 	cursor: not-allowed !important;
+	line-height: 30px;
+}
+.numVal {
+	border: #808080 2px solid;
+	border-radius: 5px;
+	padding: 2px;
+	margin: 2px;
 }
 
 .toggleWrapper{
@@ -177,9 +118,6 @@
 	transform: translate3d(-50%, -50%, 0);
 	display: contents;
 }
-.toggleWrapper input{
-	display: none;
-}
 .toggle{
 	cursor: not-allowed !important;
 	display: inline-block;
@@ -188,6 +126,7 @@
 	height: 28px;
 	background: #D21626;
 	border-radius: 5px;
+	padding: 0 5px 0 0;
 }
 .toggle:before, .toggle:after{
 	position: absolute;
@@ -220,16 +159,16 @@
 	-webkit-transform: translateX(65px);
 	transform: translateX(65px);
 }
-input:checked + .toggle{
+.toggleChecked .toggle{
 	background: #66b317;
 }
-input:checked + .toggle:before{
+.toggleChecked .toggle:before{
 	color: #66b317;
 }
-input:checked + .toggle:after{
+.toggleChecked .toggle:after{
 	color: #fff;
 }
-input:checked + .toggle .toggle_handle{
+.toggleChecked .toggle .toggle_handle{
 	width: 65px;
 	-webkit-transform: translateX(0px);
 	transform: translateX(0px);
@@ -243,45 +182,9 @@ input:checked + .toggle .toggle_handle{
 	border-radius: 5px;
 	font-family: 'Ubuntu', sans-serif;
 	-webkit-animation: mas-credit-bg 5s linear infinite normal;
-	-moz-animation: mas-credit-bg 5s linear infinite normal;
-	-ms-animation: mas-credit-bg 5s linear infinite normal;
-	-o-animation: mas-credit-bg 5s linear infinite normal;
 	animation: mas-credit-bg 5s linear infinite normal;
 }
 @-webkit-keyframes mas-credit-bg {
-	000% {background-color: rgba(255,	0,		0,		0.2);}
-	012% {background-color: rgba(255,	255,	0,		0.2);}
-	025% {background-color: rgba(0,		255,	0,		0.2);}
-	038% {background-color: rgba(0,		255,	255,	0.2);}
-	050% {background-color: rgba(0,		0,		255,	0.2);}
-	062% {background-color: rgba(0,		255,	255,	0.2);}
-	075% {background-color: rgba(0,		255,	0,		0.2);}
-	088% {background-color: rgba(255,	255,	0,		0.2);}
-	100% {background-color: rgba(255,	0,		0,		0.2);}
-}
-@-moz-keyframes mas-credit-bg {
-	000% {background-color: rgba(255,	0,		0,		0.2);}
-	012% {background-color: rgba(255,	255,	0,		0.2);}
-	025% {background-color: rgba(0,		255,	0,		0.2);}
-	038% {background-color: rgba(0,		255,	255,	0.2);}
-	050% {background-color: rgba(0,		0,		255,	0.2);}
-	062% {background-color: rgba(0,		255,	255,	0.2);}
-	075% {background-color: rgba(0,		255,	0,		0.2);}
-	088% {background-color: rgba(255,	255,	0,		0.2);}
-	100% {background-color: rgba(255,	0,		0,		0.2);}
-}
-@-ms-keyframes mas-credit-bg {
-	000% {background-color: rgba(255,	0,		0,		0.2);}
-	012% {background-color: rgba(255,	255,	0,		0.2);}
-	025% {background-color: rgba(0,		255,	0,		0.2);}
-	038% {background-color: rgba(0,		255,	255,	0.2);}
-	050% {background-color: rgba(0,		0,		255,	0.2);}
-	062% {background-color: rgba(0,		255,	255,	0.2);}
-	075% {background-color: rgba(0,		255,	0,		0.2);}
-	088% {background-color: rgba(255,	255,	0,		0.2);}
-	100% {background-color: rgba(255,	0,		0,		0.2);}
-}
-@-o-keyframes mas-credit-bg {
 	000% {background-color: rgba(255,	0,		0,		0.2);}
 	012% {background-color: rgba(255,	255,	0,		0.2);}
 	025% {background-color: rgba(0,		255,	0,		0.2);}

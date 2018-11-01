@@ -24,7 +24,7 @@ class search_module
 	public $tpl_name;
 	public $u_action;
 
-	public function main($id, $mode)
+	public function main()
 	{
 		global $phpbb_container, $config, $request, $template, $user, $phpbb_log;
 		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');

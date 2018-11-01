@@ -19,7 +19,7 @@ class main_module
 	public $tpl_name;
 	public $u_action;
 
-	public function main($id, $mode)
+	public function main()
 	{
 		global $config, $template, $user, $phpbb_admin_path, $phpEx;
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
