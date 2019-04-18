@@ -273,9 +273,6 @@ class listener implements EventSubscriberInterface
 		// Get Avatar
 		$avatar = $this->mas_func->mas_get_avatar('dark1_mas_vo_pg', 'user', $row);
 
-		// Add Avatar to "USERNAME_FULL"
-		$template_row['USERNAME_FULL'] = $this->mas_func->mas_get_username_wrap($template_row['USERNAME_FULL'], 'dark1_mas_vo_pg', $avatar, '');
-
 		// Add Avatar to template_row
 		$template_row = array_merge(
 			$template_row,
@@ -388,9 +385,6 @@ class listener implements EventSubscriberInterface
 		// Get Online Status
 		$online = $this->mas_func->mas_get_online('dark1_mas_vf_lp', 'forum_last_poster', $row);
 
-		// Modify "LAST_POSTER_FULL"
-		$forum_row['LAST_POSTER_FULL'] = $this->mas_func->mas_get_username_wrap($forum_row['LAST_POSTER_FULL'], 'dark1_mas_vf_lp', $avatar, $online);
-
 		// Add Avatar & Online Status to forum_row
 		$forum_row = array_merge(
 			$forum_row,
@@ -450,10 +444,6 @@ class listener implements EventSubscriberInterface
 		// Get Both Online Status
 		$online_first_poster = $this->mas_func->mas_get_online('dark1_mas_vf_fp', 'topic_first_poster', $row);
 		$online_last_poster = $this->mas_func->mas_get_online('dark1_mas_vf_lp', 'topic_last_poster', $row);
-
-		// Modify Both "-X-_AUTHOR_FULL"
-		$topic_row['TOPIC_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($topic_row['TOPIC_AUTHOR_FULL'], 'dark1_mas_vf_fp', $avatar_first_poster, $online_first_poster);
-		$topic_row['LAST_POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($topic_row['LAST_POST_AUTHOR_FULL'], 'dark1_mas_vf_lp', $avatar_last_poster, $online_last_poster);
 
 		// Add Both of Avatar & Online Status to topic_row
 		$topic_row = array_merge(
@@ -545,9 +535,6 @@ class listener implements EventSubscriberInterface
 			// Get Online Status
 			$online = $this->mas_func->mas_get_online('dark1_mas_sh_up', '', $row);
 
-			// Modify "POST_AUTHOR_FULL"
-			$tpl_ary['POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['POST_AUTHOR_FULL'], 'dark1_mas_sh_up', $avatar, $online);
-
 			// Add Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(
 				$tpl_ary,
@@ -566,10 +553,6 @@ class listener implements EventSubscriberInterface
 			// Get Both Online Status
 			$online_first_poster = $this->mas_func->mas_get_online('dark1_mas_sh_fp', 'topic_first_poster', $row);
 			$online_last_poster = $this->mas_func->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
-
-			// Modify Both "-X-_AUTHOR_FULL"
-			$tpl_ary['TOPIC_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['TOPIC_AUTHOR_FULL'], 'dark1_mas_sh_fp', $avatar_first_poster, $online_first_poster);
-			$tpl_ary['LAST_POST_AUTHOR_FULL'] = $this->mas_func->mas_get_username_wrap($tpl_ary['LAST_POST_AUTHOR_FULL'], 'dark1_mas_sh_lp', $avatar_last_poster, $online_last_poster);
 
 			// Add Both of Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(
