@@ -1,10 +1,10 @@
-<!-- IF MAS_ML_AVATAR or MAS_ML_ONLINE -->
+{% if MAS_ML_AVATAR or MAS_ML_ONLINE %}
 		</div>
-		<!-- IF MAS_ML_ONLINE and not memberrow.S_INACTIVE -->
-			<div class="mas-wrap-status<!-- IF memberrow.S_ONLINE --> mas-status-online<!-- ENDIF -->">
-				<span class="mas-status-dot" title="<!-- IF memberrow.S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->">
+		{% if MAS_ML_ONLINE and not memberrow.S_INACTIVE %}
+			<div class="mas-wrap-status{% if memberrow.S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot" title="{% if memberrow.S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</div>
-		<!-- ENDIF -->
+		{% endif %}
 	</div>
-<!-- ENDIF -->
+{% endif %}

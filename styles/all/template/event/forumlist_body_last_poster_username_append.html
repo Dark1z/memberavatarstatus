@@ -1,10 +1,10 @@
-<!-- IF MAS_VF_LP_AVATAR or MAS_VF_LP_ONLINE -->
+{% if MAS_VF_LP_AVATAR or MAS_VF_LP_ONLINE %}
 		</div>
-		<!-- IF MAS_VF_LP_ONLINE -->
-			<div class="mas-wrap-status<!-- IF forumrow.LAST_POSTER_S_ONLINE --> mas-status-online<!-- ENDIF -->">
-				<span class="mas-status-dot" title="<!-- IF forumrow.LAST_POSTER_S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->">
+		{% if MAS_VF_LP_ONLINE %}
+			<div class="mas-wrap-status{% if forumrow.LAST_POSTER_S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot" title="{% if forumrow.LAST_POSTER_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</div>
-		<!-- ENDIF -->
+		{% endif %}
 	</div>
-<!-- ENDIF -->
+{% endif %}

@@ -1,10 +1,10 @@
-<!-- IF MAS_SH_UP_AVATAR or MAS_SH_UP_ONLINE -->
+{% if MAS_SH_UP_AVATAR or MAS_SH_UP_ONLINE %}
 		</div>
-		<!-- IF MAS_SH_UP_ONLINE -->
-			<div class="mas-wrap-status<!-- IF searchresults.POST_AUTHOR_S_ONLINE --> mas-status-online<!-- ENDIF -->">
-				<span class="mas-status-dot" title="<!-- IF searchresults.POST_AUTHOR_S_ONLINE -->{L_ONLINE}<!-- ELSE -->{L_OFFLINE}<!-- ENDIF -->">
+		{% if MAS_SH_UP_ONLINE %}
+			<div class="mas-wrap-status{% if searchresults.POST_AUTHOR_S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot" title="{% if searchresults.POST_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</div>
-		<!-- ENDIF -->
+		{% endif %}
 	</div>
-<!-- ENDIF -->
+{% endif %}

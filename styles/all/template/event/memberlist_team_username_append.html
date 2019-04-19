@@ -1,0 +1,10 @@
+{% if MAS_ML_AVATAR or MAS_ML_ONLINE or 0 %}
+		</div>
+		{% if MAS_ML_ONLINE and not user.S_INACTIVE %}
+			<div class="mas-wrap-status{% if user.S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot" title="{% if user.S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+				</span>
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

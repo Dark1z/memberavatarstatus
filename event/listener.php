@@ -217,9 +217,6 @@ class listener implements EventSubscriberInterface
 		// Get Online Status
 		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->mas_func->mas_get_online('dark1_mas_ml', '', $row) : '';
 
-		// Modify "USERNAME_FULL"
-		$template_vars['USERNAME_FULL'] = $this->mas_func->mas_get_username_wrap($template_vars['USERNAME_FULL'], 'dark1_mas_ml', $avatar, $online);
-
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(
 			$template_vars,

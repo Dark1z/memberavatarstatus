@@ -1,4 +1,4 @@
-<!-- IF ( SCRIPT_NAME eq 'memberlist' ) and ( MAS_ML_AVATAR or MAS_ML_ONLINE ) -->
-	<!-- INCLUDECSS @dark1_memberavatarstatus/mas_header.css -->
-	<meta name="MAS" content="{MAS_EXT_NAME}={MAS_EXT_DEV}" />
-<!-- ENDIF -->
+{% if ( SCRIPT_NAME eq 'memberlist' ) and ( MAS_ML_AVATAR or MAS_ML_ONLINE ) %}
+	{% INCLUDECSS '@dark1_memberavatarstatus/mas_header.css' %}
+	<meta name="MAS" content="{{ MAS_EXT_NAME }}={{ MAS_EXT_DEV }}" />
+{% endif %}

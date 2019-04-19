@@ -1,40 +1,40 @@
-<!-- INCLUDE overall_header.html -->
-<!-- INCLUDECSS @dark1_memberavatarstatus/mas_acp_style.css -->
-<!-- INCLUDEJS @dark1_memberavatarstatus/mas_acp_script.js -->
+{% INCLUDE 'overall_header.html' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
+{% INCLUDEJS '@dark1_memberavatarstatus/mas_acp_script.js' %}
 
-<h1>{MAS_EXT_NAME}</h1>
-<div>{L_ACP_MAS_BY}&nbsp;{MAS_EXT_DEV}</div>
+<h1>{{ MAS_EXT_NAME }}</h1>
+<div>{{ lang('ACP_MAS_BY') }}&nbsp;{{ MAS_EXT_DEV }}</div>
 <hr style="margin: 5px 0px 0px 0px; padding: 5px 0px 0px 0px; border-top: 2px solid #888;" />
-<h2>{L_ACP_MAS_MODE_VIEWONLINE}</h2>
+<h2>{{ lang('ACP_MAS_MODE_VIEWONLINE') }}</h2>
 
-<form id="acp_board" method="post" action="{U_ACTION}">
+<form id="acp_board" method="post" action="{{ U_ACTION }}">
 
 	<fieldset>
-		<legend>{L_ACP_MAS_VO_PG_AV_SET}</legend>
+		<legend>{{ lang('ACP_MAS_VO_PG_AV_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_pg_av">{L_ACP_MAS_VO_PG_AV_LB}{L_COLON}</label>
+				<label for="dark1_mas_vo_pg_av">{{ lang('ACP_MAS_VO_PG_AV_LB') }}{{ lang('COLON') }}</label>
 				<br />
-				<div>{L_ACP_MAS_VO_PG_AV_EXPLAIN}</div>
+				<div>{{ lang('ACP_MAS_VO_PG_AV_EXPLAIN') }}</div>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="dark1_mas_vo_pg_av" value="1" <!-- IF MAS_VO_PG_AVATAR -->checked="checked"<!-- ENDIF --> id="dark1_mas_vo_pg_av" /> {L_YES}</label>
-				<label><input type="radio" class="radio" name="dark1_mas_vo_pg_av" value="0" <!-- IF not MAS_VO_PG_AVATAR -->checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_vo_pg_av" value="1" {% if MAS_VO_PG_AVATAR %}checked="checked"{% endif %} id="dark1_mas_vo_pg_av" /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_vo_pg_av" value="0" {% if not MAS_VO_PG_AVATAR %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
 			</dd>
 		</dl>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_pg_av_sz">{L_ACP_MAS_VO_PG_AV_SZ_LB}{L_COLON}</label>
+				<label for="dark1_mas_vo_pg_av_sz">{{ lang('ACP_MAS_VO_PG_AV_SZ_LB') }}{{ lang('COLON') }}</label>
 				<br />
-				<div>{L_ACP_MAS_AV_SZ_SML_EXPLAIN}</div>
+				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
 			<dd>
-				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_vo_pg_av_sz" value="{MAS_VO_PG_AV_SIZE}" oninput="sync_avatar_size('dark1_mas_vo_pg_av_sz','div_dark1_mas_vo_pg_av_sz')" id="dark1_mas_vo_pg_av_sz" />&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_vo_pg_av_sz" value="{{ MAS_VO_PG_AV_SIZE }}" oninput="sync_avatar_size('dark1_mas_vo_pg_av_sz','div_dark1_mas_vo_pg_av_sz')" id="dark1_mas_vo_pg_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
 				<br />
 				<br />
 				<div style="overflow: auto; max-height: 300px; max-width: 300px;">
-					<div id="div_dark1_mas_vo_pg_av_sz" class="acp-mas-avatar-div" style="width: {MAS_VO_PG_AV_SIZE}px; height: {MAS_VO_PG_AV_SIZE}px;">
-						{MAS_NO_AVATAR_IMG}
+					<div id="div_dark1_mas_vo_pg_av_sz" class="acp-mas-avatar-div" style="width: {{ MAS_VO_PG_AV_SIZE }}px; height: {{ MAS_VO_PG_AV_SIZE }}px;">
+						{{ MAS_NO_AVATAR_IMG }}
 					</div>
 				</div>
 			</dd>
@@ -42,31 +42,31 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>{L_ACP_MAS_VO_SB_AV_SET}</legend>
+		<legend>{{ lang('ACP_MAS_VO_SB_AV_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_sb_av">{L_ACP_MAS_VO_SB_AV_LB}{L_COLON}</label>
+				<label for="dark1_mas_vo_sb_av">{{ lang('ACP_MAS_VO_SB_AV_LB') }}{{ lang('COLON') }}</label>
 				<br />
-				<div>{L_ACP_MAS_VO_SB_AV_EXPLAIN}</div>
+				<div>{{ lang('ACP_MAS_VO_SB_AV_EXPLAIN') }}</div>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="dark1_mas_vo_sb_av" value="1" <!-- IF MAS_VO_SB_AVATAR -->checked="checked"<!-- ENDIF --> id="dark1_mas_vo_sb_av" /> {L_YES}</label>
-				<label><input type="radio" class="radio" name="dark1_mas_vo_sb_av" value="0" <!-- IF not MAS_VO_SB_AVATAR -->checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_vo_sb_av" value="1" {% if MAS_VO_SB_AVATAR %}checked="checked"{% endif %} id="dark1_mas_vo_sb_av" /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_vo_sb_av" value="0" {% if not MAS_VO_SB_AVATAR %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
 			</dd>
 		</dl>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_sb_av_sz">{L_ACP_MAS_VO_SB_AV_SZ_LB}{L_COLON}</label>
+				<label for="dark1_mas_vo_sb_av_sz">{{ lang('ACP_MAS_VO_SB_AV_SZ_LB') }}{{ lang('COLON') }}</label>
 				<br />
-				<div>{L_ACP_MAS_AV_SZ_SML_EXPLAIN}</div>
+				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
 			<dd>
-				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_vo_sb_av_sz" value="{MAS_VO_SB_AV_SIZE}" oninput="sync_avatar_size('dark1_mas_vo_sb_av_sz','div_dark1_mas_vo_sb_av_sz')" id="dark1_mas_vo_sb_av_sz" />&nbsp;{L_ACP_MAS_AV_SIZE_PX}
+				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_vo_sb_av_sz" value="{{ MAS_VO_SB_AV_SIZE }}" oninput="sync_avatar_size('dark1_mas_vo_sb_av_sz','div_dark1_mas_vo_sb_av_sz')" id="dark1_mas_vo_sb_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
 				<br />
 				<br />
 				<div style="overflow: auto; max-height: 300px; max-width: 300px;">
-					<div id="div_dark1_mas_vo_sb_av_sz" class="acp-mas-avatar-div" style="width: {MAS_VO_SB_AV_SIZE}px; height: {MAS_VO_SB_AV_SIZE}px;">
-						{MAS_NO_AVATAR_IMG}
+					<div id="div_dark1_mas_vo_sb_av_sz" class="acp-mas-avatar-div" style="width: {{ MAS_VO_SB_AV_SIZE }}px; height: {{ MAS_VO_SB_AV_SIZE }}px;">
+						{{ MAS_NO_AVATAR_IMG }}
 					</div>
 				</div>
 			</dd>
@@ -74,15 +74,15 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>{L_ACP_SUBMIT_CHANGES}</legend>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
 		<fieldset class="submit-buttons">
-			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
 			&nbsp;&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" onclick="reset_avatar_size('div_dark1_mas_vo_pg_av_sz',{MAS_VO_PG_AV_SIZE});reset_avatar_size('div_dark1_mas_vo_sb_av_sz',{MAS_VO_SB_AV_SIZE})" />
-			{S_FORM_TOKEN}
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" onclick="reset_avatar_size('div_dark1_mas_vo_pg_av_sz',{{ MAS_VO_PG_AV_SIZE }});reset_avatar_size('div_dark1_mas_vo_sb_av_sz',{{ MAS_VO_SB_AV_SIZE }})" />
+			{{ S_FORM_TOKEN }}
 		</fieldset>
 	</fieldset>
 
 </form>
 
-<!-- INCLUDE overall_footer.html -->
+{% INCLUDE 'overall_footer.html' %}
