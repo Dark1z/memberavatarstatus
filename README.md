@@ -4,9 +4,11 @@
 ## Translator : 
    
 1. English [en] :   
-   1. Dark❶ [dark1] .   
+   1. [Dark❶ [dark1 / dark-1]](https://github.com/dark-1) .   
 1. Slovak [sk] :   
-   1. GrgoPitic ([GrgoPitic@phpbb.com](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1765796)) .   
+   1. [GrgoPitic](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1765796) .   
+1. French [fr] :   
+   1. [Raphaël M. [Galixte]](https://github.com/Galixte) .   
    
 ### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)   
    
