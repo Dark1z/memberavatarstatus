@@ -1,16 +1,22 @@
 <?php
 /**
  *
- * Member Avatar & Status. An extension for the phpBB Forum Software package.
- * French translation by Galixte (http://www.galixte.com)
+ * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
  * @copyright (c) 2018-2019 Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
+ *
+ *
+ * Language : French [fr]
+ * Translators :
+ * 1. Raphaël M. [Galixte] (http://www.galixte.com)
+ *
  *
  */
 
 /**
  * DO NOT CHANGE
+ * @ignore
  */
 if (!defined('IN_PHPBB'))
 {

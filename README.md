@@ -4,7 +4,7 @@
 ## Translator : 
    
 1. English [en] :   
-   1. [Dark❶ [dark1 / dark-1]](https://github.com/dark-1) .   
+   1. [Dark❶ [dark1]](https://github.com/dark-1) .   
 1. Slovak [sk] :   
    1. [GrgoPitic](https://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=1765796) .   
 1. French [fr] :   
