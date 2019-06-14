@@ -3,8 +3,8 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018, Dark❶ [dark1]
- * @license GNU General Public License, version 2 (GPL-2.0)
+ * @copyright (c) 2018-2019 Dark❶ [dark1]
+ * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
 
@@ -168,7 +168,7 @@ class memberavatarstatus
  */
 	public function mas_get_config_avatar_size($config_key, $av_default_sz = self::AV_DEF_SZ_SML, $av_max_sz = self::AV_MAX_SZ_SML)
 	{
-		
+
 		// config -> dark1_mas_XX_sz , Need to set this between self::AV_MIN_SZ to $av_max_sz Only , Default is $av_default_sz.
 		$av_sz = $this->mas_get_avatar_size($this->config[$config_key], $av_default_sz, $av_max_sz);
 
