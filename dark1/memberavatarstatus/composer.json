@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Member Avatar & Status",
 	"homepage": "https://www.phpbb.com/customise/db/extension/member_avatar_status/",
-	"version": "2.1.0",
-	"time": "2019-04-20 01:01:01",
+	"version": "2.1.2",
+	"time": "2019-06-28 01:01:01",
 	"keywords": ["phpbb", "extension", "member", "avatar", "online", "status"],
 	"license": "GPL-2.0-only",
 	"authors": [ {
@@ -28,5 +28,15 @@
 			"directory": "/customise/db/extension/member_avatar_status",
 			"filename": "version_check"
 		}
-	}
+	},
+	"readme": "./README.md",
+    "support": {
+        "email": "phpbb.ext@dark1.epizy.com",
+        "issues": "https://github.com/dark-1/memberavatarstatus/issues",
+        "forum": "https://phpbb.com/community/viewtopic.php?t=2474156",
+        "wiki": "https://github.com/dark-1/memberavatarstatus/wiki",
+        "source": "https://github.com/dark-1/memberavatarstatus",
+        "docs": "https://dark-1.github.io/memberavatarstatus/",
+        "chat": "https://phpbb.com/community/ucp.php?i=pm&mode=compose&u=1761516"
+    }
 }

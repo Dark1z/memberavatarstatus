@@ -88,6 +88,7 @@ class listener implements EventSubscriberInterface
 			'core.obtain_users_online_string_before_modify'	=> 'mas_viewonline_stat_block_template',
 			// ViewForum DisplayForums Setup
 			'core.display_forums_modify_sql'				=> 'mas_viewforum_displayforums_query',
+			'core.display_forums_modify_forum_rows'			=> 'mas_viewforum_displayforums_data',
 			'core.display_forums_modify_template_vars'		=> 'mas_viewforum_displayforums_template',
 			// ViewForum Topic Setup
 			'core.viewforum_get_topic_data'					=> 'mas_viewforum_topic_query',
@@ -359,6 +360,42 @@ class listener implements EventSubscriberInterface
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
+	}
+
+
+
+/**
+ * MAS ViewForum DisplayForums Data Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_viewforum_displayforums_data($event)
+	{
+		// Get Event Array `row` , `forum_rows` & `parent_id`
+		$row = $event['row'];
+		$forum_rows = $event['forum_rows'];
+		$parent_id = $event['parent_id'];
+
+		if ($forum_rows[$parent_id]['forum_id_last_post'] == $row['forum_id'])
+		{
+			if ($this->config['allow_avatar'] && $this->config['dark1_mas_vf_lp_av'])
+			{
+				$forum_rows[$parent_id]['forum_last_poster_avatar'] = $row['forum_last_poster_avatar'];
+				$forum_rows[$parent_id]['forum_last_poster_avatar_type'] = $row['forum_last_poster_avatar_type'];
+				$forum_rows[$parent_id]['forum_last_poster_avatar_width'] = $row['forum_last_poster_avatar_width'];
+				$forum_rows[$parent_id]['forum_last_poster_avatar_height'] = $row['forum_last_poster_avatar_height'];
+			}
+			if ($this->config['load_onlinetrack'] && $this->config['dark1_mas_vf_lp_ol'])
+			{
+				$forum_rows[$parent_id]['forum_last_poster_session_time'] = $row['forum_last_poster_session_time'];
+				$forum_rows[$parent_id]['forum_last_poster_session_viewonline'] = $row['forum_last_poster_session_viewonline'];
+			}
+		}
+
+		// Assign forum_rows to event -> forum_rows
+		$event['forum_rows'] = $forum_rows;
 	}
 
 
