@@ -42,6 +42,15 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 7. D0Ne !!! EnJ0Y  :D   
    
    
+## **Uninstallation:**   
+   
+1. Navigate in the `ACP` to `Customise` -> `Manage extensions`.   
+2. Look for `Member Avatar & Status` under the `Enabled Extensions` list, and click the `Disable` link.   
+3. If want to Fully Uninstall then Look for `Member Avatar & Status` under the `Disabled Extensions` list, and click the `Delete data` link.   
+4. If required Purge the cache in `ACP` & also if required then in your Browser.   
+5. D0Ne !!! EnJ0Y  :D   
+   
+   
 GitHub Repository: [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
 phpBB Customisation Database Extension: [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status/)   
 For more Details Go Here : [[3.2][RC] Member Avatar & Status [MAS]](https://www.phpbb.com/community/viewtopic.php?t=2474156)   
