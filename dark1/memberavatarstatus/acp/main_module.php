@@ -63,6 +63,10 @@ class main_module
 			'MAS_SH_UP_AVATAR'	=> $config['dark1_mas_sh_up_av'],
 			'MAS_SH_UP_AV_SIZE'	=> $config['dark1_mas_sh_up_av_sz'],
 			'MAS_SH_UP_ONLINE'	=> $config['dark1_mas_sh_up_ol'],
+			// Review
+			'MAS_RV_AVATAR'		=> $config['dark1_mas_rv_av'],
+			'MAS_RV_AV_SIZE'	=> $config['dark1_mas_rv_av_sz'],
+			'MAS_RV_ONLINE'		=> $config['dark1_mas_rv_ol'],
 		));
 	}
 
