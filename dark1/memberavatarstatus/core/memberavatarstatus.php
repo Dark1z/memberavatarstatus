@@ -30,7 +30,7 @@ class memberavatarstatus
 	const AV_MIN_SZ = 9;
 
 	/** @var int Avatar Default Size Small */
-	const AV_DEF_SZ_SML = 2.0;
+	const AV_DEF_SZ_SML = 20;
 
 	/** @var int Avatar Default Size Big */
 	const AV_DEF_SZ_BIG = 50;

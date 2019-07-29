@@ -77,26 +77,31 @@ class listener implements EventSubscriberInterface
 			// Main Setup
 			'core.user_setup'								=> 'mas_load_lang',
 			'core.page_header_after'						=> 'mas_header',
-			// MemberList Team Setup
+			// MemberList Setup
 			'core.memberlist_team_modify_query'				=> 'mas_memberlist_team_query',
 			'core.memberlist_team_modify_template_vars'		=> 'mas_memberlist_team_template',
-			// ViewOnline Page Setup
+			// ViewOnline Setup
 			'core.viewonline_modify_sql'					=> 'mas_viewonline_page_query',
 			'core.viewonline_modify_user_row'				=> 'mas_viewonline_page_template',
-			// ViewOnline Stat Block Setup
 			'core.obtain_users_online_string_sql'			=> 'mas_viewonline_stat_block_query',
 			'core.obtain_users_online_string_before_modify'	=> 'mas_viewonline_stat_block_template',
-			// ViewForum DisplayForums Setup
+			// ViewForum Setup
 			'core.display_forums_modify_sql'				=> 'mas_viewforum_displayforums_query',
 			'core.display_forums_modify_forum_rows'			=> 'mas_viewforum_displayforums_data',
 			'core.display_forums_modify_template_vars'		=> 'mas_viewforum_displayforums_template',
-			// ViewForum Topic Setup
 			'core.viewforum_get_topic_data'					=> 'mas_viewforum_topic_query',
 			'core.viewforum_modify_topicrow'				=> 'mas_viewforum_topic_template',
 			// Search Setup
 			'core.search_get_posts_data'					=> 'mas_search_posts_query',
 			'core.search_get_topic_data'					=> 'mas_search_topic_query',
 			'core.search_modify_tpl_ary'					=> 'mas_search_template',
+			// Review Setup
+			'core.topic_review_modify_sql_ary'				=> 'mas_posting_topic_review_query',
+			'core.topic_review_modify_row'					=> 'mas_posting_topic_review_template',
+			'core.message_history_modify_sql_ary'			=> 'mas_pm_history_review_query',
+			'core.message_history_modify_template_vars'		=> 'mas_pm_history_review_template',
+			'core.mcp_topic_modify_sql_ary'					=> 'mas_mcp_topic_review_query',
+			'core.mcp_topic_review_modify_row'				=> 'mas_mcp_topic_review_template',
 		);
 	}
 
@@ -169,6 +174,10 @@ class listener implements EventSubscriberInterface
 			'MAS_SH_UP_AVATAR'	=> $this->config['dark1_mas_sh_up_av'],
 			'MAS_SH_UP_AV_SIZE'	=> $this->mas_func->mas_get_config_avatar_size('dark1_mas_sh_up_av_sz', memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML),
 			'MAS_SH_UP_ONLINE'	=> $this->config['dark1_mas_sh_up_ol'],
+			// Review
+			'MAS_RV_AVATAR'		=> $this->config['dark1_mas_rv_av'],
+			'MAS_RV_AV_SIZE'	=> $this->mas_func->mas_get_config_avatar_size('dark1_mas_rv_av_sz', memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML),
+			'MAS_RV_ONLINE'		=> $this->config['dark1_mas_rv_ol'],
 			// No Avatar IMG
 			'MAS_NO_AVATAR_IMG'	=> $this->mas_func->mas_get_no_avatar_img(),
 		));
@@ -602,6 +611,175 @@ class listener implements EventSubscriberInterface
 
 		// Assign tpl_ary to event -> tpl_ary
 		$event['tpl_ary'] = $tpl_ary;
+	}
+
+
+
+/**
+ * MAS Posting Topic Review SQL Query Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_posting_topic_review_query($event)
+	{
+		// Get Event Array `sql_ary`
+		$sql_ary = $event['sql_ary'];
+
+		// Add Query Details
+		$temp_sql_ary = $this->mas_func->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
+		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
+		$sql_ary = $this->mas_func->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '');
+
+		// Assign sql_ary to event -> sql_ary
+		$event['sql_ary'] = $sql_ary;
+	}
+
+
+
+/**
+ * MAS Posting Topic Review Template Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_posting_topic_review_template($event)
+	{
+		// Get Event Array `row` & `post_row`
+		$row = $event['row'];
+		$post_row = $event['post_row'];
+
+		// Set Avatar
+		$avatar = $this->mas_func->mas_get_avatar('dark1_mas_rv', 'user', $row);
+
+		// Get Online Status
+		$online = $this->mas_func->mas_get_online('dark1_mas_rv', 'user', $row);
+
+		// Add Avatar & Online Status to post_row
+		$post_row = array_merge(
+			$post_row,
+			array(
+				'AVATAR_IMG'	=> $avatar,
+				'S_ONLINE'		=> $online,
+			)
+		);
+
+		// Assign post_row to event -> post_row
+		$event['post_row'] = $post_row;
+	}
+
+
+
+/**
+ * MAS PM History Review SQL Query Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_pm_history_review_query($event)
+	{
+		// Get Event Array `sql_ary`
+		$sql_ary = $event['sql_ary'];
+
+		// Add Query Details
+		$sql_ary = $this->mas_func->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '');
+
+		// Assign sql_ary to event -> sql_ary
+		$event['sql_ary'] = $sql_ary;
+	}
+
+
+
+/**
+ * MAS PM History Review Template Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_pm_history_review_template($event)
+	{
+		// Get Event Array `row` & `template_vars`
+		$row = $event['row'];
+		$template_vars = $event['template_vars'];
+
+		// Set Avatar
+		$avatar = $this->mas_func->mas_get_avatar('dark1_mas_rv', 'user', $row);
+
+		// Get Online Status
+		$online = $this->mas_func->mas_get_online('dark1_mas_rv', 'user', $row);
+
+		// Add Avatar & Online Status to template_vars
+		$template_vars = array_merge(
+			$template_vars,
+			array(
+				'AVATAR_IMG'	=> $avatar,
+				'S_ONLINE'		=> $online,
+			)
+		);
+
+		// Assign template_vars to event -> template_vars
+		$event['template_vars'] = $template_vars;
+	}
+
+
+
+/**
+ * MAS MCP Topic Review SQL Query Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_mcp_topic_review_query($event)
+	{
+		// Get Event Array `sql_ary`
+		$sql_ary = $event['sql_ary'];
+
+		// Add Query Details
+		$temp_sql_ary = $this->mas_func->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
+		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
+		$sql_ary = $this->mas_func->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '');
+
+		// Assign sql_ary to event -> sql_ary
+		$event['sql_ary'] = $sql_ary;
+	}
+
+
+
+/**
+ * MAS MCP Topic Review Template Setup
+ *
+ * @param object $event The event object
+ * @return null
+ * @access public
+ */
+	public function mas_mcp_topic_review_template($event)
+	{
+		// Get Event Array `row` & `post_row`
+		$row = $event['row'];
+		$post_row = $event['post_row'];
+
+		// Set Avatar
+		$avatar = $this->mas_func->mas_get_avatar('dark1_mas_rv', 'user', $row);
+
+		// Get Online Status
+		$online = $this->mas_func->mas_get_online('dark1_mas_rv', 'user', $row);
+
+		// Add Avatar & Online Status to post_row
+		$post_row = array_merge(
+			$post_row,
+			array(
+				'AVATAR_IMG'	=> $avatar,
+				'S_ONLINE'		=> $online,
+			)
+		);
+
+		// Assign post_row to event -> post_row
+		$event['post_row'] = $post_row;
 	}
 
 }

@@ -27,7 +27,7 @@
 }
 
 /* Avatar in ViewOnLine */
-.section-viewonline .mas-avatar, .section-viewforum .mas-avatar, .section-viewtopic .mas-avatar, .section-index .mas-avatar {
+.section-viewonline .mas-avatar, .section-viewforum .mas-avatar, .section-viewtopic .mas-avatar, .section-index .mas-avatar, .section-posting .mas-avatar, .section-ucp .mas-avatar, .section-mcp .mas-avatar {
 	width: 20px;
 	height: 20px;
 }
