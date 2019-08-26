@@ -14,6 +14,13 @@
 	padding: 5px 0px 0px 0px;
 }
 
+/* Avatar Div Wrapper */
+.acp-mas-avatar-div-wrapper {
+	overflow: auto;
+	max-height: 300px;
+	max-width: 300px;
+}
+
 /* Avatar Div */
 .acp-mas-avatar-div {
 	display: inline-block !important;
