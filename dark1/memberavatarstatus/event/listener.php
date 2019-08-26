@@ -50,13 +50,8 @@ class listener implements EventSubscriberInterface
  * @param \phpbb\template\template								$template	phpBB template
  * @access public
  */
-	public function __construct(
-		memberavatarstatus	$mas_func,
-		auth				$auth,
-		config				$config,
-		user				$user,
-		template			$template
-	){
+	public function __construct( memberavatarstatus $mas_func, auth $auth, config $config, user $user, template $template)
+	{
 		$this->mas_func		= $mas_func;
 		$this->auth			= $auth;
 		$this->config		= $config;

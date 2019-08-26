@@ -15,7 +15,7 @@ namespace dark1\memberavatarstatus\core;
  */
 use phpbb\auth\auth;
 use phpbb\config\config;
-use phpbb\user;
+use phpbb\language\language;
 use phpbb\log\log;
 
 /**
@@ -47,8 +47,8 @@ class memberavatarstatus
 	/** @var \phpbb\config\config */
 	protected $config;
 
-	/** @var \phpbb\user */
-	protected $user;
+	/** @var \phpbb\language\language */
+	protected $language;
 
 	/** @var \phpbb\log\log */
 	protected $phpbb_log;
@@ -61,22 +61,16 @@ class memberavatarstatus
  *
  * @param \phpbb\auth\auth				$auth		phpBB auth
  * @param \phpbb\config\config			$config		phpBB config
- * @param \phpbb\user					$user		phpBB user
+ * @param \phpbb\language\language		$language	phpBB language
  * @param \phpbb\log\log				$phpbb_log	phpBB log
- * @param \								$root_path	phpBB root_path
+ * @param string						$root_path	phpBB root_path
  * @access public
  */
-	public function __construct(
-		auth				$auth,
-		config				$config,
-		user				$user,
-		log					$phpbb_log,
-		$phpbb_root_path
-	)
+	public function __construct(auth $auth, config $config, language $language, log $phpbb_log, $phpbb_root_path)
 	{
 		$this->auth				= $auth;
 		$this->config			= $config;
-		$this->user				= $user;
+		$this->language			= $language;
 		$this->phpbb_log		= $phpbb_log;
 		$this->phpbb_root_path	= $phpbb_root_path;
 	}
@@ -100,8 +94,8 @@ class memberavatarstatus
 			);
 		return str_replace(
 			'" />',
-			'" title="' . $this->user->lang('MAS_NO_AVATAR_TEXT') . '" />',
-			phpbb_get_user_avatar($avatar_row, $this->user->lang('MAS_NO_AVATAR_TEXT'), true)
+			'" title="' . $this->language->lang('MAS_NO_AVATAR_TEXT') . '" />',
+			phpbb_get_user_avatar($avatar_row, $this->language->lang('MAS_NO_AVATAR_TEXT'), true)
 		);
 	}
 
@@ -176,7 +170,7 @@ class memberavatarstatus
 		if ($av_sz != $this->config[$config_key])
 		{
 			$this->config->set($config_key, $av_sz);
-			$this->phpbb_log->add('admin', '', '', 'MAS_LOG_CONFIG', time(), array($config_key, $this->user->lang('MAS_ERR_AV_SIZE'), $av_default_sz));
+			$this->phpbb_log->add('admin', '', '', 'MAS_LOG_CONFIG', time(), array($config_key, $this->language->lang('MAS_ERR_AV_SIZE'), $av_default_sz));
 		}
 		return $this->config[$config_key];
 	}
@@ -359,8 +353,8 @@ class memberavatarstatus
  */
 	public function mas_get_online_status_dot($online)
 	{
-		$online_text = $this->user->lang('ONLINE');
-		$offline_text = $this->user->lang('OFFLINE');
+		$online_text = $this->language->lang('ONLINE');
+		$offline_text = $this->language->lang('OFFLINE');
 		$start_online = ' ' . '<div class="mas-wrap-status' . ($online ? ' mas-status-online' : '') . '">';
 		$end_online = '</div>';
 		$online_dot = '<span class="mas-status-dot" title="' . ($online ? $online_text : $offline_text) . '"/>';

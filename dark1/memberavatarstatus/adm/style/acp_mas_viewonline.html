@@ -4,7 +4,7 @@
 
 <h1>{{ MAS_EXT_NAME }}</h1>
 <div>{{ lang('ACP_MAS_BY') }}&nbsp;{{ MAS_EXT_DEV }}</div>
-<hr style="margin: 5px 0px 0px 0px; padding: 5px 0px 0px 0px; border-top: 2px solid #888;" />
+<hr class="acp-mas-hr" />
 <h2>{{ lang('ACP_MAS_MODE_VIEWONLINE') }}</h2>
 
 <form id="acp_board" method="post" action="{{ U_ACTION }}">
@@ -13,7 +13,7 @@
 		<legend>{{ lang('ACP_MAS_VO_PG_AV_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_pg_av">{{ lang('ACP_MAS_VO_PG_AV_LB') }}{{ lang('COLON') }}</label>
+				<label for="dark1_mas_vo_pg_av">{{ lang('ACP_MAS_VO_PG_AV_LB') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_VO_PG_AV_EXPLAIN') }}</div>
 			</dt>
@@ -24,7 +24,7 @@
 		</dl>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_pg_av_sz">{{ lang('ACP_MAS_VO_PG_AV_SZ_LB') }}{{ lang('COLON') }}</label>
+				<label for="dark1_mas_vo_pg_av_sz">{{ lang('ACP_MAS_VO_PG_AV_SZ_LB') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
@@ -45,7 +45,7 @@
 		<legend>{{ lang('ACP_MAS_VO_SB_AV_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_sb_av">{{ lang('ACP_MAS_VO_SB_AV_LB') }}{{ lang('COLON') }}</label>
+				<label for="dark1_mas_vo_sb_av">{{ lang('ACP_MAS_VO_SB_AV_LB') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_VO_SB_AV_EXPLAIN') }}</div>
 			</dt>
@@ -56,7 +56,7 @@
 		</dl>
 		<dl>
 			<dt>
-				<label for="dark1_mas_vo_sb_av_sz">{{ lang('ACP_MAS_VO_SB_AV_SZ_LB') }}{{ lang('COLON') }}</label>
+				<label for="dark1_mas_vo_sb_av_sz">{{ lang('ACP_MAS_VO_SB_AV_SZ_LB') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
