@@ -4,7 +4,7 @@ dist: trusty
 matrix:
   include:
     - php: 5.4
-      env: DB=mysqli
+      env: DB=mysqli;NOTESTS=1
     - php: 5.5
       env: DB=mysqli
     - php: 5.6
