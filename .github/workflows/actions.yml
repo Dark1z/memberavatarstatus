@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+    - actions
+  pull_request:
+    branches:
+    - master
+    - actions
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Actions Checkout
+      uses: actions/checkout@v1
+
+    - name: Actions Setup
+      env:
+        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
+        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+      run: |
+          mkdir --parents ../tmp
+          cp -R . ../tmp
+          git clone --depth=1 git://github.com/phpbb/phpbb.git phpBB3 --branch=$PHPBB_BRANCH
+          cd phpBB3/phpBB
+          composer install --no-interaction --no-progress --no-suggest --ignore-platform-reqs
+          composer remove sami/sami --no-interaction --no-progress --ignore-platform-reqs --dev
+          composer require phpbb/epv:dev-master --no-interaction --no-progress --no-suggest --ignore-platform-reqs --dev
+          cd ../../
+          mkdir --parents phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
+          cp -R ../tmp/* phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
+
+    - name: Actions Test
+      env:
+        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
+        SNIFF: 0                            # Should we run code sniffer on your code?
+        IMAGE_ICC: 0                        # Should we run icc profile sniffer on your images?
+        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
+        DB: 0                               # DB
+      run: |
+          cd phpBB3
+          sh -c "if [ '$SNIFF' != '0' ]; then travis/ext-sniff.sh $DB $TRAVIS_PHP_VERSION $EXTNAME; fi"	
+          sh -c "if [ '$IMAGE_ICC' != '0' ]; then travis/check-image-icc-profiles.sh $DB $TRAVIS_PHP_VERSION; fi"	
+          sh -c "if [ '$DB' != '0' ]; then phpBB/vendor/bin/phpunit --configuration phpBB/ext/$EXTNAME/$EXTNAME/travis/phpunit-$DB-travis.xml --bootstrap ./tests/bootstrap.php; fi"
+          sh -c "if [ '$EPV' != '0' ]; then phpBB/vendor/bin/EPV.php run --dir='phpBB/ext/$EXTNAME' --debug; fi"
