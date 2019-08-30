@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  Check Ubuntu:
+  Check-Ubuntu:
     runs-on: ubuntu-latest
     steps:
 
