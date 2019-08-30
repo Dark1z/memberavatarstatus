@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      env:
+    - env:
         EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
         PHPBB_BRANCH: 3.2.x                 # phpBB Branch
         SNIFF: 1                            # Should we run code sniffer on your code?
