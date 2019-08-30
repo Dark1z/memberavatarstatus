@@ -20,6 +20,7 @@ jobs:
       env:
         EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
         PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+        DB: mysqli                          # DB
       run: |
           mkdir --parents ../tmp
           cp -R . ../tmp
@@ -31,6 +32,7 @@ jobs:
           cd ../../
           mkdir --parents phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
           cp -R ../tmp/* phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
+          mysql -e 'create database IF NOT EXISTS phpbb_tests;'
 
     - name: Actions Test
       env:
@@ -38,7 +40,7 @@ jobs:
         SNIFF: 1                            # Should we run code sniffer on your code?
         IMAGE_ICC: 0                        # Should we run icc profile sniffer on your images?
         EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
-        DB: 0                               # DB
+        DB: mysqli                          # DB
         PHP: 0                              # PHP
         NOTESTS: 1                          # NoTests
       run: |
