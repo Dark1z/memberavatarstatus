@@ -9,7 +9,7 @@ on:
 
 jobs:
   check:
-    name: Check Member Avatar & Status [MAS]
+    name: Check
     runs-on: ubuntu-latest
 
     steps:
