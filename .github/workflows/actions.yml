@@ -1,5 +1,4 @@
-name: CI
-
+name: Actions CI
 on:
   push:
     branches:
@@ -9,17 +8,18 @@ on:
     - master
 
 jobs:
-  Check-Ubuntu:
+  check:
+    name: Check phpBB Extension Member Avatar & Status [MAS]
     runs-on: ubuntu-latest
 
     steps:
-    - env:
+
+    - name: Actions Checkout
+      env:
         EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
         PHPBB_BRANCH: 3.2.x                 # phpBB Branch
         SNIFF: 1                            # Should we run code sniffer on your code?
         EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
-
-    - name: Actions Checkout
       uses: actions/checkout@v1
 
     - name: Actions Setup
