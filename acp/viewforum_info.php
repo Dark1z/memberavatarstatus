@@ -11,14 +11,6 @@
 namespace dark1\memberavatarstatus\acp;
 
 /**
-* @ignore
-*/
-if (!defined('IN_PHPBB'))
-{
-	exit;
-}
-
-/**
  * Member Avatar & Status ACP module info.
  */
 class viewforum_info
