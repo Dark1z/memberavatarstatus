@@ -1,5 +1,4 @@
-name: CI
-
+name: Actions CI
 on:
   push:
     branches:
@@ -9,35 +8,55 @@ on:
     - master
 
 jobs:
-  Check-Ubuntu:
+  check:
+    name: Check Member Avatar & Status [MAS]
     runs-on: ubuntu-latest
+
     steps:
 
     - name: Actions Checkout
       uses: actions/checkout@v1
 
-    - name: Actions Setup
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
-        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+    - name: Actions Setup - Copy to Temp Location
       run: |
           mkdir --parents ../tmp
           cp -R . ../tmp
+
+    - name: Actions Setup - Clone phpBB
+      env:
+        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+      run: |
           git clone --depth=1 git://github.com/phpbb/phpbb.git phpBB3 --branch=$PHPBB_BRANCH
+
+    - name: Actions Setup - Composer Install/Remove/Require
+      run: |
           cd phpBB3/phpBB
           composer install --no-interaction --no-progress --no-suggest --ignore-platform-reqs
           composer remove sami/sami --no-interaction --no-progress --ignore-platform-reqs --dev
           composer require phpbb/epv:dev-master --no-interaction --no-progress --no-suggest --ignore-platform-reqs --dev
           cd ../../
+
+    - name: Actions Setup - Copy from Temp Location
+      env:
+        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
+      run: |
           mkdir --parents phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
           cp -R ../tmp/* phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
 
-    - name: Actions Test
+    - name: Actions Test - Code Sniffer
       env:
         EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
         SNIFF: 1                            # Should we run code sniffer on your code?
-        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
       run: |
           cd phpBB3
           sh -c "if [ '$SNIFF' != '0' ]; then phpBB/vendor/bin/phpcs -s --extensions=php --standard=build/code_sniffer/ruleset-php-extensions.xml "--ignore=phpBB/ext/$EXTNAME/tests/*" "--ignore=phpBB/ext/$EXTNAME/vendor/*" "phpBB/ext/$EXTNAME"; fi"
+          cd ../
+
+    - name: Actions Test - EPV (Extension Pre Validator)
+      env:
+        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
+        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
+      run: |
+          cd phpBB3
           sh -c "if [ '$EPV' != '0' ]; then phpBB/vendor/bin/EPV.php run --dir='phpBB/ext/$EXTNAME' --debug; fi"
+          cd ../
