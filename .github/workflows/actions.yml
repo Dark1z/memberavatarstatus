@@ -11,15 +11,18 @@ on:
 jobs:
   Check-Ubuntu:
     runs-on: ubuntu-latest
+      env:
+        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
+        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+        SNIFF: 1                            # Should we run code sniffer on your code?
+        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
+
     steps:
 
     - name: Actions Checkout
       uses: actions/checkout@v1
 
     - name: Actions Setup
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
-        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
       run: |
           mkdir --parents ../tmp
           cp -R . ../tmp
@@ -33,10 +36,6 @@ jobs:
           cp -R ../tmp/* phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
 
     - name: Actions Test
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
-        SNIFF: 1                            # Should we run code sniffer on your code?
-        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
       run: |
           cd phpBB3
           sh -c "if [ '$SNIFF' != '0' ]; then phpBB/vendor/bin/phpcs -s --extensions=php --standard=build/code_sniffer/ruleset-php-extensions.xml "--ignore=phpBB/ext/$EXTNAME/tests/*" "--ignore=phpBB/ext/$EXTNAME/vendor/*" "phpBB/ext/$EXTNAME"; fi"
