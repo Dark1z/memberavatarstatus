@@ -49,7 +49,7 @@ jobs:
         SNIFF: 1                            # Should we run code sniffer on your code?
       run: |
           cd phpBB3
-          sh -c "if [ '$SNIFF' != '0' ]; then phpBB/vendor/bin/phpcs -s --extensions=php --standard=build/code_sniffer/ruleset-php-extensions.xml "--ignore=phpBB/ext/$EXTNAME/tests/*" "--ignore=phpBB/ext/$EXTNAME/vendor/*" "phpBB/ext/$EXTNAME"; fi"
+          sh -c "if [ '$SNIFF' != '0' ]; then phpBB/vendor/bin/phpcs -s --extensions=php --standard=build/code_sniffer/ruleset-php-extensions.xml "--ignore=*/$EXTNAME/tests/*" "--ignore=*/$EXTNAME/vendor/*" "phpBB/ext/$EXTNAME"; fi"
           cd ../
 
     - name: Actions Test - EPV (Extension Pre Validator)
