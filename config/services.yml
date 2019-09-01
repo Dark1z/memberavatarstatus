@@ -7,13 +7,45 @@ services:
             - '@language'
             - '@log'
             - '%core.root_path%'
-    dark1.memberavatarstatus.listener:
-        class: dark1\memberavatarstatus\event\listener
+    dark1.memberavatarstatus.main_listener:
+        class: dark1\memberavatarstatus\event\main_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+            - '@config'
+            - '@template'
+        tags:
+            - { name: event.listener }
+    dark1.memberavatarstatus.memberlist_listener:
+        class: dark1\memberavatarstatus\event\memberlist_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+        tags:
+            - { name: event.listener }
+    dark1.memberavatarstatus.viewonline_listener:
+        class: dark1\memberavatarstatus\event\viewonline_listener
         arguments:
             - '@dark1.memberavatarstatus'
             - '@auth'
             - '@config'
             - '@user'
-            - '@template'
+        tags:
+            - { name: event.listener }
+    dark1.memberavatarstatus.viewforum_listener:
+        class: dark1\memberavatarstatus\event\viewforum_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+            - '@config'
+        tags:
+            - { name: event.listener }
+    dark1.memberavatarstatus.search_listener:
+        class: dark1\memberavatarstatus\event\search_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+        tags:
+            - { name: event.listener }
+    dark1.memberavatarstatus.review_listener:
+        class: dark1\memberavatarstatus\event\review_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
         tags:
             - { name: event.listener }
