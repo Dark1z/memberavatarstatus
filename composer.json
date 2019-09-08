@@ -9,8 +9,8 @@
 	"license": "GPL-2.0-only",
 	"authors": [ {
 		"name": "Dark❶ [dark1]",
-		"email": "phpbb.ext@dark1.epizy.com",
-		"homepage": "http://dark1.epizy.com",
+		"email": "dark1z@yahoo.com",
+		"homepage": "https://dark-1.github.io/memberavatarstatus",
 		"role": "Lead Developer"
 	} ],
 	"require": {
@@ -30,7 +30,7 @@
 	},
 	"readme": "./README.md",
     "support": {
-        "email": "phpbb.ext@dark1.epizy.com",
+        "email": "dark1z@yahoo.com",
         "issues": "https://github.com/dark-1/memberavatarstatus/issues",
         "forum": "https://phpbb.com/community/viewtopic.php?t=2474156",
         "wiki": "https://github.com/dark-1/memberavatarstatus/wiki",
