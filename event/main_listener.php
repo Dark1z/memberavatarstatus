@@ -26,7 +26,7 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\config\config */
 	protected $config;
 
-	/** @var \phpbb\template\twig\twig */
+	/** @var \phpbb\template\template */
 	protected $template;
 
 	/**

@@ -161,7 +161,7 @@ class memberavatarstatus
 	{
 
 		// config -> dark1_mas_XX_sz , Need to set this between self::AV_MIN_SZ to $av_max_sz Only , Default is $av_default_sz.
-		$av_sz = $this->mas_get_avatar_size($this->config[$config_key], $av_default_sz, $av_max_sz);
+		$av_sz = $this->mas_get_avatar_size((int) $this->config[$config_key], $av_default_sz, $av_max_sz);
 
 		// Check if correction is required.
 		if ($av_sz != $this->config[$config_key])
@@ -378,7 +378,7 @@ class memberavatarstatus
 		$end_tag = '</div>';
 		$avatar_test = ($this->config['allow_avatar'] && $this->config[$config_key . '_av']) ? true : false ;
 		$online_test = ($this->config['load_onlinetrack'] && $this->config[$config_key . '_ol']) ? true : false ;
-		$avatar_wrap = ($avatar_test) ? $this->mas_get_avatar_img($avatar, $this->config[$config_key . '_av_sz']) : '';
+		$avatar_wrap = ($avatar_test) ? $this->mas_get_avatar_img($avatar, (int) $this->config[$config_key . '_av_sz']) : '';
 		$online_wrap = ($online_test) ? $this->mas_get_online_status_dot($online) : '';
 		return ($avatar_test || $online_test) ? ($start_wrap . $avatar_wrap . $start_username . $username . $end_tag . $online_wrap . $end_tag) : $username;
 	}
