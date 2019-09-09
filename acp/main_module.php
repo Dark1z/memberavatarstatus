@@ -27,7 +27,7 @@ class main_module
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_main';
-		$this->page_title = $user->lang('ACP_MAS_TITLE') . '&nbsp;-&nbsp;' . $user->lang('ACP_MAS_MODE_MAIN');
+		$this->page_title = $user->lang('ACP_MAS_TITLE') . ' - ' . $user->lang('ACP_MAS_MODE_MAIN');
 		$main_adm_path = $phpbb_admin_path . 'index.' . $phpEx;
 
 		$template->assign_vars(array(

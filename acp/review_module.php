@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\acp;
 
-/**
- * @ignore
- */
 use dark1\memberavatarstatus\core\memberavatarstatus;
 
 /**
@@ -33,7 +30,7 @@ class review_module
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_review';
-		$this->page_title = $user->lang('ACP_MAS_TITLE') . '&nbsp;-&nbsp;' . $user->lang('ACP_MAS_MODE_REVIEW');
+		$this->page_title = $user->lang('ACP_MAS_TITLE') . ' - ' . $user->lang('ACP_MAS_MODE_REVIEW');
 		add_form_key('acp_mas_review');
 
 		if ($request->is_set_post('submit'))

@@ -21,11 +21,11 @@ class review_info
 			'filename'	=> '\dark1\memberavatarstatus\acp\review_module',
 			'title'		=> 'ACP_MAS_TITLE',
 			'modes'		=> array(
-				'review'=> array(
+				'review'	=> array(
 						'title'	=> 'ACP_MAS_MODE_REVIEW',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
 						'cat'	=> array('ACP_MAS_TITLE')
-					),
+				),
 			),
 		);
 	}

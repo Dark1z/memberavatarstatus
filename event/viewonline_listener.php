@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\event;
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\memberavatarstatus;
 use phpbb\auth\auth;
@@ -36,15 +33,15 @@ class viewonline_listener implements EventSubscriberInterface
 	/** @var \phpbb\user */
 	protected $user;
 
-/**
- * Constructor for listener
- *
- * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
- * @param \phpbb\auth\auth										$auth		phpBB auth
- * @param \phpbb\config\config									$config		phpBB config
- * @param \phpbb\user											$user		phpBB user
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @param \phpbb\auth\auth										$auth		phpBB auth
+	 * @param \phpbb\config\config									$config		phpBB config
+	 * @param \phpbb\user											$user		phpBB user
+	 * @access public
+	 */
 	public function __construct(memberavatarstatus $mas_func, auth $auth, config $config, user $user)
 	{
 		$this->mas_func		= $mas_func;
@@ -53,13 +50,13 @@ class viewonline_listener implements EventSubscriberInterface
 		$this->user			= $user;
 	}
 
-/**
- * Assign functions defined in this class to event listeners in the core
- *
- * @return array
- * @static
- * @access public
- */
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -72,19 +69,13 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 
-/**
- * Member Avatar & Status Event Function.
- */
-
-
-
-/**
- * MAS ViewOnline Avatar SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewOnline Avatar SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewonline_page_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -100,13 +91,13 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewOnline Avatar Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewOnline Avatar Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewonline_page_template($event)
 	{
 		// Get Event Array `row` & `template_row`
@@ -130,13 +121,13 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewOnline Stat Block Avatar SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewOnline Stat Block Avatar SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewonline_stat_block_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -152,13 +143,13 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewOnline Stat Block Avatar Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewOnline Stat Block Avatar Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewonline_stat_block_template($event)
 	{
 		// Get Event Array `rowset` , `online_users` & `user_online_link`

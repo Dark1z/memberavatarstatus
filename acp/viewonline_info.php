@@ -21,11 +21,11 @@ class viewonline_info
 			'filename'	=> '\dark1\memberavatarstatus\acp\viewonline_module',
 			'title'		=> 'ACP_MAS_TITLE',
 			'modes'		=> array(
-				'viewonline'=> array(
+				'viewonline'	=> array(
 						'title'	=> 'ACP_MAS_MODE_VIEWONLINE',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
 						'cat'	=> array('ACP_MAS_TITLE')
-					),
+				),
 			),
 		);
 	}

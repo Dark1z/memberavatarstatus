@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\event;
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\memberavatarstatus;
 use phpbb\config\config;
@@ -32,14 +29,14 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\template\twig\twig */
 	protected $template;
 
-/**
- * Constructor for listener
- *
- * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
- * @param \phpbb\config\config									$config		phpBB config
- * @param \phpbb\template\template								$template	phpBB template
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @param \phpbb\config\config									$config		phpBB config
+	 * @param \phpbb\template\template								$template	phpBB template
+	 * @access public
+	 */
 	public function __construct(memberavatarstatus $mas_func, config $config, template $template)
 	{
 		$this->mas_func		= $mas_func;
@@ -47,13 +44,13 @@ class main_listener implements EventSubscriberInterface
 		$this->template		= $template;
 	}
 
-/**
- * Assign functions defined in this class to event listeners in the core
- *
- * @return array
- * @static
- * @access public
- */
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -64,19 +61,13 @@ class main_listener implements EventSubscriberInterface
 
 
 
-/**
- * Member Avatar & Status Event Function.
- */
-
-
-
-/**
- * MAS Load language files during user setup after
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS Load language files during user setup after
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_load_lang($event)
 	{
 		$lang_set_ext = $event['lang_set_ext'];
@@ -89,13 +80,13 @@ class main_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS Header setup during page header after
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS Header setup during page header after
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_header($event)
 	{
 		$ext_name_mas = 'Member Avatar & Status [MAS]';

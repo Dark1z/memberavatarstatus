@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\event;
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\memberavatarstatus;
 
@@ -24,24 +21,24 @@ class review_listener implements EventSubscriberInterface
 	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
 	protected $mas_func;
 
-/**
- * Constructor for listener
- *
- * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @access public
+	 */
 	public function __construct(memberavatarstatus $mas_func)
 	{
 		$this->mas_func		= $mas_func;
 	}
 
-/**
- * Assign functions defined in this class to event listeners in the core
- *
- * @return array
- * @static
- * @access public
- */
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -56,19 +53,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * Member Avatar & Status Event Function.
- */
-
-
-
-/**
- * MAS Posting Topic Review SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS Posting Topic Review SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_posting_topic_review_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -85,13 +76,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS Posting Topic Review Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS Posting Topic Review Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_posting_topic_review_template($event)
 	{
 		// Get Event Array `row` & `post_row`
@@ -119,13 +110,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS PM History Review SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS PM History Review SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_pm_history_review_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -140,13 +131,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS PM History Review Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS PM History Review Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_pm_history_review_template($event)
 	{
 		// Get Event Array `row` & `template_vars`
@@ -174,13 +165,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS MCP Topic Review SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS MCP Topic Review SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_mcp_topic_review_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -197,13 +188,13 @@ class review_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS MCP Topic Review Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS MCP Topic Review Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_mcp_topic_review_template($event)
 	{
 		// Get Event Array `row` & `post_row`

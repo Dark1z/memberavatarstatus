@@ -21,11 +21,11 @@ class memberlist_info
 			'filename'	=> '\dark1\memberavatarstatus\acp\memberlist_module',
 			'title'		=> 'ACP_MAS_TITLE',
 			'modes'		=> array(
-				'memberlist'=> array(
+				'memberlist'	=> array(
 						'title'	=> 'ACP_MAS_MODE_MEMBERLIST',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
 						'cat'	=> array('ACP_MAS_TITLE')
-					),
+				),
 			),
 		);
 	}

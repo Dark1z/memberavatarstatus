@@ -25,7 +25,7 @@ class search_info
 						'title'	=> 'ACP_MAS_MODE_SEARCH',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
 						'cat'	=> array('ACP_MAS_TITLE')
-					),
+				),
 			),
 		);
 	}

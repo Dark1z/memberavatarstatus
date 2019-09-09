@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\event;
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\memberavatarstatus;
 use phpbb\config\config;
@@ -28,26 +25,26 @@ class viewforum_listener implements EventSubscriberInterface
 	/** @var \phpbb\config\config */
 	protected $config;
 
-/**
- * Constructor for listener
- *
- * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
- * @param \phpbb\config\config									$config		phpBB config
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @param \phpbb\config\config									$config		phpBB config
+	 * @access public
+	 */
 	public function __construct(memberavatarstatus $mas_func, config $config)
 	{
 		$this->mas_func		= $mas_func;
 		$this->config		= $config;
 	}
 
-/**
- * Assign functions defined in this class to event listeners in the core
- *
- * @return array
- * @static
- * @access public
- */
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -61,19 +58,13 @@ class viewforum_listener implements EventSubscriberInterface
 
 
 
-/**
- * Member Avatar & Status Event Function.
- */
-
-
-
-/**
- * MAS ViewForum DisplayForums SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewForum DisplayForums SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewforum_displayforums_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -89,13 +80,13 @@ class viewforum_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewForum DisplayForums Data Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewForum DisplayForums Data Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewforum_displayforums_data($event)
 	{
 		// Get Event Array `row` , `forum_rows` & `parent_id`
@@ -125,13 +116,13 @@ class viewforum_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewForum DisplayForums Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewForum DisplayForums Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewforum_displayforums_template($event)
 	{
 		// Get Event Array `row` & `forum_row`
@@ -159,13 +150,13 @@ class viewforum_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewForum SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewForum SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewforum_topic_query($event)
 	{
 		// Get Event Array `sql_array`
@@ -183,13 +174,13 @@ class viewforum_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS ViewForum Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS ViewForum Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_viewforum_topic_template($event)
 	{
 		// Get Event Array `row` & `topic_row`

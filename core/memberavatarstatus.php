@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\core;
 
-/**
- * @ignore
- */
 use phpbb\auth\auth;
 use phpbb\config\config;
 use phpbb\language\language;
@@ -56,16 +53,16 @@ class memberavatarstatus
 	/** @var string */
 	protected $phpbb_root_path;
 
-/**
- * Constructor for listener
- *
- * @param \phpbb\auth\auth				$auth		phpBB auth
- * @param \phpbb\config\config			$config		phpBB config
- * @param \phpbb\language\language		$language	phpBB language
- * @param \phpbb\log\log				$phpbb_log	phpBB log
- * @param string						$root_path	phpBB root_path
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \phpbb\auth\auth				$auth		phpBB auth
+	 * @param \phpbb\config\config			$config		phpBB config
+	 * @param \phpbb\language\language		$language	phpBB language
+	 * @param \phpbb\log\log				$phpbb_log	phpBB log
+	 * @param string						$root_path	phpBB root_path
+	 * @access public
+	 */
 	public function __construct(auth $auth, config $config, language $language, log $phpbb_log, $phpbb_root_path)
 	{
 		$this->auth				= $auth;
@@ -77,13 +74,13 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get No Avatar IMG
- *
- * @param Void
- * @return String with No Avatar IMG
- * @access public
- */
+	/**
+	 * MAS Get No Avatar IMG
+	 *
+	 * @param Void
+	 * @return String with No Avatar IMG
+	 * @access public
+	 */
 	public function mas_get_no_avatar_img()
 	{
 		$avatar_row = array(
@@ -101,16 +98,16 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Avatar SQL Query
- *
- * @param String $config_key takes Config Key String
- * @param String $sql_uid Specifies User ID to be Matched with.
- * @param String $sql_obj Specifies SQL Object
- * @param String $prefix Specifies the prefix to be Set in SQL Select
- * @return Array of data
- * @access public
- */
+	/**
+	 * MAS Get Avatar SQL Query
+	 *
+	 * @param String $config_key takes Config Key String
+	 * @param String $sql_uid Specifies User ID to be Matched with.
+	 * @param String $sql_obj Specifies SQL Object
+	 * @param String $prefix Specifies the prefix to be Set in SQL Select
+	 * @return Array of data
+	 * @access public
+	 */
 	public function mas_avatar_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex = '')
 	{
 		$config_key .= '_av';
@@ -130,15 +127,15 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Avatar Size
- *
- * @param int $av_sz takes Avatar Size
- * @param int $av_default_sz Specifies Default Size in px
- * @param int $av_max_sz Specifies Avatar MAX Size in px
- * @return int with Avatar Size in px
- * @access public
- */
+	/**
+	 * MAS Get Avatar Size
+	 *
+	 * @param int $av_sz takes Avatar Size
+	 * @param int $av_default_sz Specifies Default Size in px
+	 * @param int $av_max_sz Specifies Avatar MAX Size in px
+	 * @return int with Avatar Size in px
+	 * @access public
+	 */
 	public function mas_get_avatar_size($av_sz, $av_default_sz = self::AV_DEF_SZ_SML, $av_max_sz = self::AV_MAX_SZ_SML)
 	{
 		// $av_sz , Need to set this between self::AV_MIN_SZ to $av_max_sz Only , Default is $av_default_sz.
@@ -151,15 +148,15 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Config Avatar Size
- *
- * @param String $config_key takes Config Key String
- * @param int $av_default_sz Specifies Default Size in px
- * @param int $av_max_sz Specifies Avatar MAX Size in px
- * @return int with Avatar Size in px
- * @access public
- */
+	/**
+	 * MAS Get Config Avatar Size
+	 *
+	 * @param String $config_key takes Config Key String
+	 * @param int $av_default_sz Specifies Default Size in px
+	 * @param int $av_max_sz Specifies Avatar MAX Size in px
+	 * @return int with Avatar Size in px
+	 * @access public
+	 */
 	public function mas_get_config_avatar_size($config_key, $av_default_sz = self::AV_DEF_SZ_SML, $av_max_sz = self::AV_MAX_SZ_SML)
 	{
 
@@ -177,15 +174,15 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Avatar
- *
- * @param String $config_key takes Config Key String
- * @param String $prefix Specifies the prefix to be Searched in the $row
- * @param Array $row is array of data
- * @return String with Avatar Data
- * @access public
- */
+	/**
+	 * MAS Get Avatar
+	 *
+	 * @param String $config_key takes Config Key String
+	 * @param String $prefix Specifies the prefix to be Searched in the $row
+	 * @param Array $row is array of data
+	 * @return String with Avatar Data
+	 * @access public
+	 */
 	public function mas_get_avatar($config_key, $prefix, $row)
 	{
 		$avatar = '';
@@ -209,16 +206,16 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Online SQL Query
- *
- * @param String $config_key takes Config Key String
- * @param String $sql_uid Specifies User ID to be Matched with.
- * @param String $sql_obj Specifies SQL Object
- * @param String $prefix Specifies the prefix to be Set in SQL Select
- * @return Array of data
- * @access public
- */
+	/**
+	 * MAS Get Online SQL Query
+	 *
+	 * @param String $config_key takes Config Key String
+	 * @param String $sql_uid Specifies User ID to be Matched with.
+	 * @param String $sql_obj Specifies SQL Object
+	 * @param String $prefix Specifies the prefix to be Set in SQL Select
+	 * @return Array of data
+	 * @access public
+	 */
 	public function mas_online_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex = '')
 	{
 		$config_key .= '_ol';
@@ -238,13 +235,13 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Online Status
- *
- * @param Array $online_row takes user details to find Online Status
- * @return Bool Online Status
- * @access public
- */
+	/**
+	 * MAS Get Online Status
+	 *
+	 * @param Array $online_row takes user details to find Online Status
+	 * @return Bool Online Status
+	 * @access public
+	 */
 	public function mas_get_online_status($online_row)
 	{
 		$online = false;
@@ -259,15 +256,15 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Online
- *
- * @param String $config_key takes Config Key String
- * @param String $prefix Specifies the prefix to be Searched in the $row
- * @param Array $row is array of data
- * @return String with Online Data
- * @access public
- */
+	/**
+	 * MAS Get Online
+	 *
+	 * @param String $config_key takes Config Key String
+	 * @param String $prefix Specifies the prefix to be Searched in the $row
+	 * @param Array $row is array of data
+	 * @return String with Online Data
+	 * @access public
+	 */
 	public function mas_get_online($config_key, $prefix, $row)
 	{
 		$online = '';
@@ -288,13 +285,13 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get converted simple SQL strings in array
- *
- * @param Array $sql_ary is array of data
- * @return Array of data
- * @access public
- */
+	/**
+	 * MAS Get converted simple SQL strings in array
+	 *
+	 * @param Array $sql_ary is array of data
+	 * @return Array of data
+	 * @access public
+	 */
 	public function mas_convert_sql($sql_ary)
 	{
 		$sql_select = $sql_ary['SELECT'];
@@ -323,16 +320,16 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Avatar IMG
- *
- * @param String $avatar takes User Avatar IMG
- * @param int $avatar_size Specifies Avatar Size in px
- * @return String with Wrapped User Avatar IMG
- * @access public
- *
- * Will be Deprecated in future when Style Template Events are created.
- */
+	/**
+	 * MAS Get Avatar IMG
+	 *
+	 * @param String $avatar takes User Avatar IMG
+	 * @param int $avatar_size Specifies Avatar Size in px
+	 * @return String with Wrapped User Avatar IMG
+	 * @access public
+	 *
+	 * Will be Deprecated in future when Style Template Events are created.
+	 */
 	public function mas_get_avatar_img($avatar, $avatar_size = self::AV_DEF_SZ_SML)
 	{
 		$start_avatar = '<div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
@@ -342,15 +339,15 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get Online Status DOT
- *
- * @param String $online takes User Online Status
- * @return String with Wrapped User Online Status
- * @access public
- *
- * Will be Deprecated in future when Style Template Events are created.
- */
+	/**
+	 * MAS Get Online Status DOT
+	 *
+	 * @param String $online takes User Online Status
+	 * @return String with Wrapped User Online Status
+	 * @access public
+	 *
+	 * Will be Deprecated in future when Style Template Events are created.
+	 */
 	public function mas_get_online_status_dot($online)
 	{
 		$online_text = $this->language->lang('ONLINE');
@@ -363,17 +360,17 @@ class memberavatarstatus
 
 
 
-/**
- * MAS Get UserName Wrap
- *
- * @param String $username takes UserName
- * @param String $avatar takes User Avatar IMG
- * @param String $online takes User Online Status
- * @return String with Wrapped Main & UserName
- * @access public
- *
- * Will be Deprecated in future when Style Template Events are created.
- */
+	/**
+	 * MAS Get UserName Wrap
+	 *
+	 * @param String $username takes UserName
+	 * @param String $avatar takes User Avatar IMG
+	 * @param String $online takes User Online Status
+	 * @return String with Wrapped Main & UserName
+	 * @access public
+	 *
+	 * Will be Deprecated in future when Style Template Events are created.
+	 */
 	public function mas_get_username_wrap($username, $config_key, $avatar, $online)
 	{
 		$start_wrap = '<div class="mas-wrap">';

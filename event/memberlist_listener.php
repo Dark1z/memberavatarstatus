@@ -10,9 +10,6 @@
 
 namespace dark1\memberavatarstatus\event;
 
-/**
- * @ignore
- */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\memberavatarstatus;
 
@@ -24,24 +21,24 @@ class memberlist_listener implements EventSubscriberInterface
 	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
 	protected $mas_func;
 
-/**
- * Constructor for listener
- *
- * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
- * @access public
- */
+	/**
+	 * Constructor for listener
+	 *
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @access public
+	 */
 	public function __construct(memberavatarstatus $mas_func)
 	{
 		$this->mas_func		= $mas_func;
 	}
 
-/**
- * Assign functions defined in this class to event listeners in the core
- *
- * @return array
- * @static
- * @access public
- */
+	/**
+	 * Assign functions defined in this class to event listeners in the core
+	 *
+	 * @return array
+	 * @static
+	 * @access public
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -52,19 +49,13 @@ class memberlist_listener implements EventSubscriberInterface
 
 
 
-/**
- * Member Avatar & Status Event Function.
- */
-
-
-
-/**
- * MAS MemberList Team SQL Query Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS MemberList Team SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_memberlist_team_query($event)
 	{
 		// Get Event Array `sql_ary`
@@ -81,13 +72,13 @@ class memberlist_listener implements EventSubscriberInterface
 
 
 
-/**
- * MAS MemberList Team Template Setup
- *
- * @param object $event The event object
- * @return null
- * @access public
- */
+	/**
+	 * MAS MemberList Team Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
 	public function mas_memberlist_team_template($event)
 	{
 		// Get Event Array `row` & `template_vars`
