@@ -53,4 +53,5 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_MODE_VIEWONLINE'	=> 'MAS Viewonline Settings',
 	'ACP_MAS_MODE_VIEWFORUM'	=> 'MAS Viewforum Settings',
 	'ACP_MAS_MODE_SEARCH'		=> 'MAS Search Settings',
+	'ACP_MAS_MODE_REVIEW'		=> 'MAS Review Settings',
 ));

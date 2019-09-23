@@ -112,4 +112,12 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_SH_UP_AV_SZ_LB'	=> 'Dimensions de l’avatar de l’auteur de réponses aux sujets',
 	'ACP_MAS_SH_UP_OL_LB'		=> 'Activer l’état de connexion de l’auteur de réponses aux sujets',
 	'ACP_MAS_SH_UP_OL_EXPLAIN'	=> 'Permet d’activer l’affichage de l’état de connexion de l’auteur de réponses aux sujets sur la page des résultats de la « Recherche ».<br />Cette fonctionnalité concerne toutes les pages affichant les messages dans la « Recherche ».<br />Par défaut défini sur « Non ».',
+	// Review
+	'ACP_MAS_RV_AV_SET'			=> 'Avatar Setting',
+	'ACP_MAS_RV_AV_LB'			=> 'Avatar Enable',
+	'ACP_MAS_RV_AV_EXPLAIN'		=> 'Enables the Avatar in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
+	'ACP_MAS_RV_AV_SZ_LB'		=> 'Avatar Size',
+	'ACP_MAS_RV_OL_SET'			=> 'Online Status Setting',
+	'ACP_MAS_RV_OL_LB'			=> 'Online Status Enable',
+	'ACP_MAS_RV_OL_EXPLAIN'		=> 'Enables the Online Status in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
 ));

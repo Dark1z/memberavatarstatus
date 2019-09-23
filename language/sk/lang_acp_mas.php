@@ -112,4 +112,12 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_SH_UP_AV_SZ_LB'	=> 'Príspevok užívateľa Avatar veľkosť',
 	'ACP_MAS_SH_UP_OL_LB'		=> 'Príspevok užívateľa Online Status aktivovaný',
 	'ACP_MAS_SH_UP_OL_EXPLAIN'	=> 'Povoľuje príspevok užívateľa Online Status v hľadaj,<br />To je na všetkých stránkach vyhľadávania.<br />Predvolené : Nie',
+	// Review
+	'ACP_MAS_RV_AV_SET'			=> 'Avatar Setting',
+	'ACP_MAS_RV_AV_LB'			=> 'Avatar Enable',
+	'ACP_MAS_RV_AV_EXPLAIN'		=> 'Enables the Avatar in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
+	'ACP_MAS_RV_AV_SZ_LB'		=> 'Avatar Size',
+	'ACP_MAS_RV_OL_SET'			=> 'Online Status Setting',
+	'ACP_MAS_RV_OL_LB'			=> 'Online Status Enable',
+	'ACP_MAS_RV_OL_EXPLAIN'		=> 'Enables the Online Status in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
 ));
