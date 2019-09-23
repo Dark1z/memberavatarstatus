@@ -1,0 +1,84 @@
+{% INCLUDE 'overall_header.html' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
+{% INCLUDEJS '@dark1_memberavatarstatus/mas_acp_script.js' %}
+
+<h1>{{ MAS_EXT_NAME }}</h1>
+<div>{{ lang('ACP_MAS_BY') }}&nbsp;{{ MAS_EXT_DEV }}</div>
+<hr class="acp-mas-hr" />
+<h2>{{ lang('ACP_MAS_MODE_MEMBERLIST') }}</h2>
+
+<form id="acp_board" method="post" action="{{ U_ACTION }}">
+
+	<fieldset>
+		<legend>{{ lang('ACP_MAS_ML_AV_SET') }}</legend>
+		<dl>
+			<dt>
+				<label for="dark1_mas_ml_av">{{ lang('ACP_MAS_ML_AV_LB') ~ lang('COLON') }}</label>
+				<br />
+				<div>{{ lang('ACP_MAS_ML_AV_EXPLAIN') }}</div>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="dark1_mas_ml_av" value="1" {% if MAS_ML_AVATAR %}checked="checked"{% endif %} id="dark1_mas_ml_av" /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_ml_av" value="0" {% if not MAS_ML_AVATAR %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				<label for="dark1_mas_ml_av_sz">{{ lang('ACP_MAS_ML_AV_SZ_LB') ~ lang('COLON') }}</label>
+				<br />
+				<div>{{ lang('ACP_MAS_AV_SZ_BIG_EXPLAIN') }}</div>
+			</dt>
+			<dd>
+				<input type="number" min="9" max="999" size="3" maxlength="3" step="1" name="dark1_mas_ml_av_sz" value="{{ MAS_ML_AV_SIZE }}" oninput="sync_avatar_size('dark1_mas_ml_av_sz','div_dark1_mas_ml_av_sz')" id="dark1_mas_ml_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
+				<br />
+				<br />
+				<div class="acp-mas-avatar-div-wrapper">
+					<div id="div_dark1_mas_ml_av_sz" class="acp-mas-avatar-div" style="width: {{ MAS_ML_AV_SIZE }}px; height: {{ MAS_ML_AV_SIZE }}px;">
+						{{ MAS_NO_AVATAR_IMG }}
+					</div>
+				</div>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_MAS_ML_OL_SET') }}</legend>
+		<dl>
+			<dt>
+				<label for="dark1_mas_ml_ol">{{ lang('ACP_MAS_ML_OL_LB') ~ lang('COLON') }}</label>
+				<br />
+				<div>{{ lang('ACP_MAS_ML_OL_EXPLAIN') }}</div>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="dark1_mas_ml_ol" value="1" {% if MAS_ML_ONLINE %}checked="checked"{% endif %} id="dark1_mas_ml_ol" /> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="dark1_mas_ml_ol" value="0" {% if not MAS_ML_ONLINE %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+				<br />
+				<br />
+				<div style="font-weight: bold;">
+					<span class="mas-status-online">
+						<span>{{ lang('ONLINE') }}</span>
+						<span class="acp-mas-status-dot" title="{{ lang('ONLINE') }}"></span>
+					</span>
+					<span style="font-weight: normal;">&nbsp;&amp;&nbsp;</span>
+					<span>
+						<span>{{ lang('OFFLINE') }}</span>
+						<span class="acp-mas-status-dot" title="{{ lang('OFFLINE') }}"></span>
+					</span>
+				</div>
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
+		<fieldset class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
+			&nbsp;&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" onclick="reset_avatar_size('div_dark1_mas_ml_av_sz',{{ MAS_ML_AV_SIZE }})" />
+			{{ S_FORM_TOKEN }}
+		</fieldset>
+	</fieldset>
+
+</form>
+
+{% INCLUDE 'overall_footer.html' %}

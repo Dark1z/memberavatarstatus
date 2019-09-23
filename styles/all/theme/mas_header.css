@@ -1,0 +1,89 @@
+/**
+ * MAS Header CSS
+ *
+ * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2018-2019, Dark❶ [dark1]
+ * @license GNU General Public License, version 2 (GPL-2.0-only)
+ *
+ */
+
+/* Display as Inline-Block in Memberlist */
+.mas-wrap, .mas-avatar, .mas-username, .mas-wrap-status, .mas-status-dot {
+	display: inline-block !important;
+}
+
+/* Vertical Align in Memberlist */
+.mas-wrap, .mas-avatar, .mas-username, .mas-wrap-status {
+	vertical-align: middle;
+}
+
+/* Avatar in Memberlist */
+.mas-avatar {
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+	position: relative;
+}
+
+/* Avatar in ViewOnLine */
+.section-viewonline .mas-avatar, .section-viewforum .mas-avatar, .section-viewtopic .mas-avatar, .section-index .mas-avatar, .section-posting .mas-avatar, .section-ucp .mas-avatar, .section-mcp .mas-avatar {
+	width: 20px;
+	height: 20px;
+}
+
+/* Avatar Img in Memberlist & ViewOnLine */
+.mas-wrap .mas-avatar img {
+	display: block !important;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/* Status Dot */
+.mas-status-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: #000000;
+	margin: 0px 3px 5px 3px;
+}
+.mas-status-dot:after {
+	content: "";
+	display: block;
+	text-align: center;
+	opacity: 1;
+	background-color: #000000;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	-webkit-animation: mas-status-pulse 2s linear infinite normal;
+	animation: mas-status-pulse 2s linear infinite normal;
+}
+
+.mas-status-online .mas-status-dot {
+	background-color: #00FF00;
+}
+.mas-status-online .mas-status-dot:after {
+	background-color: #00FF00;
+	-webkit-animation: mas-status-pulse 1s linear infinite reverse;
+	animation: mas-status-pulse 1s linear infinite reverse;
+}
+
+@-webkit-keyframes mas-status-pulse {
+	000% { transform: scale(3); opacity: 0; }
+	075% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(0); opacity: 1; }
+}
+@keyframes mas-status-pulse {
+	000% { transform: scale(3); opacity: 0; }
+	075% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(0); opacity: 1; }
+}

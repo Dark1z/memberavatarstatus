@@ -1,0 +1,13 @@
+{% if MAS_ML_AVATAR or MAS_ML_ONLINE %}
+	<div class="mas-wrap">
+		{% if MAS_ML_AVATAR %}
+			<div  class="mas-avatar" style="width: {{ MAS_ML_AV_SIZE }}px; height: {{ MAS_ML_AV_SIZE }}px;">
+				{% if user.AVATAR_IMG %}
+					{{ user.AVATAR_IMG }}
+				{% else %}
+					{{ MAS_NO_AVATAR_IMG }}
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="mas-username">
+{% endif %}
