@@ -1,6 +1,6 @@
 # Member Avatar & Status [MAS]
    
-This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* .  ;)   
+This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* .  ;)   
    
    
 #### Status Badge for Member Avatar & Status [MAS] on phpBB v3.2.x :   
