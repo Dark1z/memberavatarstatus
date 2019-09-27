@@ -7,7 +7,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 ![Travis-CI](https://img.shields.io/badge/Travis-CI-8000FF.svg) : [![Build Status](https://travis-ci.com/dark-1/memberavatarstatus.svg?branch=master)](https://travis-ci.com/dark-1/memberavatarstatus)   
 ![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/build-status/master)   
 ![Actions-CI](https://img.shields.io/badge/Actions-CI-8000FF.svg) : ![Actions Status](https://github.com/dark-1/memberavatarstatus/workflows/Actions%20CI/badge.svg)   
-![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : ![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square) ![Github All Releases](https://img.shields.io/github/downloads/dark-1/memberavatarstatus/total.svg?style=flat-square) [![HitCount](http://hits.dwyl.io/dark-1/memberavatarstatus.svg)](https://github.com/dark-1/memberavatarstatus)   
+![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : ![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square) ![Github All Releases](https://img.shields.io/github/downloads/dark-1/memberavatarstatus/total.svg?style=flat-square) [![HitCount](http://hits.dwyl.io/dark-1/memberavatarstatus.svg)](https://dark-1.github.io/memberavatarstatus)   
    
    
 ## **Features:**   
@@ -119,11 +119,6 @@ Detailed phpBB standard Updation of Extensions here : [phpBB Extensions Updating
 7. D0Ne !!! EnJ0Y  :D   
    
 Detailed phpBB standard Uninstallation of Extensions here : [phpBB Extensions Removing](https://www.phpbb.com/extensions/installing/#removing)   
-   
-   
-GitHub Repository: [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
-phpBB Customisation Database Extension: [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status/)   
-For more Details Go Here : [[3.2][RC] Member Avatar & Status [MAS]](https://www.phpbb.com/community/viewtopic.php?t=2474156)   
    
    
 ## License GPLv2
