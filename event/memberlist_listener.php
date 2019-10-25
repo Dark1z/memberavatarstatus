@@ -19,17 +19,17 @@ use dark1\memberavatarstatus\core\memberavatarstatus;
 class memberlist_listener implements EventSubscriberInterface
 {
 	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
-	protected $mas_func;
+	protected $mas;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas_func	dark1 mas_func
+	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas	dark1 mas
 	 * @access public
 	 */
-	public function __construct(memberavatarstatus $mas_func)
+	public function __construct(memberavatarstatus $mas)
 	{
-		$this->mas_func		= $mas_func;
+		$this->mas		= $mas;
 	}
 
 	/**
@@ -62,9 +62,9 @@ class memberlist_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$temp_sql_ary = $this->mas_func->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '');
+		$temp_sql_ary = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '');
 		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
-		$sql_ary = $this->mas_func->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'ug.user_id', 's', '', '');
+		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'ug.user_id', 's', '', '');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -86,10 +86,10 @@ class memberlist_listener implements EventSubscriberInterface
 		$template_vars = $event['template_vars'];
 
 		// Set Avatar
-		$avatar = $this->mas_func->mas_get_avatar('dark1_mas_ml', 'user', $row);
+		$avatar = $this->mas->mas_get_avatar('dark1_mas_ml', 'user', $row);
 
 		// Get Online Status
-		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->mas_func->mas_get_online('dark1_mas_ml', '', $row) : '';
+		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->mas->mas_get_online('dark1_mas_ml', '', $row) : '';
 
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(

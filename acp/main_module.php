@@ -21,13 +21,13 @@ class main_module
 
 	public function main()
 	{
-		global $config, $template, $user, $phpbb_admin_path, $phpEx;
+		global $config, $template, $user, $language, $phpbb_admin_path, $phpEx;
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_main';
-		$this->page_title = $user->lang('ACP_MAS_TITLE') . ' - ' . $user->lang('ACP_MAS_MODE_MAIN');
+		$this->page_title = $language->lang('ACP_MAS_TITLE') . ' - ' . $language->lang('ACP_MAS_MODE_MAIN');
 		$main_adm_path = $phpbb_admin_path . 'index.' . $phpEx;
 
 		$template->assign_vars(array(
@@ -37,6 +37,11 @@ class main_module
 			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=load#load_onlinetrack'),
 			'MAS_PHPBB_AVATAR'	=> $config['allow_avatar'],
 			'MAS_PHPBB_ONLINE'	=> $config['load_onlinetrack'],
+			// General
+			'MAS_AVATAR'		=> $config['dark1_mas_avatar'],
+			'MAS_ONLINE'		=> $config['dark1_mas_online'],
+			'MAS_COLOR_OFFLINE'	=> $config['dark1_mas_col_off'],
+			'MAS_COLOR_ONLINE'	=> $config['dark1_mas_col_on'],
 			// MemberList
 			'MAS_ML_AVATAR'		=> $config['dark1_mas_ml_av'],
 			'MAS_ML_AV_SIZE'	=> $config['dark1_mas_ml_av_sz'],

@@ -1,6 +1,21 @@
 {% INCLUDE 'overall_header.html' %}
 {% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
 
+<style>
+	.acp-mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.acp-mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.mas-status-online .acp-mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+	.mas-status-online .acp-mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+</style>
+
 <h1>{{ MAS_EXT_NAME }}</h1>
 <div>{{ lang('ACP_MAS_BY') }}&nbsp;{{ MAS_EXT_DEV }}</div>
 <hr class="acp-mas-hr" />
@@ -30,7 +45,7 @@
 						</dt>
 						<dd>
 							<div id="allow_avatar" class="toggle-wrapper {% if MAS_PHPBB_AVATAR %}toggle-checked{% endif %}" >
-								<span for="allow_avatar" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -50,7 +65,7 @@
 						</dt>
 						<dd>
 							<div id="load_onlinetrack" class="toggle-wrapper {% if MAS_PHPBB_ONLINE %}toggle-checked{% endif %}" >
-								<span for="load_onlinetrack" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -68,11 +83,11 @@
 					<legend>{{ lang('ACP_MAS_MODE_MEMBERLIST') }}</legend>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_ML_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_ml_av" class="toggle-wrapper {% if MAS_ML_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_ml_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -80,7 +95,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_ML_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_ML_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -88,11 +103,11 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_ML_OL_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_ml_ol" class="toggle-wrapper {% if MAS_ML_ONLINE %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_ml_ol" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -105,11 +120,11 @@
 					<legend>{{ lang('ACP_MAS_MODE_SEARCH') }}</legend>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_FP_AV_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_fp_av" class="toggle-wrapper {% if MAS_SH_FP_AVATAR %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_fp_av" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -117,7 +132,7 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_FP_AV_SZ_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<span class="num-size"><span class="num-val">{{ MAS_SH_FP_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -125,11 +140,11 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_FP_OL_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_fp_ol" class="toggle-wrapper {% if MAS_SH_FP_ONLINE %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_fp_ol" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -138,11 +153,11 @@
 						<hr />
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_LP_AV_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_lp_av" class="toggle-wrapper {% if MAS_SH_LP_AVATAR %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_lp_av" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -150,7 +165,7 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_LP_AV_SZ_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<span class="num-size"><span class="num-val">{{ MAS_SH_LP_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -158,11 +173,11 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_LP_OL_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_lp_ol" class="toggle-wrapper {% if MAS_SH_LP_ONLINE %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_lp_ol" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -171,11 +186,11 @@
 						<hr />
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_UP_AV_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_up_av" class="toggle-wrapper {% if MAS_SH_UP_AVATAR %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_up_av" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -183,7 +198,7 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_UP_AV_SZ_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<span class="num-size"><span class="num-val">{{ MAS_SH_UP_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -191,11 +206,11 @@
 						</dl>
 						<dl>
 							<dt>
-								<label>{{ lang('ACP_MAS_SH_UP_OL_LB') ~ lang('COLON') }}</label>
+								<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 							</dt>
 							<dd>
 								<div id="dark1_mas_sh_up_ol" class="toggle-wrapper {% if MAS_SH_UP_ONLINE %}toggle-checked{% endif %}" >
-									<span for="dark1_mas_sh_up_ol" class="toggle">
+									<span class="toggle">
 										<span class="toggle-handle"></span>
 									</span>
 								</div>
@@ -210,11 +225,11 @@
 					<legend>{{ lang('ACP_MAS_MODE_VIEWONLINE') }}</legend>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VO_PG_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vo_pg_av" class="toggle-wrapper {% if MAS_VO_PG_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vo_pg_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -222,7 +237,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VO_PG_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_VO_PG_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -231,11 +246,11 @@
 					<hr />
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VO_SB_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vo_sb_av" class="toggle-wrapper {% if MAS_VO_SB_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vo_sb_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -243,7 +258,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VO_SB_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_VO_SB_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -258,11 +273,11 @@
 					<legend>{{ lang('ACP_MAS_MODE_VIEWFORUM') }}</legend>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_FP_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vf_fp_av" class="toggle-wrapper {% if MAS_VF_FP_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vf_fp_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -270,7 +285,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_FP_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_VF_FP_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -278,11 +293,11 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_FP_OL_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vf_fp_ol" class="toggle-wrapper {% if MAS_VF_FP_ONLINE %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vf_fp_ol" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -291,11 +306,11 @@
 					<hr />
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_LP_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vf_lp_av" class="toggle-wrapper {% if MAS_VF_LP_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vf_lp_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -303,7 +318,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_LP_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_VF_LP_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -311,11 +326,11 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_VF_LP_OL_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_vf_lp_ol" class="toggle-wrapper {% if MAS_VF_LP_ONLINE %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_vf_lp_ol" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -328,11 +343,11 @@
 					<legend>{{ lang('ACP_MAS_MODE_REVIEW') }}</legend>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_RV_AV_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_rv_av" class="toggle-wrapper {% if MAS_RV_AVATAR %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_rv_av" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>
@@ -340,7 +355,7 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_RV_AV_SZ_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<span class="num-size"><span class="num-val">{{ MAS_RV_AV_SIZE }}</span>&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}</span>
@@ -348,11 +363,11 @@
 					</dl>
 					<dl>
 						<dt>
-							<label>{{ lang('ACP_MAS_RV_OL_LB') ~ lang('COLON') }}</label>
+							<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 						</dt>
 						<dd>
 							<div id="dark1_mas_rv_ol" class="toggle-wrapper {% if MAS_RV_ONLINE %}toggle-checked{% endif %}" >
-								<span for="dark1_mas_rv_ol" class="toggle">
+								<span class="toggle">
 									<span class="toggle-handle"></span>
 								</span>
 							</div>

@@ -2,7 +2,7 @@
 		</span>
 		{% if MAS_RV_ONLINE and not topic_review_row.S_INACTIVE %}
 			<span class="mas-wrap-status{% if topic_review_row.S_ONLINE %} mas-status-online{% endif %}">
-				<span class="mas-status-dot" title="{% if topic_review_row.S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+				<span class="mas-status-dot mas-color" title="{% if topic_review_row.S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</span>
 		{% endif %}
