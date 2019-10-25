@@ -1,17 +1,18 @@
 {% INCLUDE 'overall_header.html' %}
-{% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/mas_header.css' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/acp_mas_main.css' %}
 
 <style>
-	.acp-mas-status-dot.mas-color {
+	.mas-status-dot.mas-color {
 		background-color: #{{ MAS_COLOR_OFFLINE }};
 	}
-	.acp-mas-status-dot.mas-color:after {
+	.mas-status-dot.mas-color:after {
 		background-color: #{{ MAS_COLOR_OFFLINE }};
 	}
-	.mas-status-online .acp-mas-status-dot.mas-color {
+	.mas-status-online .mas-status-dot.mas-color {
 		background-color: #{{ MAS_COLOR_ONLINE }};
 	}
-	.mas-status-online .acp-mas-status-dot.mas-color:after {
+	.mas-status-online .mas-status-dot.mas-color:after {
 		background-color: #{{ MAS_COLOR_ONLINE }};
 	}
 </style>

@@ -172,7 +172,7 @@ class memberavatarstatus
 	/**
 	 * MAS Get Avatar SQL Query
 	 *
-	 * @param string $sql_ary takes SQL Array
+	 * @param array $sql_ary takes SQL Array
 	 * @param string $config_key takes Config Key String
 	 * @param string $sql_uid Specifies User ID to be Matched with.
 	 * @param string $sql_obj Specifies SQL Object
@@ -216,7 +216,7 @@ class memberavatarstatus
 		{
 			$av_sz = $av_default_sz;
 		}
-		return $av_sz;
+		return (int) $av_sz;
 	}
 
 
@@ -242,7 +242,7 @@ class memberavatarstatus
 			$this->config->set($config_key, $av_sz);
 			$this->phpbb_log->add('admin', '', '', 'MAS_LOG_CONFIG', time(), array($config_key, $this->language->lang('MAS_ERR_AV_SIZE'), $av_default_sz));
 		}
-		return $this->config[$config_key];
+		return (int) $this->config[$config_key];
 	}
 
 
@@ -282,7 +282,7 @@ class memberavatarstatus
 	/**
 	 * MAS Get Online SQL Query
 	 *
-	 * @param string $sql_ary takes SQL Array
+	 * @param array $sql_ary takes SQL Array
 	 * @param string $config_key takes Config Key String
 	 * @param string $sql_uid Specifies User ID to be Matched with.
 	 * @param string $sql_obj Specifies SQL Object
@@ -326,7 +326,7 @@ class memberavatarstatus
 			$online = (time() - ($this->config['load_online_time'] * 60) < $online_row['session_time'] && ((isset($online_row['session_viewonline']) && $online_row['session_viewonline']) || $this->auth->acl_get('u_viewonline'))) ? true : false;
 		}
 
-		return $online;
+		return (bool) $online;
 	}
 
 

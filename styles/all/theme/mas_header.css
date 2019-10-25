@@ -8,22 +8,42 @@
  *
  */
 
-/* Display as Inline-Block in Memberlist */
+/* Display as Inline-Block */
 .mas-wrap, .mas-avatar, .mas-username, .mas-wrap-status, .mas-status-dot {
 	display: inline-block !important;
 }
 
-/* Vertical Align in Memberlist */
+/* Vertical Align */
 .mas-wrap, .mas-avatar, .mas-username, .mas-wrap-status {
 	vertical-align: middle;
 }
 
-/* Avatar in Memberlist */
+/* ACP Hr */
+.acp-mas-hr {
+	border-top: 2px solid #888;
+	margin: 5px 0px 0px 0px;
+	padding: 5px 0px 0px 0px;
+}
+
+/* ACP Avatar Div Wrapper */
+.acp-mas-avatar-div-wrapper {
+	overflow: auto;
+	max-height: 300px;
+	max-width: 300px;
+}
+
+/* Avatar Div */
 .mas-avatar {
 	width: 50px;
 	height: 50px;
 	margin: 5px;
 	position: relative;
+}
+
+/* ACP Avatar Div */
+.acp-mas-avatar-div-wrapper .mas-avatar {
+	display: inline-block !important;
+	vertical-align: middle;
 }
 
 /* Avatar in ViewOnLine */
@@ -32,19 +52,31 @@
 	height: 20px;
 }
 
-/* Avatar Img in Memberlist & ViewOnLine */
-.mas-wrap .mas-avatar img {
+/* Avatar Img */
+.mas-avatar img {
 	display: block !important;
 	width: auto;
 	max-width: 100%;
 	height: auto;
 	max-height: 100%;
+	margin: auto;
+}
+
+/* Avatar Img in Wrap */
+.mas-wrap .mas-avatar img {
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	margin: auto;
+}
+
+/* ACP Avatar Img in Wrap */
+.acp-mas-avatar-div-wrapper .mas-avatar img {
+	vertical-align: middle;
+	background-position: 0px 0px, 3px 3px;
+	background-size: 6px 6px;
+	background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%), linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
 }
 
 /* Status Dot */
@@ -55,6 +87,13 @@
 	background-color: #000000;
 	margin: 0px 3px 5px 3px;
 }
+
+/* ACP Status Dot */
+.acp-mas-avatar-div-wrapper .mas-status-dot {
+	display: inline-block;
+}
+
+/* Status Dot After */
 .mas-status-dot:after {
 	content: "";
 	display: block;
@@ -65,23 +104,38 @@
 	height: 6px;
 	border-radius: 50%;
 	-webkit-animation: mas-status-pulse 2s linear infinite normal;
+	-moz-animation: mas-status-pulse 2s linear infinite normal;
 	animation: mas-status-pulse 2s linear infinite normal;
 }
 
+/* Status Dot Online */
 .mas-status-online .mas-status-dot {
 	background-color: #00FF00;
 }
+
+/* Status Dot After Online */
 .mas-status-online .mas-status-dot:after {
 	background-color: #00FF00;
 	-webkit-animation: mas-status-pulse 1s linear infinite reverse;
+	-moz-animation: mas-status-pulse 1s linear infinite reverse;
 	animation: mas-status-pulse 1s linear infinite reverse;
 }
 
+/* Status Dot Pulse Animation webkit */
 @-webkit-keyframes mas-status-pulse {
 	000% { transform: scale(3); opacity: 0; }
 	075% { transform: scale(1); opacity: 0.75; }
 	100% { transform: scale(0); opacity: 1; }
 }
+
+/* Status Dot Pulse Animation moz */
+@-moz-keyframes mas-status-pulse {
+	000% { transform: scale(3); opacity: 0; }
+	075% { transform: scale(1); opacity: 0.75; }
+	100% { transform: scale(0); opacity: 1; }
+}
+
+/* Status Dot Pulse Animation */
 @keyframes mas-status-pulse {
 	000% { transform: scale(3); opacity: 0; }
 	075% { transform: scale(1); opacity: 0.75; }

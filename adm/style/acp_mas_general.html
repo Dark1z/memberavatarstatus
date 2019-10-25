@@ -1,18 +1,18 @@
 {% INCLUDE 'overall_header.html' %}
-{% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/mas_header.css' %}
 {% INCLUDEJS '@dark1_memberavatarstatus/mas_acp_script.js' %}
 
 <style>
-	.acp-mas-status-dot.mas-color {
+	.mas-status-dot.mas-color {
 		background-color: #{{ MAS_COLOR_OFFLINE }};
 	}
-	.acp-mas-status-dot.mas-color:after {
+	.mas-status-dot.mas-color:after {
 		background-color: #{{ MAS_COLOR_OFFLINE }};
 	}
-	.mas-status-online .acp-mas-status-dot.mas-color {
+	.mas-status-online .mas-status-dot.mas-color {
 		background-color: #{{ MAS_COLOR_ONLINE }};
 	}
-	.mas-status-online .acp-mas-status-dot.mas-color:after {
+	.mas-status-online .mas-status-dot.mas-color:after {
 		background-color: #{{ MAS_COLOR_ONLINE }};
 	}
 </style>
@@ -54,12 +54,12 @@
 				<div style="font-weight: bold;">
 					<span class="mas-status-online">
 						<span>{{ lang('ONLINE') }}</span>
-						<span class="acp-mas-status-dot mas-color" title="{{ lang('ONLINE') }}"></span>
+						<span class="mas-status-dot mas-color" title="{{ lang('ONLINE') }}"></span>
 					</span>
 					<span style="font-weight: normal;">&nbsp;&amp;&nbsp;</span>
 					<span>
 						<span>{{ lang('OFFLINE') }}</span>
-						<span class="acp-mas-status-dot mas-color" title="{{ lang('OFFLINE') }}"></span>
+						<span class="mas-status-dot mas-color" title="{{ lang('OFFLINE') }}"></span>
 					</span>
 				</div>
 			</dd>
