@@ -1,0 +1,12 @@
+language: php
+php:
+  - 7.2
+build:
+  ci:
+    - shippable_retry composer install
+    - mkdir -p shippable/testresults && mkdir -p code_sniffer
+    - cd code_sniffer && curl -L https://api.github.com/repos/phpbb/phpbb/tarball | tar xz --wildcards "*/build/code_sniffer/*" --strip-components=3 && cd ..
+    - $SHIPPABLE_BUILD_DIR/vendor/bin/phpcs -p --extensions=php --standard=$SHIPPABLE_BUILD_DIR/code_sniffer/ruleset-php-extensions.xml --ignore=*/vendor/*,*/code_sniffer/* --report-code --report-junit=$SHIPPABLE_BUILD_DIR/shippable/testresults/junit.xml $SHIPPABLE_BUILD_DIR/*
+  cache: true
+  cache_dir_list:
+    - $SHIPPABLE_BUILD_DIR/vendor
