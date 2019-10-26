@@ -79,6 +79,73 @@
 			</td>
 		</tr>
 		<tr>
+			<td colspan="2">
+				<fieldset>
+					<legend>{{ lang('ACP_MAS_MODE_GENERAL') }}</legend>
+					<table>
+						<tr>
+							<td>
+								<dl>
+									<dt>
+										<label>{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
+									</dt>
+									<dd>
+										<div id="dark1_mas_avatar" class="toggle-wrapper {% if MAS_AVATAR %}toggle-checked{% endif %}" >
+											<span class="toggle">
+												<span class="toggle-handle"></span>
+											</span>
+										</div>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+										<label>{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
+									</dt>
+									<dd>
+										<div id="dark1_mas_online" class="toggle-wrapper {% if MAS_ONLINE %}toggle-checked{% endif %}" >
+											<span class="toggle">
+												<span class="toggle-handle"></span>
+											</span>
+										</div>
+										<br ><br >
+										<div style="font-weight: bold;">
+											<span class="mas-status-online">
+												<span>{{ lang('ONLINE') }}</span>
+												<span class="mas-status-dot mas-color" title="{{ lang('ONLINE') }}"></span>
+											</span>
+											<span style="font-weight: normal;">&nbsp;&amp;&nbsp;</span>
+											<span>
+												<span>{{ lang('OFFLINE') }}</span>
+												<span class="mas-status-dot mas-color" title="{{ lang('OFFLINE') }}"></span>
+											</span>
+										</div>
+									</dd>
+								</dl>
+							</td>
+							<td style="border-left: solid 1px #CCCCCC; padding: 0 0 0 10px;">
+								<dl>
+									<dt>
+										<label>{{ lang('ACP_MAS_COL_ON') ~ lang('COLON') }}</label>
+									</dt>
+									<dd>
+										<span class="num-size"><span class="num-val">{{ MAS_COLOR_ONLINE }}</span>&nbsp;<span style="background-color: #{{ MAS_COLOR_ONLINE }}">&nbsp; &nbsp;</span></span>
+									</dd>
+								</dl>
+								<dl>
+									<dt>
+										<label>{{ lang('ACP_MAS_COL_OFF') ~ lang('COLON') }}</label>
+									</dt>
+									<dd>
+										<span class="num-size"><span class="num-val">{{ MAS_COLOR_OFFLINE }}</span>&nbsp;<span style="background-color: #{{ MAS_COLOR_OFFLINE }}">&nbsp; &nbsp;</span></span>
+									</dd>
+								</dl>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</td>
+		</tr>
+		<tr>
 			<td>
 				<fieldset>
 					<legend>{{ lang('ACP_MAS_MODE_MEMBERLIST') }}</legend>
