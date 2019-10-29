@@ -47,6 +47,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_MAS_BY'				=> 'By',
 	'ACP_MAS_DEV_BY'			=> 'Developed By',
+	'ACP_MAS_AND'				=> 'and',
 
 	// ACP MAS Setting Page Common Elements
 	'ACP_MAS_AVATAR'			=> 'Avatar Enable',

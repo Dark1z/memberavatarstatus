@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Member Avatar & Status",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
-	"version": "dev-v3.1.0",
-	"time": "2019-10-10 01:01:01",
+	"version": "3.1.0",
+	"time": "2019-10-30 01:01:01",
 	"keywords": ["phpbb", "extension", "member", "avatar", "online", "status"],
 	"license": "GPL-2.0-only",
 	"authors": [ {
