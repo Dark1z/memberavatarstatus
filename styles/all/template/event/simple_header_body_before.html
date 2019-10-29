@@ -1,0 +1,16 @@
+{% if ( SCRIPT_NAME eq 'memberlist' ) and ( MAS_ML_AVATAR or MAS_ML_ONLINE ) %}
+<style>
+	.mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.mas-status-online .mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+	.mas-status-online .mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+</style>
+{% endif %}

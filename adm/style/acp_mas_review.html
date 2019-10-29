@@ -1,6 +1,21 @@
 {% INCLUDE 'overall_header.html' %}
-{% INCLUDECSS '@dark1_memberavatarstatus/mas_acp_style.css' %}
+{% INCLUDECSS '@dark1_memberavatarstatus/mas_header.css' %}
 {% INCLUDEJS '@dark1_memberavatarstatus/mas_acp_script.js' %}
+
+<style>
+	.mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_OFFLINE }};
+	}
+	.mas-status-online .mas-status-dot.mas-color {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+	.mas-status-online .mas-status-dot.mas-color:after {
+		background-color: #{{ MAS_COLOR_ONLINE }};
+	}
+</style>
 
 <h1>{{ MAS_EXT_NAME }}</h1>
 <div>{{ lang('ACP_MAS_BY') }}&nbsp;{{ MAS_EXT_DEV }}</div>
@@ -13,7 +28,7 @@
 		<legend>{{ lang('ACP_MAS_RV_AV_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_rv_av">{{ lang('ACP_MAS_RV_AV_LB') ~ lang('COLON') }}</label>
+				<label for="dark1_mas_rv_av">{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_RV_AV_EXPLAIN') }}</div>
 			</dt>
@@ -24,7 +39,7 @@
 		</dl>
 		<dl>
 			<dt>
-				<label for="dark1_mas_rv_av_sz">{{ lang('ACP_MAS_RV_AV_SZ_LB') ~ lang('COLON') }}</label>
+				<label for="dark1_mas_rv_av_sz">{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
@@ -33,7 +48,7 @@
 				<br />
 				<br />
 				<div class="acp-mas-avatar-div-wrapper">
-					<div id="div_dark1_mas_rv_av_sz" class="acp-mas-avatar-div" style="width: {{ MAS_RV_AV_SIZE }}px; height: {{ MAS_RV_AV_SIZE }}px;">
+					<div id="div_dark1_mas_rv_av_sz" class="mas-avatar" style="width: {{ MAS_RV_AV_SIZE }}px; height: {{ MAS_RV_AV_SIZE }}px;">
 						{{ MAS_NO_AVATAR_IMG }}
 					</div>
 				</div>
@@ -45,7 +60,7 @@
 		<legend>{{ lang('ACP_MAS_RV_OL_SET') }}</legend>
 		<dl>
 			<dt>
-				<label for="dark1_mas_rv_ol">{{ lang('ACP_MAS_RV_OL_LB') ~ lang('COLON') }}</label>
+				<label for="dark1_mas_rv_ol">{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
 				<br />
 				<div>{{ lang('ACP_MAS_RV_OL_EXPLAIN') }}</div>
 			</dt>
@@ -57,12 +72,12 @@
 				<div style="font-weight: bold;">
 					<span class="mas-status-online">
 						<span>{{ lang('ONLINE') }}</span>
-						<span class="acp-mas-status-dot" title="{{ lang('ONLINE') }}"></span>
+						<span class="mas-status-dot mas-color" title="{{ lang('ONLINE') }}"></span>
 					</span>
-					<span style="font-weight: normal;">&nbsp;&amp;&nbsp;</span>
+					<span style="font-weight: normal;">&nbsp;&nbsp;{{ lang('ACP_MAS_AND') }}&nbsp;&nbsp;</span>
 					<span>
 						<span>{{ lang('OFFLINE') }}</span>
-						<span class="acp-mas-status-dot" title="{{ lang('OFFLINE') }}"></span>
+						<span class="mas-status-dot mas-color" title="{{ lang('OFFLINE') }}"></span>
 					</span>
 				</div>
 			</dd>

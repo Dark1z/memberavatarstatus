@@ -2,7 +2,7 @@
 		</div>
 		{% if MAS_VF_LP_ONLINE %}
 			<div class="mas-wrap-status{% if topicrow.LAST_POST_AUTHOR_S_ONLINE %} mas-status-online{% endif %}">
-				<span class="mas-status-dot" title="{% if topicrow.LAST_POST_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+				<span class="mas-status-dot mas-color" title="{% if topicrow.LAST_POST_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</div>
 		{% endif %}

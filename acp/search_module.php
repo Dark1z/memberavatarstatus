@@ -23,14 +23,14 @@ class search_module
 
 	public function main()
 	{
-		global $phpbb_container, $config, $request, $template, $user, $phpbb_log;
-		$mas_func = $phpbb_container->get('dark1.memberavatarstatus');
+		global $phpbb_container, $config, $request, $template, $user, $language, $phpbb_log;
+		$mas = $phpbb_container->get('dark1.memberavatarstatus');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_search';
-		$this->page_title = $user->lang('ACP_MAS_TITLE') . ' - ' . $user->lang('ACP_MAS_MODE_SEARCH');
+		$this->page_title = $language->lang('ACP_MAS_TITLE') . ' - ' . $language->lang('ACP_MAS_MODE_SEARCH');
 		add_form_key('acp_mas_search');
 
 		if ($request->is_set_post('submit'))
@@ -49,18 +49,20 @@ class search_module
 			$config->set('dark1_mas_sh_up_ol', $request->variable('dark1_mas_sh_up_ol', 0));
 
 			// Check Avatar Size Before Assigning
-			$config->set('dark1_mas_sh_fp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_fp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
-			$config->set('dark1_mas_sh_lp_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_lp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
-			$config->set('dark1_mas_sh_up_av_sz', $mas_func->mas_get_avatar_size($request->variable('dark1_mas_sh_up_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_fp_av_sz', $mas->mas_get_avatar_size($request->variable('dark1_mas_sh_fp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_lp_av_sz', $mas->mas_get_avatar_size($request->variable('dark1_mas_sh_lp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_sh_up_av_sz', $mas->mas_get_avatar_size($request->variable('dark1_mas_sh_up_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
 
-			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($user->lang('ACP_MAS_MODE_SEARCH')));
-			trigger_error(sprintf($user->lang('ACP_MAS_LOG_SET_SAV'), $user->lang('ACP_MAS_MODE_SEARCH')) . adm_back_link($this->u_action), E_USER_NOTICE);
+			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($language->lang('ACP_MAS_MODE_SEARCH')));
+			trigger_error($language->lang('ACP_MAS_LOG_SET_SAV', $language->lang('ACP_MAS_MODE_SEARCH')) . adm_back_link($this->u_action), E_USER_NOTICE);
 		}
 
 		$template->assign_vars(array(
 			'U_ACTION'			=> $this->u_action,
 			'MAS_EXT_NAME'		=> $ext_name_mas,
 			'MAS_EXT_DEV'		=> $ext_by_dark1,
+			'MAS_COLOR_OFFLINE'	=> $config['dark1_mas_col_off'],
+			'MAS_COLOR_ONLINE'	=> $config['dark1_mas_col_on'],
 			'MAS_SH_FP_AVATAR'	=> $config['dark1_mas_sh_fp_av'],
 			'MAS_SH_FP_AV_SIZE'	=> $config['dark1_mas_sh_fp_av_sz'],
 			'MAS_SH_FP_ONLINE'	=> $config['dark1_mas_sh_fp_ol'],
@@ -70,7 +72,7 @@ class search_module
 			'MAS_SH_UP_AVATAR'	=> $config['dark1_mas_sh_up_av'],
 			'MAS_SH_UP_AV_SIZE'	=> $config['dark1_mas_sh_up_av_sz'],
 			'MAS_SH_UP_ONLINE'	=> $config['dark1_mas_sh_up_ol'],
-			'MAS_NO_AVATAR_IMG'	=> $mas_func->mas_get_no_avatar_img(),
+			'MAS_NO_AVATAR_IMG'	=> $mas->mas_get_no_avatar_img(),
 		));
 	}
 
