@@ -13,6 +13,8 @@
    1. [Raul [ThE KuKa]](https://phpbb.com/community/memberlist.php?mode=viewprofile&u=94590) .   
 1. Spanish [es_x_tu] :   
    1. [Raul [ThE KuKa]](https://phpbb.com/community/memberlist.php?mode=viewprofile&u=94590) .   
+1. Italian [it] :   
+   1. [Darkman](https://darkylab.altervista.org/forum/memberlist.php?mode=viewprofile&u=53) .   
    
 ### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)   
    

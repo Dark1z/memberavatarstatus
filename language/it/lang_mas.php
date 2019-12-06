@@ -7,7 +7,7 @@
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  *
- * Language : Italiano [it]
+ * Language : Italian [it]
  * Translators :
  * 1. Darkman (https://darkylab.altervista.org/forum)
  *
