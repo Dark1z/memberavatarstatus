@@ -12,24 +12,25 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
    
 ## **Features:**   
    
-1. Option to Display Only User Avatar.   
-2. Option to set User Avatar size to be displayed, with sample Avatar for easy viewing.   
-3. Option to Display Only User Online Status.   
-4. Display User Avatar & Online Status in Member Page.   
-5. Display User Avatar & Online Status in The Team Page.   
-6. Display User Avatar & Online Status in all Member Group Pages.   
-7. Display User Avatar in ViewOnline [Who is online] Page.   
-8. Display User Avatar in "Who Is Online" Statistic Block at bottom of every Page wherever it Exists.   
-9. Display User Avatar & Online Status in Index Page for Last Poster.   
-10. Display User Avatar & Online Status in all Viewforum Pages for First & Last Poster.   
-11. Display User Avatar & Online Status in all Search Pages for Topic First & Last Poster & Post User.   
-12. Display User Avatar & Online Status in Posting Topic Review for Post User.   
-13. Display User Avatar & Online Status in MCP Topic Review for Post User.   
-14. Display User Avatar & Online Status in PM History Review for Post User.   
-15. Display Overview of all Settings on One Page in ACP.   
-16. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
-17. All settings are Organized in their respective section in ACP for easy Management.   
-18. Currently there are 5 sections in ACP : *Memberlist* ,  *Viewonline* , *Viewforum* , *Search* , *Review* .   
+1. Option to Display Only User Avatar for all and individual pages.   
+2. Option to set User Avatar size to be displayed, with sample Avatar for easy configuration.   
+3. Option to Display Only User Online Status for all and individual pages.   
+4. Option to set User Online Status Color, with sample for Both *Online* & *Offline* Status for easy configuration.   
+5. Display User Avatar & Online Status in Member Page.   
+6. Display User Avatar & Online Status in The Team Page.   
+7. Display User Avatar & Online Status in all Member Group Pages.   
+8. Display User Avatar in ViewOnline [Who is online] Page.   
+9. Display User Avatar in "Who Is Online" Statistic Block at bottom of every Page wherever it Exists.   
+10. Display User Avatar & Online Status in Index Page for Last Poster.   
+11. Display User Avatar & Online Status in all Viewforum Pages for First & Last Poster.   
+12. Display User Avatar & Online Status in all Search Pages for Topic First & Last Poster & Post User.   
+13. Display User Avatar & Online Status in Posting Topic Review for Post User.   
+14. Display User Avatar & Online Status in MCP Topic Review for Post User.   
+15. Display User Avatar & Online Status in PM History Review for Post User.   
+16. All settings are Organized in their respective section in ACP for easy Management.   
+17. Currently there are 7 sections in ACP : *Overview* ,  *General* ,  *Memberlist* ,  *Viewonline* , *Viewforum* , *Search* , *Review* .   
+18. Display Overview of all Settings on One Page in ACP.   
+19. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
    
    
 ### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)
