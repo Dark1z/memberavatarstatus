@@ -24,7 +24,7 @@ jobs:
 
     - name: Actions Setup - Clone phpBB
       env:
-        PHPBB_BRANCH: 3.2.x                 # phpBB Branch
+        PHPBB_BRANCH: 3.3.x                 # phpBB Branch
       run: |
           git clone --depth=1 git://github.com/phpbb/phpbb.git phpBB3 --branch=$PHPBB_BRANCH
 
