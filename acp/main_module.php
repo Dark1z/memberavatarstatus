@@ -21,14 +21,14 @@ class main_module
 
 	public function main()
 	{
-		global $config, $template, $user, $language, $phpbb_admin_path, $phpEx;
+		global $config, $template, $user, $language, $phpbb_root_path, $phpbb_adm_relative_path, $phpEx;
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
 		$user->add_lang_ext('dark1/memberavatarstatus', 'lang_acp_mas');
 		$this->tpl_name = 'acp_mas_main';
 		$this->page_title = $language->lang('ACP_MAS_TITLE') . ' - ' . $language->lang('ACP_MAS_MODE_MAIN');
-		$main_adm_path = $phpbb_admin_path . 'index.' . $phpEx;
+		$main_adm_path = $phpbb_root_path . $phpbb_adm_relative_path . 'index.' . $phpEx;
 
 		$template->assign_vars(array(
 			'MAS_EXT_NAME'		=> $ext_name_mas,
