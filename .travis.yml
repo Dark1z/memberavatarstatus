@@ -36,6 +36,10 @@ env:
     - PHPBB_BRANCH="3.3.x"                  # Which phpBB Branch to should we run on?
     - NOTESTS="1"                           # NoTests
 
+services:
+    - postgresql
+    - mysql
+
 branches:
   only:
     - master
@@ -45,14 +49,14 @@ install:
   - cd ../../phpBB3
   - travis/prepare-extension.sh $EXTNAME $PHPBB_BRANCH
   - sh -c "mkdir --parents phpBB/tmp/$EXTNAME; cp -R phpBB/ext/$EXTNAME/* phpBB/tmp/$EXTNAME; rm -rf phpBB/ext/$EXTNAME; mkdir --parents phpBB/ext/$EXTNAME/$EXTNAME; cp -R phpBB/tmp/$EXTNAME/* phpBB/ext/$EXTNAME/$EXTNAME"
-  - travis/setup-phpbb.sh $DB $TRAVIS_PHP_VERSION
+  - travis/setup-phpbb.sh $DB $TRAVIS_PHP_VERSION $NOTESTS
   - sh -c "if [ '$EPV' != '0' -a '$TRAVIS_PHP_VERSION' = '7.0' -a '$DB' = 'mysqli' ]; then cd phpBB; composer remove sami/sami --update-with-dependencies --dev --no-interaction; composer require phpbb/epv:dev-master --dev --no-interaction --ignore-platform-reqs; cd ../; fi"
 
 before_script:
-  - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION
+  - travis/setup-database.sh $DB $TRAVIS_PHP_VERSION $NOTESTS
 
 script:
   - sh -c "if [ '$SNIFF' != '0' ]; then travis/ext-sniff.sh $DB $TRAVIS_PHP_VERSION $EXTNAME $NOTESTS; fi"
   - sh -c "if [ '$IMAGE_ICC' != '0' ]; then travis/check-image-icc-profiles.sh $DB $TRAVIS_PHP_VERSION $NOTESTS; fi"
-  - phpBB/vendor/bin/phpunit --configuration phpBB/ext/$EXTNAME/$EXTNAME/travis/phpunit-$DB-travis.xml --bootstrap ./tests/bootstrap.php
   - sh -c "if [ '$EPV' != '0' -a '$TRAVIS_PHP_VERSION' = '7.0' -a '$DB' = 'mysqli' ]; then phpBB/vendor/bin/EPV.php run --dir='phpBB/ext/$EXTNAME/' --debug; fi"
+  - sh -c "if [ '$NOTESTS' != '0' ]; then phpBB/vendor/bin/phpunit --configuration phpBB/ext/$EXTNAME/$EXTNAME/travis/phpunit-$DB-travis.xml --bootstrap ./tests/bootstrap.php; fi"
