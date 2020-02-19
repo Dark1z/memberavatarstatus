@@ -1,6 +1,6 @@
 # Member Avatar & Status [MAS]
    
-This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* .  ;)   
+This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* .  😉   
    
    
 #### Status Badge for Member Avatar & Status [MAS] on phpBB v3.3.x :   
@@ -10,7 +10,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 ![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : [![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square) ![Github All Releases](https://img.shields.io/github/downloads/dark-1/memberavatarstatus/total.svg?style=flat-square) ![HitCount](http://hits.dwyl.io/dark-1/memberavatarstatus.svg)](https://github.com/dark-1/memberavatarstatus)   
    
    
-## **Features:**   
+## **Features :**   
    
 1. Option to Display Only User Avatar for all and individual pages.   
 2. Option to set User Avatar size to be displayed, with sample Avatar for easy configuration.   
@@ -33,10 +33,22 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 19. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
    
    
-### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)
+## **Support for Extensions :**   
+   
+1. **Recent Topics :**   
+    1. phpBB CDB : [Recent Topics CDB](https://www.phpbb.com/customise/db/extension/recent_topics_2)   
+    2. GitHub : [Recent Topics Repository](https://github.com/Sajaki/RecentTopics)   
+    3. Changes required in *Recent Topics* to support MAS : [Recent Topics Changes](https://github.com/dark-1/RecentTopics/commit/53119f863367aedcf7d68ee042d75b52f3869c6e)   
+2. **Precise Similar Topics :**   
+    1. phpBB CDB : [Precise Similar Topics CDB](https://www.phpbb.com/customise/db/extension/precise_similar_topics)   
+    2. GitHub : [Precise Similar Topics Repository](https://github.com/VSEphpbb/similartopics)   
+    3. Changes required in *Precise Similar Topics* to support MAS : **None**   
    
    
-## **Installation:**   
+## For More Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)
+   
+   
+## **Installation :**   
    
 1. Download and unzip the Latest release.   
 2. Copy the `dark1/memberavatarstatus` folder to `/ext/dark1/memberavatarstatus`.   
@@ -44,12 +56,12 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 4. Look for `Member Avatar & Status` under the `Disabled Extensions` list, and click the `Enable` link.   
 5. Set up and configure the `Member Avatar & Status` extension by navigating in the `ACP` to `Extensions` -> `Member Avatar & Status [MAS]`.   
 6. If required Purge the cache in `ACP` & also if required then in your Browser.   
-7. D0Ne !!! EnJ0Y  :D   
+7. D0Ne !!! EnJ0Y  😃   
    
 Detailed phpBB standard Installation of Extensions here : [phpBB Extensions Installing](https://www.phpbb.com/extensions/installing/#installing)   
    
    
-## **Updation:**   
+## **Updation :**   
    
 1. Navigate in the `ACP` to `Customise` -> `Manage extensions`.   
 2. Look for `Member Avatar & Status` under the `Enabled Extensions` list, and click the `Disable` link.   
@@ -57,12 +69,12 @@ Detailed phpBB standard Installation of Extensions here : [phpBB Extensions Inst
 4. Download and unzip the new Latest release Files.   
 5. Copy the new Latest release Files from the `dark1/memberavatarstatus` folder to `/ext/dark1/memberavatarstatus`.   
 6. Look for `Member Avatar & Status` under the `Disabled Extensions` list, and click the `Enable` link.   
-7. D0Ne !!! EnJ0Y  :D   
+7. D0Ne !!! EnJ0Y  😃   
    
 Detailed phpBB standard Updation of Extensions here : [phpBB Extensions Updating](https://www.phpbb.com/extensions/installing/#updating)   
    
    
-## **Uninstallation:**   
+## **Uninstallation :**   
    
 1. Navigate in the `ACP` to `Customise` -> `Manage extensions`.   
 2. Look for `Member Avatar & Status` under the `Enabled Extensions` list, and click the `Disable` link.   
@@ -70,7 +82,7 @@ Detailed phpBB standard Updation of Extensions here : [phpBB Extensions Updating
 4. At this point you can re-enable the extension, it will be as if it were being installed for the first time.   
 5. If want to Remove the Files then delete the `dark1/memberavatarstatus` folder from `/ext/dark1/memberavatarstatus`.   
 6. If required Purge the cache in `ACP` & also if required then in your Browser.   
-7. D0Ne !!! EnJ0Y  :D   
+7. D0Ne !!! EnJ0Y  😃   
    
 Detailed phpBB standard Uninstallation of Extensions here : [phpBB Extensions Removing](https://www.phpbb.com/extensions/installing/#removing)   
    
@@ -82,6 +94,6 @@ For more Details Go Here : [Member Avatar & Status [MAS]](https://dark-1.github.
 ## License  [GPLv2](license.txt)
    
 --------------   
-EnJoY  :D   
-Best Regards.  :)   
+EnJoY  😃   
+Best Regards.  👍   
    
