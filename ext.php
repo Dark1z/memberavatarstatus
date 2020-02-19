@@ -15,8 +15,8 @@ namespace dark1\memberavatarstatus;
  */
 class ext extends \phpbb\extension\base
 {
-	/** string Require phpBB v3.3.0 due to Events. */
-	const MAS_PHPBB_MIN_VERSION = '3.3.0';
+	/** string Require phpBB v3.2.8 due to Events. */
+	const MAS_PHPBB_MIN_VERSION = '3.2.8';
 
 	/**
 	 * {@inheritdoc}
