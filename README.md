@@ -3,7 +3,7 @@
 This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* .  ;)   
    
    
-#### Status Badge for Member Avatar & Status [MAS] on phpBB v3.2.x :   
+#### Status Badge for Member Avatar & Status [MAS] on phpBB v3.3.x :   
 ![Travis-CI](https://img.shields.io/badge/Travis-CI-8000FF.svg) : [![Build Status](https://travis-ci.com/dark-1/memberavatarstatus.svg?branch=master)](https://travis-ci.com/dark-1/memberavatarstatus)   
 ![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/build-status/master)   
 ![Actions-CI](https://img.shields.io/badge/Actions-CI-8000FF.svg) : [![Actions Status](https://github.com/dark-1/memberavatarstatus/workflows/Actions%20CI/badge.svg)](https://github.com/dark-1/memberavatarstatus/actions?workflow=Actions%20CI)   
@@ -28,7 +28,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 14. Display User Avatar & Online Status in MCP Topic Review for Post User.   
 15. Display User Avatar & Online Status in PM History Review for Post User.   
 16. All settings are Organized in their respective section in ACP for easy Management.   
-17. Currently there are 7 sections in ACP : *Overview* ,  *General* ,  *Memberlist* ,  *Viewonline* , *Viewforum* , *Search* , *Review* .   
+17. Currently there are 7 sections in ACP : *Overview* , *General* , *Memberlist* , *Viewonline* , *Viewforum* , *Search* , *Review* .   
 18. Display Overview of all Settings on One Page in ACP.   
 19. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
    

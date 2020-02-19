@@ -46,3 +46,9 @@ services:
             - '@dark1.memberavatarstatus'
         tags:
             - { name: event.listener }
+    dark1.memberavatarstatus.support_listener:
+        class: dark1\memberavatarstatus\event\support_listener
+        arguments:
+            - '@dark1.memberavatarstatus'
+        tags:
+            - { name: event.listener }

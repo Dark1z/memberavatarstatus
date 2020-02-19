@@ -1,8 +1,8 @@
 {% if MAS_SH_FP_AVATAR or MAS_SH_FP_ONLINE %}
 		</div>
 		{% if MAS_SH_FP_ONLINE %}
-			<div class="mas-wrap-status{% if searchresults.TOPIC_AUTHOR_S_ONLINE %} mas-status-online{% endif %}">
-				<span class="mas-status-dot mas-color" title="{% if searchresults.TOPIC_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+			<div class="mas-wrap-status{% if searchresults.TOPIC_AUTHOR_S_ONLINE or similar.TOPIC_AUTHOR_S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot mas-color" title="{% if searchresults.TOPIC_AUTHOR_S_ONLINE or similar.TOPIC_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
 				</span>
 			</div>
 		{% endif %}
