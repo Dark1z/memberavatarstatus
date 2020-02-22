@@ -48,7 +48,7 @@ $lang = array_merge($lang, array(
 	'MAS_NO_AVATAR_TEXT'		=> 'Aucun avatar',
 
 	// Log Message
-	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Avatar & état de connexion du membre</strong> <br />La page « %s » a été mise à jour avec succès !',
-	'MAS_LOG_CONFIG'			=> '<strong>Avatar & état de connexion du membre</strong> <br />&raquo; Erreur dans la configuration ‘%1$s’, %2$s %3$s',
-	'MAS_ERR_AV_SIZE'			=> '<br />&raquo; Les dimensions de l’avatar ne correspondent pas aux limites définies, par conséquent elles sont été mises par défaut.',
+	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Avatar & état de connexion du membre</strong> <br>La page « %s » a été mise à jour avec succès !',
+	'MAS_LOG_CONFIG'			=> '<strong>Avatar & état de connexion du membre</strong> <br>&raquo; Erreur dans la configuration ‘%1$s’, %2$s %3$s',
+	'MAS_ERR_AV_SIZE'			=> '<br>&raquo; Les dimensions de l’avatar ne correspondent pas aux limites définies, par conséquent elles sont été mises par défaut.',
 ));

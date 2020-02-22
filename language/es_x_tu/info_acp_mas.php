@@ -48,7 +48,8 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_TITLE'				=> 'Member Avatar & Status [MAS]',
 
 	// ACP MAS Modes
-	'ACP_MAS_MODE_MAIN'			=> 'General MAS',
+	'ACP_MAS_MODE_MAIN'			=> 'Principal MAS',
+	'ACP_MAS_MODE_GENERAL'		=> 'Ajustes generales de MAS',
 	'ACP_MAS_MODE_MEMBERLIST'	=> 'Ajustes de lista de miembros de MAS',
 	'ACP_MAS_MODE_VIEWONLINE'	=> 'Ajustes de quién está conectado de MAS',
 	'ACP_MAS_MODE_VIEWFORUM'	=> 'Ajustes viendo un foro de MAS',

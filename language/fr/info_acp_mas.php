@@ -49,6 +49,7 @@ $lang = array_merge($lang, array(
 
 	// ACP MAS Modes
 	'ACP_MAS_MODE_MAIN'			=> 'Vue d’ensemble',
+	'ACP_MAS_MODE_GENERAL'		=> 'MAS General Settings',
 	'ACP_MAS_MODE_MEMBERLIST'	=> 'Liste des membres',
 	'ACP_MAS_MODE_VIEWONLINE'	=> 'Qui est en ligne',
 	'ACP_MAS_MODE_VIEWFORUM'	=> 'Vue du forum',

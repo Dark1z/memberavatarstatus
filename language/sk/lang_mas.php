@@ -48,7 +48,7 @@ $lang = array_merge($lang, array(
 	'MAS_NO_AVATAR_TEXT'		=> 'Užívateľ bez Avatar',
 
 	// Log Message
-	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Member Avatar & Status [MAS]</strong> <br />&raquo;  %s  saved successfully!',
-	'MAS_LOG_CONFIG'			=> '<strong>Member Avatar & Status [MAS]</strong> <br />&raquo; Chyba pri konfigurácii ‘%1$s’, %2$s %3$s',
-	'MAS_ERR_AV_SIZE'			=> '<br />&raquo; Veľkosť Avatar-u nie je medzi určeným rozsahom, a preto je nastavená hodnota Predvolené',
+	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Member Avatar & Status [MAS]</strong> <br>&raquo;  %s  saved successfully!',
+	'MAS_LOG_CONFIG'			=> '<strong>Member Avatar & Status [MAS]</strong> <br>&raquo; Chyba pri konfigurácii ‘%1$s’, %2$s %3$s',
+	'MAS_ERR_AV_SIZE'			=> '<br>&raquo; Veľkosť Avatar-u nie je medzi určeným rozsahom, a preto je nastavená hodnota Predvolené',
 ));
