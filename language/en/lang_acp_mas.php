@@ -51,11 +51,13 @@ $lang = array_merge($lang, array(
 
 	// ACP MAS Setting Page Common Elements
 	'ACP_MAS_AVATAR'			=> 'Avatar Enable',
+	'ACP_MAS_AV_SET'			=> 'Avatar Setting',
 	'ACP_MAS_AV_SIZE'			=> 'Avatar Size',
 	'ACP_MAS_AV_SIZE_PX'		=> 'Pixel [px]',
 	'ACP_MAS_AV_SZ_BIG_EXPLAIN'	=> 'Set’s the Size of Avatar in Pixels [px],<br />Allowed Between 9px to 999px Only.<br />Default : 50px',
 	'ACP_MAS_AV_SZ_SML_EXPLAIN'	=> 'Set’s the Size of Avatar in Pixels [px],<br />Allowed Between 9px to 99px Only.<br />Default : 20px',
 	'ACP_MAS_ONLINE'			=> 'Online Status Enable',
+	'ACP_MAS_OL_SET'			=> 'Online Status Setting',
 
 	// phpBB
 	'ACP_MAS_PHPBB_AV_SET'		=> 'phpBB Avatar Setting',
@@ -64,19 +66,16 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_PHPBB_OL_SET'		=> 'phpBB Online Status Setting',
 	'ACP_MAS_PHPBB_OL_LB'		=> 'Enable Display of User Online/Offline Information',
 	'ACP_MAS_PHPBB_OL_EXPLAIN'	=> 'None of the bellow Online Status setting will work,<br />Because phpBB Online Status is Disabled.<br />Enable it Here : ',
+
 	// General
-	'ACP_MAS_GN_AV_SET'			=> 'Avatar Setting',
 	'ACP_MAS_GN_AV_EXPLAIN'		=> 'Enables the Avatar in MAS,<br />This is the Master Switch for All Others.<br />Default : No',
-	'ACP_MAS_GN_OL_SET'			=> 'Online Status Setting',
 	'ACP_MAS_GN_OL_EXPLAIN'		=> 'Enables the Online Status in MAS,<br />This is the Master Switch for All Others.<br />Default : No',
 	'ACP_MAS_COL_ON'			=> 'Online Status Color',
 	'ACP_MAS_COL_ON_EXPLAIN'	=> 'Color of the Online Status,<br />This is in Hexadecimal [00 to FF] per RGB color.<br />Default : “00FF00”',
 	'ACP_MAS_COL_OFF'			=> 'Offline Status Color',
 	'ACP_MAS_COL_OFF_EXPLAIN'	=> 'Color of the Offline Status,<br />This is in Hexadecimal [00 to FF] per RGB color.<br />Default : “000000”',
 	// Memberlist
-	'ACP_MAS_ML_AV_SET'			=> 'Avatar Setting',
 	'ACP_MAS_ML_AV_EXPLAIN'		=> 'Enables the Avatar in Memberlist,<br />That is in “The team” , “Groups” & “Members” Page.<br />Default : No',
-	'ACP_MAS_ML_OL_SET'			=> 'Online Status Setting',
 	'ACP_MAS_ML_OL_EXPLAIN'		=> 'Enables the Online Status in Memberlist,<br />That is in “The team” , “Groups” & “Members” Page.<br />Default : No',
 	// Viewonline
 	'ACP_MAS_VO_PG_AV_SET'		=> 'Page Avatar Setting',
@@ -101,8 +100,6 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_SH_UP_AV_EXPLAIN'	=> 'Enables the Post User Avatar in Search,<br />That is in All Post Search Pages.<br />Default : No',
 	'ACP_MAS_SH_UP_OL_EXPLAIN'	=> 'Enables the Post User Online Status in Search,<br />That is in All Post Search Pages.<br />Default : No',
 	// Review
-	'ACP_MAS_RV_AV_SET'			=> 'Avatar Setting',
 	'ACP_MAS_RV_AV_EXPLAIN'		=> 'Enables the Avatar in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
-	'ACP_MAS_RV_OL_SET'			=> 'Online Status Setting',
 	'ACP_MAS_RV_OL_EXPLAIN'		=> 'Enables the Online Status in Review Block,<br />That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br />Default : No',
 ));
