@@ -25,11 +25,11 @@
 <form id="acp_board" method="post" action="{{ U_ACTION }}">
 
 	<fieldset>
-		<legend>{{ lang('ACP_MAS_RV_AV_SET') }}</legend>
+		<legend>{{ lang('ACP_MAS_AV_SET') }}</legend>
 		<dl>
 			<dt>
 				<label for="dark1_mas_rv_av">{{ lang('ACP_MAS_AVATAR') ~ lang('COLON') }}</label>
-				<br />
+				<br>
 				<div>{{ lang('ACP_MAS_RV_AV_EXPLAIN') }}</div>
 			</dt>
 			<dd>
@@ -40,13 +40,13 @@
 		<dl>
 			<dt>
 				<label for="dark1_mas_rv_av_sz">{{ lang('ACP_MAS_AV_SIZE') ~ lang('COLON') }}</label>
-				<br />
+				<br>
 				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
 			<dd>
 				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_rv_av_sz" value="{{ MAS_RV_AV_SIZE }}" oninput="sync_avatar_size('dark1_mas_rv_av_sz','div_dark1_mas_rv_av_sz')" id="dark1_mas_rv_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
-				<br />
-				<br />
+				<br>
+				<br>
 				<div class="acp-mas-avatar-div-wrapper">
 					<div id="div_dark1_mas_rv_av_sz" class="mas-avatar" style="width: {{ MAS_RV_AV_SIZE }}px; height: {{ MAS_RV_AV_SIZE }}px;">
 						{{ MAS_NO_AVATAR_IMG }}
@@ -57,18 +57,18 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>{{ lang('ACP_MAS_RV_OL_SET') }}</legend>
+		<legend>{{ lang('ACP_MAS_OL_SET') }}</legend>
 		<dl>
 			<dt>
 				<label for="dark1_mas_rv_ol">{{ lang('ACP_MAS_ONLINE') ~ lang('COLON') }}</label>
-				<br />
+				<br>
 				<div>{{ lang('ACP_MAS_RV_OL_EXPLAIN') }}</div>
 			</dt>
 			<dd>
 				<label><input type="radio" class="radio" name="dark1_mas_rv_ol" value="1" {% if MAS_RV_ONLINE %}checked="checked"{% endif %} id="dark1_mas_rv_ol" /> {{ lang('YES') }}</label>
 				<label><input type="radio" class="radio" name="dark1_mas_rv_ol" value="0" {% if not MAS_RV_ONLINE %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
-				<br />
-				<br />
+				<br>
+				<br>
 				<div style="font-weight: bold;">
 					<span class="mas-status-online">
 						<span>{{ lang('ONLINE') }}</span>
