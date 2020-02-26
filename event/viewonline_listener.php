@@ -76,8 +76,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$temp_sql_ary = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_pg', '', 'u', 'user', '');
-		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
+		$sql_ary['SELECT'] = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_pg', '', 'u', 'user', '')['SELECT'];
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -128,8 +127,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$temp_sql_ary = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_sb', '', 'u', 'user', '');
-		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
+		$sql_ary['SELECT'] = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_sb', '', 'u', 'user', '')['SELECT'];
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;

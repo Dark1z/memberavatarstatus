@@ -63,9 +63,8 @@ class search_listener implements EventSubscriberInterface
 		$sql_array = $event['sql_array'];
 
 		// Add Query Details
-		$temp_sql_array = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_up', '', 'u', 'user', '');
-		$sql_array['SELECT'] = $temp_sql_array['SELECT'];
-		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', '', '');
+		$sql_array['SELECT'] = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_up', '', 'u', 'user', '')['SELECT'];
+		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', '', '', 'p.post_id');
 
 		// Assign sql_array to event -> sql_array
 		$event['sql_array'] = $sql_array;
@@ -90,14 +89,15 @@ class search_listener implements EventSubscriberInterface
 
 		// Add to Event Array `sql_select` & `sql_from`
 		$sql_ary = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
-		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '');
+		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
 		$sql_ary = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
-		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '');
+		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', 't.topic_id');
 
 		// Add to Event Array `sql_select` & `sql_from`
 		$temp_sql = $this->mas->mas_convert_sql($sql_ary);
 		$event['sql_select'] .= $temp_sql['sql_select'];
 		$event['sql_from'] .= $temp_sql['sql_from'];
+		$event['sql_where'] .= $temp_sql['sql_where'];
 	}
 
 

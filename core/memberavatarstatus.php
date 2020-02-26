@@ -90,7 +90,7 @@ class memberavatarstatus
 	public function mas_get_no_avatar_img()
 	{
 		$avatar_row = array(
-				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
+				'avatar'		=> append_sid($this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png'),
 				'avatar_type'	=> AVATAR_REMOTE,
 				'avatar_width'	=> self::NO_AVATAR_SIZE,
 				'avatar_height'	=> self::NO_AVATAR_SIZE,
@@ -177,11 +177,11 @@ class memberavatarstatus
 	 * @param string $sql_uid Specifies User ID to be Matched with.
 	 * @param string $sql_obj Specifies SQL Object
 	 * @param string $prefix Specifies the prefix to be Set in SQL Select
-	 * @param string $lj_on_ex Specifies the Left Join On Extension SQL Query
+	 * @param string $lj_on_ex Specifies the Left Join On Extra SQL Query
 	 * @return array Array of data
 	 * @access public
 	 */
-	public function mas_avatar_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex = '')
+	public function mas_avatar_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex)
 	{
 		$config_key .= '_av';
 		$prefix .= ($prefix != '') ? '_' : '';
@@ -287,22 +287,28 @@ class memberavatarstatus
 	 * @param string $sql_uid Specifies User ID to be Matched with.
 	 * @param string $sql_obj Specifies SQL Object
 	 * @param string $prefix Specifies the prefix to be Set in SQL Select
-	 * @param string $lj_on_ex Specifies the Left Join On Extension SQL Query
+	 * @param string $lj_on_ex Specifies the Left Join On Extra SQL Query
+	 * @param string $group_by Specifies the Group By SQL Query
 	 * @return array Array of data
 	 * @access public
 	 */
-	public function mas_online_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex = '')
+	public function mas_online_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex, $group_by)
 	{
 		$config_key .= '_ol';
 		$prefix .= ($prefix != '') ? '_' : '';
 
 		if ($this->mas_get_config_online($config_key))
 		{
-			$sql_ary['SELECT'] .= ', ' . $sql_obj . '.session_time as ' . $prefix . 'session_time, ' . $sql_obj . '.session_viewonline as ' . $prefix . 'session_viewonline';
+			$sql_ary['SELECT'] .= ', MAX(' . $sql_obj . '.session_time) as ' . $prefix . 'session_time, MIN(' . $sql_obj . '.session_viewonline) as ' . $prefix . 'session_viewonline';
 			$sql_ary['LEFT_JOIN'][] = array(
 					'FROM'	=> array(SESSIONS_TABLE => $sql_obj),
 					'ON'	=> $sql_uid . ' = ' . $sql_obj . '.session_user_id AND ' . $sql_obj . '.session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND ' . $sql_obj . '.session_user_id <> ' . ANONYMOUS . $lj_on_ex,
 				);
+
+			if ($group_by != '')
+			{
+				$sql_ary['GROUP_BY'] = (isset($sql_ary['GROUP_BY']) && !empty($sql_ary['GROUP_BY'])) ? $sql_ary['GROUP_BY'] . ', '.$group_by : $group_by;
+			}
 		}
 
 		return $sql_ary;
@@ -371,6 +377,7 @@ class memberavatarstatus
 	{
 		$sql_select = $sql_ary['SELECT'];
 		$sql_from = '';
+		$sql_where = '';
 
 		if (!empty($sql_ary['LEFT_JOIN']))
 		{
@@ -383,9 +390,15 @@ class memberavatarstatus
 			}
 		}
 
+		if (!empty($sql_ary['GROUP_BY']))
+		{
+			$sql_where = ' GROUP BY ' . $sql_ary['GROUP_BY'];
+		}
+
 		return array(
 				'sql_select'	=> $sql_select,
 				'sql_from'		=> $sql_from,
+				'sql_where'		=> $sql_where,
 			);
 	}
 
