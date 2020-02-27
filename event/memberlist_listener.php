@@ -11,25 +11,31 @@
 namespace dark1\memberavatarstatus\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\memberavatarstatus;
+use dark1\memberavatarstatus\core\mas_avatar;
+use dark1\memberavatarstatus\core\mas_status;
 
 /**
  * Member Avatar & Status Event listener.
  */
 class memberlist_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
-	protected $mas;
+	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
+	protected $mas_avatar;
+
+	/** @var \dark1\memberavatarstatus\core\mas_status*/
+	protected $mas_status;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas	dark1 mas
+	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar	dark1 mas_avatar
+	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status	dark1 mas_status
 	 * @access public
 	 */
-	public function __construct(memberavatarstatus $mas)
+	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status)
 	{
-		$this->mas		= $mas;
+		$this->mas_avatar		= $mas_avatar;
+		$this->mas_status		= $mas_status;
 	}
 
 	/**
@@ -62,8 +68,8 @@ class memberlist_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$sql_ary['SELECT'] = $this->mas->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '')['SELECT'];
-		$sql_ary = $this->mas->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', '', '', 'u.user_id');
+		$sql_ary['SELECT'] = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '')['SELECT'];
+		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', '', '', 'u.user_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -85,10 +91,10 @@ class memberlist_listener implements EventSubscriberInterface
 		$template_vars = $event['template_vars'];
 
 		// Set Avatar
-		$avatar = $this->mas->mas_get_avatar('dark1_mas_ml', 'user', $row);
+		$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_ml', 'user', $row);
 
 		// Get Online Status
-		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->mas->mas_get_online('dark1_mas_ml', '', $row) : '';
+		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->mas_status->mas_get_online('dark1_mas_ml', '', $row) : '';
 
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(

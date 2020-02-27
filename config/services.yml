@@ -1,29 +1,35 @@
 services:
-    dark1.memberavatarstatus:
-        class: dark1\memberavatarstatus\core\memberavatarstatus
+    dark1.memberavatarstatus.mas_avatar:
+        class: dark1\memberavatarstatus\core\mas_avatar
+        arguments:
+            - '@config'
+            - '@language'
+            - '%core.root_path%'
+    dark1.memberavatarstatus.mas_status:
+        class: dark1\memberavatarstatus\core\mas_status
         arguments:
             - '@auth'
             - '@config'
-            - '@language'
-            - '@log'
-            - '%core.root_path%'
     dark1.memberavatarstatus.main_listener:
         class: dark1\memberavatarstatus\event\main_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
             - '@template'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.memberlist_listener:
         class: dark1\memberavatarstatus\event\memberlist_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.viewonline_listener:
         class: dark1\memberavatarstatus\event\viewonline_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
             - '@auth'
             - '@user'
         tags:
@@ -31,24 +37,28 @@ services:
     dark1.memberavatarstatus.viewforum_listener:
         class: dark1\memberavatarstatus\event\viewforum_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.search_listener:
         class: dark1\memberavatarstatus\event\search_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.review_listener:
         class: dark1\memberavatarstatus\event\review_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.support_listener:
         class: dark1\memberavatarstatus\event\support_listener
         arguments:
-            - '@dark1.memberavatarstatus'
+            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.mas_status'
         tags:
             - { name: event.listener }

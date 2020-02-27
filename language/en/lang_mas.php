@@ -49,6 +49,4 @@ $lang = array_merge($lang, array(
 
 	// Log Message
 	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Member Avatar & Status [MAS]</strong> <br>&raquo; %s saved successfully!',
-	'MAS_LOG_CONFIG'			=> '<strong>Member Avatar & Status [MAS]</strong> <br>&raquo; Error with Config ‘%1$s’, %2$s %3$s',
-	'MAS_ERR_AV_SIZE'			=> '<br>&raquo; Avatar Size is Not Between specified Range, Hence Default’ed to',
 ));

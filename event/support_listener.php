@@ -11,25 +11,31 @@
 namespace dark1\memberavatarstatus\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\memberavatarstatus;
+use dark1\memberavatarstatus\core\mas_avatar;
+use dark1\memberavatarstatus\core\mas_status;
 
 /**
  * Member Avatar & Status Support Other Extension Event listener.
  */
 class support_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\memberavatarstatus */
-	protected $mas;
+	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
+	protected $mas_avatar;
+
+	/** @var \dark1\memberavatarstatus\core\mas_status*/
+	protected $mas_status;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\memberavatarstatus		$mas	dark1 mas
+	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar	dark1 mas_avatar
+	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status	dark1 mas_status
 	 * @access public
 	 */
-	public function __construct(memberavatarstatus $mas)
+	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status)
 	{
-		$this->mas		= $mas;
+		$this->mas_avatar		= $mas_avatar;
+		$this->mas_status		= $mas_status;
 	}
 
 	/**
@@ -64,10 +70,10 @@ class support_listener implements EventSubscriberInterface
 		$sql_array = $event['sql_array'];
 
 		// Add Query Details
-		$sql_array = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_vf_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
-		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_vf_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
-		$sql_array = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
-		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', 't.topic_id');
+		$sql_array = $this->mas_avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_vf_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
+		$sql_array = $this->mas_status->mas_online_sql_query($sql_array, 'dark1_mas_vf_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
+		$sql_array = $this->mas_avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
+		$sql_array = $this->mas_status->mas_online_sql_query($sql_array, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', '');
 
 		// Assign sql_ary to event -> sql_array
 		$event['sql_array'] = $sql_array;
@@ -89,12 +95,12 @@ class support_listener implements EventSubscriberInterface
 		$tpl_ary = $event['tpl_ary'];
 
 		// Get Both Avatar
-		$avatar_first_poster = $this->mas->mas_get_avatar('dark1_mas_vf_fp', 'topic_first_poster', $row);
-		$avatar_last_poster = $this->mas->mas_get_avatar('dark1_mas_vf_lp', 'topic_last_poster', $row);
+		$avatar_first_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_vf_fp', 'topic_first_poster', $row);
+		$avatar_last_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_vf_lp', 'topic_last_poster', $row);
 
 		// Get Both Online Status
-		$online_first_poster = $this->mas->mas_get_online('dark1_mas_vf_fp', 'topic_first_poster', $row);
-		$online_last_poster = $this->mas->mas_get_online('dark1_mas_vf_lp', 'topic_last_poster', $row);
+		$online_first_poster = $this->mas_status->mas_get_online('dark1_mas_vf_fp', 'topic_first_poster', $row);
+		$online_last_poster = $this->mas_status->mas_get_online('dark1_mas_vf_lp', 'topic_last_poster', $row);
 
 		// Add Both of Avatar & Online Status to tpl_ary
 		$tpl_ary = array_merge(
@@ -126,10 +132,10 @@ class support_listener implements EventSubscriberInterface
 		$sql_array = $event['sql_array'];
 
 		// Add Query Details
-		$sql_array = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
-		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
-		$sql_array = $this->mas->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
-		$sql_array = $this->mas->mas_online_sql_query($sql_array, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', 't.topic_id');
+		$sql_array = $this->mas_avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
+		$sql_array = $this->mas_status->mas_online_sql_query($sql_array, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
+		$sql_array = $this->mas_avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
+		$sql_array = $this->mas_status->mas_online_sql_query($sql_array, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', '');
 
 		// Assign sql_ary to event -> sql_array
 		$event['sql_array'] = $sql_array;
@@ -151,12 +157,12 @@ class support_listener implements EventSubscriberInterface
 		$topic_row = $event['topic_row'];
 
 		// Get Both Avatar
-		$avatar_first_poster = $this->mas->mas_get_avatar('dark1_mas_sh_fp', 'topic_first_poster', $row);
-		$avatar_last_poster = $this->mas->mas_get_avatar('dark1_mas_sh_lp', 'topic_last_poster', $row);
+		$avatar_first_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_sh_fp', 'topic_first_poster', $row);
+		$avatar_last_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_sh_lp', 'topic_last_poster', $row);
 
 		// Get Both Online Status
-		$online_first_poster = $this->mas->mas_get_online('dark1_mas_sh_fp', 'topic_first_poster', $row);
-		$online_last_poster = $this->mas->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
+		$online_first_poster = $this->mas_status->mas_get_online('dark1_mas_sh_fp', 'topic_first_poster', $row);
+		$online_last_poster = $this->mas_status->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
 
 		// Add Both of Avatar & Online Status to topic_row
 		$topic_row = array_merge(

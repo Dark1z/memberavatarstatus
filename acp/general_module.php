@@ -10,7 +10,7 @@
 
 namespace dark1\memberavatarstatus\acp;
 
-use dark1\memberavatarstatus\core\memberavatarstatus;
+use dark1\memberavatarstatus\core\mas_status;
 
 /**
  * Member Avatar & Status ACP module.
@@ -24,7 +24,7 @@ class general_module
 	public function main()
 	{
 		global $phpbb_container, $config, $request, $template, $user, $language, $phpbb_log;
-		$mas = $phpbb_container->get('dark1.memberavatarstatus');
+		$mas_status = $phpbb_container->get('dark1.memberavatarstatus.mas_status');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
@@ -43,8 +43,8 @@ class general_module
 			// Get Setting from ACP
 			$config->set('dark1_mas_avatar', $request->variable('dark1_mas_avatar', 0));
 			$config->set('dark1_mas_online', $request->variable('dark1_mas_online', 0));
-			$config->set('dark1_mas_col_off', $mas->mas_config_color('off', $request->variable('dark1_mas_col_off', memberavatarstatus::COL_DEF_OFF)));
-			$config->set('dark1_mas_col_on', $mas->mas_config_color('on', $request->variable('dark1_mas_col_on', memberavatarstatus::COL_DEF_ON)));
+			$config->set('dark1_mas_col_off', $mas_status->mas_config_color('off', $request->variable('dark1_mas_col_off', mas_status::COL_DEF_OFF)));
+			$config->set('dark1_mas_col_on', $mas_status->mas_config_color('on', $request->variable('dark1_mas_col_on', mas_status::COL_DEF_ON)));
 
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($language->lang('ACP_MAS_MODE_GENERAL')));
 			trigger_error($language->lang('ACP_MAS_LOG_SET_SAV', $language->lang('ACP_MAS_MODE_GENERAL')) . adm_back_link($this->u_action), E_USER_NOTICE);

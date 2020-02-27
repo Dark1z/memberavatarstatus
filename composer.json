@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Member Avatar & Status",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
-	"version": "3.1.5",
+	"version": "3.2.0",
 	"time": "2020-02-20 01:01:01",
 	"keywords": ["phpbb", "extension", "member", "avatar", "online", "status"],
 	"license": "GPL-2.0-only",
@@ -20,7 +20,7 @@
 	"extra": {
 		"display-name": "Member Avatar & Status",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.8"
+			"phpbb/phpbb": ">=3.2.10"
 		},
 		"version-check": {
 			"host": "www.phpbb.com",

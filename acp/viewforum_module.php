@@ -10,7 +10,8 @@
 
 namespace dark1\memberavatarstatus\acp;
 
-use dark1\memberavatarstatus\core\memberavatarstatus;
+use dark1\memberavatarstatus\core\mas_avatar;
+use dark1\memberavatarstatus\core\mas_status;
 
 /**
  * Member Avatar & Status ACP module.
@@ -24,7 +25,8 @@ class viewforum_module
 	public function main()
 	{
 		global $phpbb_container, $config, $request, $template, $user, $language, $phpbb_log;
-		$mas = $phpbb_container->get('dark1.memberavatarstatus');
+		$mas_avatar = $phpbb_container->get('dark1.memberavatarstatus.mas_avatar');
+		$mas_status = $phpbb_container->get('dark1.memberavatarstatus.mas_status');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
@@ -47,8 +49,8 @@ class viewforum_module
 			$config->set('dark1_mas_vf_lp_ol', $request->variable('dark1_mas_vf_lp_ol', 0));
 
 			// Check Avatar Size Before Assigning
-			$config->set('dark1_mas_vf_fp_av_sz', $mas->mas_get_avatar_size($request->variable('dark1_mas_vf_fp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
-			$config->set('dark1_mas_vf_lp_av_sz', $mas->mas_get_avatar_size($request->variable('dark1_mas_vf_lp_av_sz', memberavatarstatus::AV_DEF_SZ_SML), memberavatarstatus::AV_DEF_SZ_SML, memberavatarstatus::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_vf_fp_av_sz', $mas_avatar->mas_get_avatar_size($request->variable('dark1_mas_vf_fp_av_sz', mas_avatar::AV_DEF_SZ_SML), mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML));
+			$config->set('dark1_mas_vf_lp_av_sz', $mas_avatar->mas_get_avatar_size($request->variable('dark1_mas_vf_lp_av_sz', mas_avatar::AV_DEF_SZ_SML), mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML));
 
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($language->lang('ACP_MAS_MODE_VIEWFORUM')));
 			trigger_error($language->lang('ACP_MAS_LOG_SET_SAV', $language->lang('ACP_MAS_MODE_VIEWFORUM')) . adm_back_link($this->u_action), E_USER_NOTICE);
@@ -66,7 +68,7 @@ class viewforum_module
 			'MAS_VF_LP_AVATAR'	=> $config['dark1_mas_vf_lp_av'],
 			'MAS_VF_LP_AV_SIZE'	=> $config['dark1_mas_vf_lp_av_sz'],
 			'MAS_VF_LP_ONLINE'	=> $config['dark1_mas_vf_lp_ol'],
-			'MAS_NO_AVATAR_IMG'	=> $mas->mas_get_no_avatar_img(),
+			'MAS_NO_AVATAR_IMG'	=> $mas_avatar->mas_get_no_avatar_img(),
 		));
 	}
 
