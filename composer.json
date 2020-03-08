@@ -4,15 +4,24 @@
 	"description": "Member Avatar & Status",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
 	"version": "3.2.0",
-	"time": "2020-02-20 01:01:01",
-	"keywords": ["phpbb", "extension", "member", "avatar", "online", "status"],
+	"time": "2020-02-20",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"member",
+		"avatar",
+		"online",
+		"status"
+	],
 	"license": "GPL-2.0-only",
-	"authors": [ {
-		"name": "Dark❶ [dark1]",
-		"email": "phpbb@dark1.tech",
-		"homepage": "https://dark1.tech",
-		"role": "Lead Developer"
-	} ],
+	"authors": [
+		{
+			"name": "Dark❶ [dark1]",
+			"email": "phpbb@dark1.tech",
+			"homepage": "https://dark1.tech",
+			"role": "Lead Developer"
+		}
+	],
 	"require": {
 		"php": ">=5.4.7",
 		"composer/installers": "~1.0"

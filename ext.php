@@ -11,9 +11,14 @@
 namespace dark1\memberavatarstatus;
 
 /**
- * Member Avatar & Status Extension.
+ * @ignore
  */
-class ext extends \phpbb\extension\base
+use phpbb\extension\base;
+
+/**
+ * Member Avatar & Status Extension base
+ */
+class ext extends base
 {
 	/** string Require phpBB v3.2.10 due to Events. */
 	const MAS_PHPBB_MIN_VERSION = '3.2.10';

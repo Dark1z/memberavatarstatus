@@ -12,9 +12,10 @@ namespace dark1\memberavatarstatus\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\mas_avatar;
-use dark1\memberavatarstatus\core\mas_status;
 use phpbb\auth\auth;
 use phpbb\user;
+use phpbb\config\config;
+use phpbb\language\language;
 
 /**
  * Member Avatar & Status Event listener.
@@ -24,30 +25,35 @@ class viewonline_listener implements EventSubscriberInterface
 	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
 	protected $mas_avatar;
 
-	/** @var \dark1\memberavatarstatus\core\mas_status*/
-	protected $mas_status;
-
 	/** @var \phpbb\auth\auth */
 	protected $auth;
 
 	/** @var \phpbb\user */
 	protected $user;
 
+	/** @var \phpbb\config\config */
+	protected $config;
+
+	/** @var \phpbb\language\language */
+	protected $language;
+
 	/**
 	 * Constructor for listener
 	 *
 	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar		dark1 mas_avatar
-	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status		dark1 mas_status
 	 * @param \phpbb\auth\auth								$auth			phpBB auth
 	 * @param \phpbb\user									$user			phpBB user
+	 * @param \phpbb\config\config							$config			phpBB config
+	 * @param \phpbb\language\language						$language		phpBB language
 	 * @access public
 	 */
-	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status, auth $auth, user $user)
+	public function __construct(mas_avatar $mas_avatar, auth $auth, user $user, config $config, language $language)
 	{
 		$this->mas_avatar	= $mas_avatar;
-		$this->mas_status	= $mas_status;
 		$this->auth			= $auth;
 		$this->user			= $user;
+		$this->config		= $config;
+		$this->language		= $language;
 	}
 
 	/**
@@ -164,8 +170,7 @@ class viewonline_listener implements EventSubscriberInterface
 				{
 					// Get Avatar
 					$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
-					$username = $this->mas_get_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar, '');
-					$user_online_link[$row['user_id']] = str_replace('div', 'span', $username);
+					$user_online_link[$row['user_id']] = $this->mas_viewonline_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar);
 				}
 			}
 		}
@@ -181,67 +186,27 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 	/**
-	 * MAS Get Avatar IMG
-	 *
-	 * @param string $avatar takes User Avatar IMG
-	 * @param int $avatar_size Specifies Avatar Size in px
-	 * @return string String with Wrapped User Avatar IMG
-	 * @access private
-	 *
-	 * Will be Deprecated in future when Style Template Events are created.
-	 */
-	private function mas_get_avatar_img($avatar, $avatar_size = mas_avatar::AV_DEF_SZ_SML)
-	{
-		$start_avatar = '<div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
-		$end_avatar = '</div>';
-		return $start_avatar . (($avatar) ? $avatar : $this->mas_avatar->mas_get_no_avatar_img()) . $end_avatar;
-	}
-
-
-
-	/**
-	 * MAS Get Online Status DOT
-	 *
-	 * @param string $online takes User Online Status
-	 * @return string String with Wrapped User Online Status
-	 * @access private
-	 *
-	 * Will be Deprecated in future when Style Template Events are created.
-	 */
-	private function mas_get_online_status_dot($online)
-	{
-		$online_text = $this->language->lang('ONLINE');
-		$offline_text = $this->language->lang('OFFLINE');
-		$start_online = ' ' . '<div class="mas-wrap-status' . ($online ? ' mas-status-online' : '') . '">';
-		$end_online = '</div>';
-		$online_dot = '<span class="mas-status-dot mas-color" title="' . ($online ? $online_text : $offline_text) . '"/>';
-		return $start_online . $online_dot . $end_online;
-	}
-
-
-
-	/**
-	 * MAS Get UserName Wrap
+	 * MAS ViewOnline UserName Wrap
 	 *
 	 * @param string $username takes UserName
 	 * @param string $config_key takes Config Key String
 	 * @param string $avatar takes User Avatar IMG
-	 * @param string $online takes User Online Status
 	 * @return string String with Wrapped Main & UserName
 	 * @access private
-	 *
-	 * Will be Deprecated in future when Style Template Events are created.
 	 */
-	private function mas_get_username_wrap($username, $config_key, $avatar, $online)
+	private function mas_viewonline_username_wrap($username, $config_key, $avatar)
 	{
-		$start_wrap = '<div class="mas-wrap">';
-		$start_username = '<div class="mas-username">';
-		$end_tag = '</div>';
-		$avatar_test = $this->mas_avatar->mas_get_config_avatar($config_key . '_av');
-		$online_test = $this->mas_status->mas_get_config_online($config_key . '_ol');
-		$avatar_wrap = ($avatar_test) ? $this->mas_get_avatar_img($avatar, (int) $this->config[$config_key . '_av_sz']) : '';
-		$online_wrap = ($online_test) ? $this->mas_get_online_status_dot($online) : '';
-		return ($avatar_test || $online_test) ? ($start_wrap . $avatar_wrap . $start_username . $username . $end_tag . $online_wrap . $end_tag) : $username;
+		if ($this->mas_avatar->mas_get_config_avatar($config_key . '_av'))
+		{
+			$avatar_size = (int) $this->config[$config_key . '_av_sz'];
+			$start = '<div class="mas-wrap"><div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
+			$middle = '</div><div class="mas-username">';
+			$end = '</div></div>';
+			$avatar = (($avatar) ? $avatar : $this->mas_avatar->mas_get_no_avatar_img());
+			$username_wrap = $start . $avatar . $middle . $username . $end;
+			$username = str_replace('div', 'span', $username_wrap);
+		}
+		return $username;
 	}
 
 }

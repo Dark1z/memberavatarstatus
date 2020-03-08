@@ -29,9 +29,10 @@ services:
         class: dark1\memberavatarstatus\event\viewonline_listener
         arguments:
             - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
             - '@auth'
             - '@user'
+            - '@config'
+            - '@language'
         tags:
             - { name: event.listener }
     dark1.memberavatarstatus.viewforum_listener:

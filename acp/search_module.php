@@ -11,7 +11,6 @@
 namespace dark1\memberavatarstatus\acp;
 
 use dark1\memberavatarstatus\core\mas_avatar;
-use dark1\memberavatarstatus\core\mas_status;
 
 /**
  * Member Avatar & Status ACP module.
@@ -26,7 +25,6 @@ class search_module
 	{
 		global $phpbb_container, $config, $request, $template, $user, $language, $phpbb_log;
 		$mas_avatar = $phpbb_container->get('dark1.memberavatarstatus.mas_avatar');
-		$mas_status = $phpbb_container->get('dark1.memberavatarstatus.mas_status');
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
