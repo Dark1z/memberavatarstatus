@@ -10,7 +10,12 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0000_main extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+class mas_0000_main extends migration
 {
 	public function effectively_installed()
 	{
@@ -33,14 +38,6 @@ class mas_0000_main extends \phpbb\db\migration\migration
 				'acp',
 				'ACP_CAT_DOT_MODS',
 				'ACP_MAS_TITLE'
-			)),
-			array('module.add', array(
-				'acp',
-				'ACP_MAS_TITLE',
-				array(
-					'module_basename'	=> '\dark1\memberavatarstatus\acp\main_module',
-					'modes'				=> array('main'),
-				),
 			)),
 		);
 	}

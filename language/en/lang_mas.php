@@ -45,8 +45,8 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'MAS_NO_AVATAR_TEXT'		=> 'No User Avatar',
+	'MAS_NO_AVATAR_TEXT'	=> 'No User Avatar',
 
 	// Log Message
-	'ACP_MAS_LOG_SET_SAV'		=> '<strong>Member Avatar & Status [MAS]</strong> <br>&raquo; %s saved successfully!',
+	'ACP_MAS_LOG_SET_SAV'	=> '<strong>Member Avatar & Status [MAS]</strong><br>» %s saved successfully!',
 ));

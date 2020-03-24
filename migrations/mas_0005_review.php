@@ -10,7 +10,12 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0005_review extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+class mas_0005_review extends migration
 {
 	static public function depends_on()
 	{
@@ -24,16 +29,6 @@ class mas_0005_review extends \phpbb\db\migration\migration
 			array('config.add', array('dark1_mas_rv_av', 0)),
 			array('config.add', array('dark1_mas_rv_ol', 0)),
 			array('config.add', array('dark1_mas_rv_av_sz', 20)),
-
-			// Module Add
-			array('module.add', array(
-				'acp',
-				'ACP_MAS_TITLE',
-				array(
-					'module_basename'	=> '\dark1\memberavatarstatus\acp\review_module',
-					'modes'				=> array('review'),
-				),
-			)),
 		);
 	}
 }

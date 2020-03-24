@@ -1,6 +1,6 @@
 # Member Avatar & Status [MAS]
    
-This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* .  😉   
+This Extension Lets Admin to display User's Avatar & it's Online Status on *Index* , *Memberlist* , *The Team* , *Viewonline[Who is online]* , *Who Is Online Stat Block* , *Viewforum* , *Search* , *Posting Topic Review* , *MCP Topic Review* , *PM History Review* , *UCP Friendlist* .  😉   
    
    
 #### Status Badge for Member Avatar & Status [MAS] on phpBB v3.3.x :   
@@ -27,10 +27,11 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 13. Display User Avatar & Online Status in Posting Topic Review for Post User.   
 14. Display User Avatar & Online Status in MCP Topic Review for Post User.   
 15. Display User Avatar & Online Status in PM History Review for Post User.   
-16. All settings are Organized in their respective section in ACP for easy Management.   
-17. Currently there are 7 sections in ACP : *Overview* , *General* , *Memberlist* , *Viewonline* , *Viewforum* , *Search* , *Review* .   
-18. Display Overview of all Settings on One Page in ACP.   
-19. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
+16. Display User Avatar & Online Status in UCP for Friend in Friendlist.   
+17. All settings are Organized in their respective section in ACP for easy Management.   
+18. Currently there are 8 sections in ACP : *Overview* , *General* , *Memberlist* , *Viewonline* , *Viewforum* , *Search* , *Review* , *Friendlist* .   
+19. Display Overview of all Settings on One Page in ACP.   
+20. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
    
    
 ## **Support for Extensions :**   
@@ -87,11 +88,14 @@ Detailed phpBB standard Updation of Extensions here : [phpBB Extensions Updating
 Detailed phpBB standard Uninstallation of Extensions here : [phpBB Extensions Removing](https://www.phpbb.com/extensions/installing/#removing)   
    
    
-GitHub Repository: [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
-phpBB Customisation Database Extension: [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status)   
-For more Details Go Here : [Member Avatar & Status [MAS]](https://dark-1.github.io/memberavatarstatus)   
+## **Links :**   
    
-## License  [GPLv2](license.txt)
+**GitHub Repository** : [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
+**phpBB Customisation Database Extension** : [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status)   
+**For more Details Go Here** : [Member Avatar & Status [MAS]](https://dark-1.github.io/memberavatarstatus)   
+   
+   
+## License [GPLv2](license.txt)   
    
 --------------   
 EnJoY  😃   

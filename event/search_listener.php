@@ -10,32 +10,35 @@
 
 namespace dark1\memberavatarstatus\event;
 
+/**
+ * @ignore
+ */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\mas_avatar;
-use dark1\memberavatarstatus\core\mas_status;
+use dark1\memberavatarstatus\core\avatar;
+use dark1\memberavatarstatus\core\status;
 
 /**
  * Member Avatar & Status Event listener.
  */
 class search_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
-	protected $mas_avatar;
+	/** @var \dark1\memberavatarstatus\core\avatar*/
+	protected $avatar;
 
-	/** @var \dark1\memberavatarstatus\core\mas_status*/
-	protected $mas_status;
+	/** @var \dark1\memberavatarstatus\core\status*/
+	protected $status;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar	dark1 mas_avatar
-	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status	dark1 mas_status
+	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
+	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
 	 * @access public
 	 */
-	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status)
+	public function __construct(avatar $avatar, status $status)
 	{
-		$this->mas_avatar		= $mas_avatar;
-		$this->mas_status		= $mas_status;
+		$this->avatar	= $avatar;
+		$this->status	= $status;
 	}
 
 	/**
@@ -69,8 +72,8 @@ class search_listener implements EventSubscriberInterface
 		$sql_array = $event['sql_array'];
 
 		// Add Query Details
-		$sql_array['SELECT'] = $this->mas_avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_up', '', 'u', 'user', '')['SELECT'];
-		$sql_array = $this->mas_status->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', '', '', 'p.post_id');
+		$sql_array['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_up', '', 'u', 'user', '')['SELECT'];
+		$sql_array = $this->status->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', '', '', 'p.post_id');
 
 		// Assign sql_array to event -> sql_array
 		$event['sql_array'] = $sql_array;
@@ -94,10 +97,10 @@ class search_listener implements EventSubscriberInterface
 		);
 
 		// Add to Event Array `sql_select` & `sql_from`
-		$sql_ary = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
-		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
-		$sql_ary = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
-		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', '');
+		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
+		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', '');
 
 		// Add to Event Array `sql_select` & `sql_from`
 		$temp_sql = $this->mas_convert_sql($sql_ary);
@@ -124,10 +127,10 @@ class search_listener implements EventSubscriberInterface
 		if ($event['show_results'] == 'posts')
 		{
 			// Get Avatar
-			$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_sh_up', 'user', $row);
+			$avatar = $this->avatar->mas_get_avatar('dark1_mas_sh_up', 'user', $row);
 
 			// Get Online Status
-			$online = $this->mas_status->mas_get_online('dark1_mas_sh_up', '', $row);
+			$online = $this->status->mas_get_online('dark1_mas_sh_up', '', $row);
 
 			// Add Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(
@@ -141,12 +144,12 @@ class search_listener implements EventSubscriberInterface
 		else
 		{
 			// Get Both Avatar
-			$avatar_first_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_sh_fp', 'topic_first_poster', $row);
-			$avatar_last_poster = $this->mas_avatar->mas_get_avatar('dark1_mas_sh_lp', 'topic_last_poster', $row);
+			$avatar_first_poster = $this->avatar->mas_get_avatar('dark1_mas_sh_fp', 'topic_first_poster', $row);
+			$avatar_last_poster = $this->avatar->mas_get_avatar('dark1_mas_sh_lp', 'topic_last_poster', $row);
 
 			// Get Both Online Status
-			$online_first_poster = $this->mas_status->mas_get_online('dark1_mas_sh_fp', 'topic_first_poster', $row);
-			$online_last_poster = $this->mas_status->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
+			$online_first_poster = $this->status->mas_get_online('dark1_mas_sh_fp', 'topic_first_poster', $row);
+			$online_last_poster = $this->status->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
 
 			// Add Both of Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(

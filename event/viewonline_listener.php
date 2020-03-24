@@ -10,8 +10,11 @@
 
 namespace dark1\memberavatarstatus\event;
 
+/**
+ * @ignore
+ */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\mas_avatar;
+use dark1\memberavatarstatus\core\avatar;
 use phpbb\auth\auth;
 use phpbb\user;
 use phpbb\config\config;
@@ -22,8 +25,8 @@ use phpbb\language\language;
  */
 class viewonline_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
-	protected $mas_avatar;
+	/** @var \dark1\memberavatarstatus\core\avatar*/
+	protected $avatar;
 
 	/** @var \phpbb\auth\auth */
 	protected $auth;
@@ -40,16 +43,16 @@ class viewonline_listener implements EventSubscriberInterface
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar		dark1 mas_avatar
-	 * @param \phpbb\auth\auth								$auth			phpBB auth
-	 * @param \phpbb\user									$user			phpBB user
-	 * @param \phpbb\config\config							$config			phpBB config
-	 * @param \phpbb\language\language						$language		phpBB language
+	 * @param \dark1\memberavatarstatus\core\avatar			$avatar		dark1 avatar
+	 * @param \phpbb\auth\auth								$auth		phpBB auth
+	 * @param \phpbb\user									$user		phpBB user
+	 * @param \phpbb\config\config							$config		phpBB config
+	 * @param \phpbb\language\language						$language	phpBB language
 	 * @access public
 	 */
-	public function __construct(mas_avatar $mas_avatar, auth $auth, user $user, config $config, language $language)
+	public function __construct(avatar $avatar, auth $auth, user $user, config $config, language $language)
 	{
-		$this->mas_avatar	= $mas_avatar;
+		$this->avatar		= $avatar;
 		$this->auth			= $auth;
 		$this->user			= $user;
 		$this->config		= $config;
@@ -88,7 +91,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$sql_ary['SELECT'] = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_pg', '', 'u', 'user', '')['SELECT'];
+		$sql_ary['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_pg', '', 'u', 'user', '')['SELECT'];
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -110,7 +113,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$template_row = $event['template_row'];
 
 		// Get Avatar
-		$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_vo_pg', 'user', $row);
+		$avatar = $this->avatar->mas_get_avatar('dark1_mas_vo_pg', 'user', $row);
 
 		// Add Avatar to template_row
 		$template_row = array_merge(
@@ -139,7 +142,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$sql_ary['SELECT'] = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_sb', '', 'u', 'user', '')['SELECT'];
+		$sql_ary['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vo_sb', '', 'u', 'user', '')['SELECT'];
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -161,7 +164,7 @@ class viewonline_listener implements EventSubscriberInterface
 		$online_users = $event['online_users'];
 		$user_online_link = $event['user_online_link'];
 
-		if ($this->mas_avatar->mas_get_config_avatar('dark1_mas_vo_sb_av'))
+		if ($this->avatar->mas_get_config_avatar('dark1_mas_vo_sb_av'))
 		{
 			foreach ($rowset as $row)
 			{
@@ -169,7 +172,7 @@ class viewonline_listener implements EventSubscriberInterface
 				if ($row['user_id'] != ANONYMOUS && (!isset($online_users['hidden_users'][$row['user_id']]) || $this->auth->acl_get('u_viewonline') || $row['user_id'] === $this->user->data['user_id']))
 				{
 					// Get Avatar
-					$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
+					$avatar = $this->avatar->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
 					$user_online_link[$row['user_id']] = $this->mas_viewonline_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar);
 				}
 			}
@@ -196,13 +199,13 @@ class viewonline_listener implements EventSubscriberInterface
 	 */
 	private function mas_viewonline_username_wrap($username, $config_key, $avatar)
 	{
-		if ($this->mas_avatar->mas_get_config_avatar($config_key . '_av'))
+		if ($this->avatar->mas_get_config_avatar($config_key . '_av'))
 		{
 			$avatar_size = (int) $this->config[$config_key . '_av_sz'];
 			$start = '<div class="mas-wrap"><div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">';
 			$middle = '</div><div class="mas-username">';
 			$end = '</div></div>';
-			$avatar = (($avatar) ? $avatar : $this->mas_avatar->mas_get_no_avatar_img());
+			$avatar = (($avatar) ? $avatar : $this->avatar->mas_get_no_avatar_img());
 			$username_wrap = $start . $avatar . $middle . $username . $end;
 			$username = str_replace('div', 'span', $username_wrap);
 		}

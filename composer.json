@@ -29,7 +29,7 @@
 	"extra": {
 		"display-name": "Member Avatar & Status",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.10"
+			"phpbb/phpbb": ">=3.2.10,<3.3.0,>=3.3.1"
 		},
 		"version-check": {
 			"host": "www.phpbb.com",

@@ -10,32 +10,35 @@
 
 namespace dark1\memberavatarstatus\event;
 
+/**
+ * @ignore
+ */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\mas_avatar;
-use dark1\memberavatarstatus\core\mas_status;
+use dark1\memberavatarstatus\core\avatar;
+use dark1\memberavatarstatus\core\status;
 
 /**
  * Member Avatar & Status Event listener.
  */
 class review_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
-	protected $mas_avatar;
+	/** @var \dark1\memberavatarstatus\core\avatar*/
+	protected $avatar;
 
-	/** @var \dark1\memberavatarstatus\core\mas_status*/
-	protected $mas_status;
+	/** @var \dark1\memberavatarstatus\core\status*/
+	protected $status;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar	dark1 mas_avatar
-	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status	dark1 mas_status
+	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
+	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
 	 * @access public
 	 */
-	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status)
+	public function __construct(avatar $avatar, status $status)
 	{
-		$this->mas_avatar		= $mas_avatar;
-		$this->mas_status		= $mas_status;
+		$this->avatar	= $avatar;
+		$this->status	= $status;
 	}
 
 	/**
@@ -72,9 +75,9 @@ class review_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$temp_sql_ary = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
+		$temp_sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
 		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
-		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.post_id');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.post_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -96,10 +99,10 @@ class review_listener implements EventSubscriberInterface
 		$post_row = $event['post_row'];
 
 		// Set Avatar
-		$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
+		$avatar = $this->avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
 
 		// Get Online Status
-		$online = $this->mas_status->mas_get_online('dark1_mas_rv', 'user', $row);
+		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to post_row
 		$post_row = array_merge(
@@ -129,7 +132,7 @@ class review_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.msg_id');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.msg_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -151,10 +154,10 @@ class review_listener implements EventSubscriberInterface
 		$template_vars = $event['template_vars'];
 
 		// Set Avatar
-		$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
+		$avatar = $this->avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
 
 		// Get Online Status
-		$online = $this->mas_status->mas_get_online('dark1_mas_rv', 'user', $row);
+		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(
@@ -184,9 +187,9 @@ class review_listener implements EventSubscriberInterface
 		$sql_ary = $event['sql_ary'];
 
 		// Add Query Details
-		$temp_sql_ary = $this->mas_avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
+		$temp_sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_rv', '', 'u', 'user', '');
 		$sql_ary['SELECT'] = $temp_sql_ary['SELECT'];
-		$sql_ary = $this->mas_status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.post_id');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_rv', 'u.user_id', 's', 'user', '', 'p.post_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -208,10 +211,10 @@ class review_listener implements EventSubscriberInterface
 		$post_row = $event['post_row'];
 
 		// Set Avatar
-		$avatar = $this->mas_avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
+		$avatar = $this->avatar->mas_get_avatar('dark1_mas_rv', 'user', $row);
 
 		// Get Online Status
-		$online = $this->mas_status->mas_get_online('dark1_mas_rv', 'user', $row);
+		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to post_row
 		$post_row = array_merge(

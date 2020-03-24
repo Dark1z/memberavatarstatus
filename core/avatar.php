@@ -10,13 +10,16 @@
 
 namespace dark1\memberavatarstatus\core;
 
+/**
+ * @ignore
+ */
 use phpbb\config\config;
 use phpbb\language\language;
 
 /**
  * Member Avatar & Status Core Avatar Class.
  */
-class mas_avatar
+class avatar
 {
 	/** @var int No Avatar Size */
 	const NO_AVATAR_SIZE = 1000;
@@ -42,15 +45,15 @@ class mas_avatar
 	/** @var \phpbb\language\language */
 	protected $language;
 
-	/** @var string */
+	/** @var string phpBB root path */
 	protected $phpbb_root_path;
 
 	/**
-	 * Constructor for listener
+	 * Constructor for Member Avatar & Status Core Avatar Class.
 	 *
 	 * @param \phpbb\config\config			$config				phpBB config
 	 * @param \phpbb\language\language		$language			phpBB language
-	 * @param string						$phpbb_root_path	phpBB root_path
+	 * @param string						$phpbb_root_path	phpBB root path
 	 * @access public
 	 */
 	public function __construct(config $config, language $language, $phpbb_root_path)

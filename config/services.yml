@@ -1,65 +1,171 @@
 services:
-    dark1.memberavatarstatus.mas_avatar:
-        class: dark1\memberavatarstatus\core\mas_avatar
+
+    dark1.memberavatarstatus.avatar:
+        class: dark1\memberavatarstatus\core\avatar
         arguments:
             - '@config'
             - '@language'
             - '%core.root_path%'
-    dark1.memberavatarstatus.mas_status:
-        class: dark1\memberavatarstatus\core\mas_status
+
+    dark1.memberavatarstatus.status:
+        class: dark1\memberavatarstatus\core\status
         arguments:
             - '@auth'
             - '@config'
+
+    dark1.memberavatarstatus.controller.acp.main:
+        class: dark1\memberavatarstatus\controller\acp_main
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '%core.root_path%'
+            - '%core.adm_relative_path%'
+            - '%core.php_ext%'
+
+    dark1.memberavatarstatus.controller.acp.general:
+        class: dark1\memberavatarstatus\controller\acp_general
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.status'
+
+    dark1.memberavatarstatus.controller.acp.memberlist:
+        class: dark1\memberavatarstatus\controller\acp_memberlist
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
+    dark1.memberavatarstatus.controller.acp.viewforum:
+        class: dark1\memberavatarstatus\controller\acp_viewforum
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
+    dark1.memberavatarstatus.controller.acp.viewonline:
+        class: dark1\memberavatarstatus\controller\acp_viewonline
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
+    dark1.memberavatarstatus.controller.acp.search:
+        class: dark1\memberavatarstatus\controller\acp_search
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
+    dark1.memberavatarstatus.controller.acp.review:
+        class: dark1\memberavatarstatus\controller\acp_review
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
+    dark1.memberavatarstatus.controller.acp.friendlist:
+        class: dark1\memberavatarstatus\controller\acp_friendlist
+        arguments:
+            - '@language'
+            - '@log'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@config'
+            - '@dark1.memberavatarstatus.avatar'
+
     dark1.memberavatarstatus.main_listener:
         class: dark1\memberavatarstatus\event\main_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
             - '@template'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.memberlist_listener:
         class: dark1\memberavatarstatus\event\memberlist_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.viewonline_listener:
         class: dark1\memberavatarstatus\event\viewonline_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
+            - '@dark1.memberavatarstatus.avatar'
             - '@auth'
             - '@user'
             - '@config'
             - '@language'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.viewforum_listener:
         class: dark1\memberavatarstatus\event\viewforum_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.search_listener:
         class: dark1\memberavatarstatus\event\search_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.review_listener:
         class: dark1\memberavatarstatus\event\review_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
         tags:
             - { name: event.listener }
+
     dark1.memberavatarstatus.support_listener:
         class: dark1\memberavatarstatus\event\support_listener
         arguments:
-            - '@dark1.memberavatarstatus.mas_avatar'
-            - '@dark1.memberavatarstatus.mas_status'
+            - '@dark1.memberavatarstatus.avatar'
+            - '@dark1.memberavatarstatus.status'
+        tags:
+            - { name: event.listener }
+
+    dark1.memberavatarstatus.friendlist_listener:
+        class: dark1\memberavatarstatus\event\friendlist_listener
+        arguments:
+            - '@dark1.memberavatarstatus.avatar'
         tags:
             - { name: event.listener }

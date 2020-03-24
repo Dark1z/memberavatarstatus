@@ -10,13 +10,16 @@
 
 namespace dark1\memberavatarstatus\core;
 
+/**
+ * @ignore
+ */
 use phpbb\auth\auth;
 use phpbb\config\config;
 
 /**
  * Member Avatar & Status Core Status Class.
  */
-class mas_status
+class status
 {
 	/** @var int Color Default Offline */
 	const COL_DEF_OFF = '000000';
@@ -31,7 +34,7 @@ class mas_status
 	protected $config;
 
 	/**
-	 * Constructor for listener
+	 * Constructor for Member Avatar & Status Core Status Class.
 	 *
 	 * @param \phpbb\auth\auth				$auth				phpBB auth
 	 * @param \phpbb\config\config			$config				phpBB config

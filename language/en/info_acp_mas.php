@@ -48,11 +48,12 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_TITLE'				=> 'Member Avatar & Status [MAS]',
 
 	// ACP MAS Modes
-	'ACP_MAS_MODE_MAIN'			=> 'MAS Overview',
-	'ACP_MAS_MODE_GENERAL'		=> 'MAS General Settings',
-	'ACP_MAS_MODE_MEMBERLIST'	=> 'MAS Memberlist Settings',
-	'ACP_MAS_MODE_VIEWONLINE'	=> 'MAS Viewonline Settings',
-	'ACP_MAS_MODE_VIEWFORUM'	=> 'MAS Viewforum Settings',
-	'ACP_MAS_MODE_SEARCH'		=> 'MAS Search Settings',
-	'ACP_MAS_MODE_REVIEW'		=> 'MAS Review Settings',
+	'ACP_MAS_MAIN'			=> 'MAS Overview',
+	'ACP_MAS_GENERAL'		=> 'MAS General Settings',
+	'ACP_MAS_MEMBERLIST'	=> 'MAS Memberlist Settings',
+	'ACP_MAS_VIEWONLINE'	=> 'MAS Viewonline Settings',
+	'ACP_MAS_VIEWFORUM'		=> 'MAS Viewforum Settings',
+	'ACP_MAS_SEARCH'		=> 'MAS Search Settings',
+	'ACP_MAS_REVIEW'		=> 'MAS Review Settings',
+	'ACP_MAS_FRIENDLIST'	=> 'MAS Friendlist Settings',
 ));

@@ -10,9 +10,12 @@
 
 namespace dark1\memberavatarstatus\event;
 
+/**
+ * @ignore
+ */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use dark1\memberavatarstatus\core\mas_avatar;
-use dark1\memberavatarstatus\core\mas_status;
+use dark1\memberavatarstatus\core\avatar;
+use dark1\memberavatarstatus\core\status;
 use phpbb\template\template;
 
 /**
@@ -20,11 +23,11 @@ use phpbb\template\template;
  */
 class main_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\mas_avatar*/
-	protected $mas_avatar;
+	/** @var \dark1\memberavatarstatus\core\avatar*/
+	protected $avatar;
 
-	/** @var \dark1\memberavatarstatus\core\mas_status*/
-	protected $mas_status;
+	/** @var \dark1\memberavatarstatus\core\status*/
+	protected $status;
 
 	/** @var \phpbb\template\template */
 	protected $template;
@@ -32,15 +35,15 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\mas_avatar		$mas_avatar		dark1 mas_avatar
-	 * @param \dark1\memberavatarstatus\core\mas_status		$mas_status		dark1 mas_status
-	 * @param \phpbb\template\template						$template	phpBB template
+	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
+	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
+	 * @param \phpbb\template\template					$template	phpBB template
 	 * @access public
 	 */
-	public function __construct(mas_avatar $mas_avatar, mas_status $mas_status, template $template)
+	public function __construct(avatar $avatar, status $status, template $template)
 	{
-		$this->mas_avatar	= $mas_avatar;
-		$this->mas_status	= $mas_status;
+		$this->avatar		= $avatar;
+		$this->status		= $status;
 		$this->template		= $template;
 	}
 
@@ -54,8 +57,8 @@ class main_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'								=> 'mas_load_lang',
-			'core.page_header_after'						=> 'mas_header',
+			'core.user_setup'			=> 'mas_load_lang',
+			'core.page_header_after'	=> 'mas_header',
 		);
 	}
 
@@ -97,42 +100,46 @@ class main_listener implements EventSubscriberInterface
 			'MAS_EXT_NAME'		=> $ext_name_mas,
 			'MAS_EXT_DEV'		=> $ext_by_dark1,
 			// General
-			'MAS_AVATAR'		=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_avatar'),
-			'MAS_ONLINE'		=> $this->mas_status->mas_get_config_online('dark1_mas_online'),
-			'MAS_COLOR_OFFLINE'	=> $this->mas_status->mas_get_config_color('off'),
-			'MAS_COLOR_ONLINE'	=> $this->mas_status->mas_get_config_color('on'),
+			'MAS_AVATAR'		=> $this->avatar->mas_get_config_avatar('dark1_mas_avatar'),
+			'MAS_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_online'),
+			'MAS_COLOR_OFFLINE'	=> $this->status->mas_get_config_color('off'),
+			'MAS_COLOR_ONLINE'	=> $this->status->mas_get_config_color('on'),
 			// MemberList
-			'MAS_ML_AVATAR'		=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_ml_av'),
-			'MAS_ML_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_ml_av_sz', mas_avatar::AV_DEF_SZ_BIG, mas_avatar::AV_MAX_SZ_BIG),
-			'MAS_ML_ONLINE'		=> $this->mas_status->mas_get_config_online('dark1_mas_ml_ol'),
+			'MAS_ML_AVATAR'		=> $this->avatar->mas_get_config_avatar('dark1_mas_ml_av'),
+			'MAS_ML_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_ml_av_sz', avatar::AV_DEF_SZ_BIG, avatar::AV_MAX_SZ_BIG),
+			'MAS_ML_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_ml_ol'),
 			// ViewOnline
-			'MAS_VO_PG_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_vo_pg_av'),
-			'MAS_VO_PG_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_vo_pg_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_VO_SB_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_vo_sb_av'),
-			'MAS_VO_SB_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_vo_sb_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
+			'MAS_VO_PG_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_vo_pg_av'),
+			'MAS_VO_PG_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_vo_pg_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_VO_SB_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_vo_sb_av'),
+			'MAS_VO_SB_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_vo_sb_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
 			// ViewForum
-			'MAS_VF_FP_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_vf_fp_av'),
-			'MAS_VF_FP_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_vf_fp_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_VF_FP_ONLINE'	=> $this->mas_status->mas_get_config_online('dark1_mas_vf_fp_ol'),
-			'MAS_VF_LP_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_vf_lp_av'),
-			'MAS_VF_LP_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_vf_lp_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_VF_LP_ONLINE'	=> $this->mas_status->mas_get_config_online('dark1_mas_vf_lp_ol'),
+			'MAS_VF_FP_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_vf_fp_av'),
+			'MAS_VF_FP_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_vf_fp_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_VF_FP_ONLINE'	=> $this->status->mas_get_config_online('dark1_mas_vf_fp_ol'),
+			'MAS_VF_LP_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_vf_lp_av'),
+			'MAS_VF_LP_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_vf_lp_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_VF_LP_ONLINE'	=> $this->status->mas_get_config_online('dark1_mas_vf_lp_ol'),
 			// Search
-			'MAS_SH_FP_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_sh_fp_av'),
-			'MAS_SH_FP_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_sh_fp_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_SH_FP_ONLINE'	=> $this->mas_status->mas_get_config_online('dark1_mas_sh_fp_ol'),
-			'MAS_SH_LP_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_sh_lp_av'),
-			'MAS_SH_LP_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_sh_lp_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_SH_LP_ONLINE'	=> $this->mas_status->mas_get_config_online('dark1_mas_sh_lp_ol'),
-			'MAS_SH_UP_AVATAR'	=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_sh_up_av'),
-			'MAS_SH_UP_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_sh_up_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_SH_UP_ONLINE'	=> $this->mas_status->mas_get_config_online('dark1_mas_sh_up_ol'),
+			'MAS_SH_FP_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_sh_fp_av'),
+			'MAS_SH_FP_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_sh_fp_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_SH_FP_ONLINE'	=> $this->status->mas_get_config_online('dark1_mas_sh_fp_ol'),
+			'MAS_SH_LP_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_sh_lp_av'),
+			'MAS_SH_LP_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_sh_lp_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_SH_LP_ONLINE'	=> $this->status->mas_get_config_online('dark1_mas_sh_lp_ol'),
+			'MAS_SH_UP_AVATAR'	=> $this->avatar->mas_get_config_avatar('dark1_mas_sh_up_av'),
+			'MAS_SH_UP_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_sh_up_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_SH_UP_ONLINE'	=> $this->status->mas_get_config_online('dark1_mas_sh_up_ol'),
 			// Review
-			'MAS_RV_AVATAR'		=> $this->mas_avatar->mas_get_config_avatar('dark1_mas_rv_av'),
-			'MAS_RV_AV_SIZE'	=> $this->mas_avatar->mas_get_config_avatar_size('dark1_mas_rv_av_sz', mas_avatar::AV_DEF_SZ_SML, mas_avatar::AV_MAX_SZ_SML),
-			'MAS_RV_ONLINE'		=> $this->mas_status->mas_get_config_online('dark1_mas_rv_ol'),
+			'MAS_RV_AVATAR'		=> $this->avatar->mas_get_config_avatar('dark1_mas_rv_av'),
+			'MAS_RV_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_rv_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_RV_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_rv_ol'),
+			// Friendlist
+			'MAS_FL_AVATAR'		=> $this->avatar->mas_get_config_avatar('dark1_mas_fl_av'),
+			'MAS_FL_AV_SIZE'	=> $this->avatar->mas_get_config_avatar_size('dark1_mas_fl_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML),
+			'MAS_FL_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_fl_ol'),
 			// No Avatar IMG
-			'MAS_NO_AVATAR_IMG'	=> $this->mas_avatar->mas_get_no_avatar_img(),
+			'MAS_NO_AVATAR_IMG'	=> $this->avatar->mas_get_no_avatar_img(),
 		));
 	}
 
