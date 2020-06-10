@@ -72,7 +72,7 @@ class memberlist_listener implements EventSubscriberInterface
 
 		// Add Query Details
 		$sql_ary['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '')['SELECT'];
-		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', '', '', 'u.user_id');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', '', '', 'u.user_id, g.group_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
