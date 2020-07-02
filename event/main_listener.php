@@ -17,6 +17,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use dark1\memberavatarstatus\core\avatar;
 use dark1\memberavatarstatus\core\status;
 use phpbb\template\template;
+use phpbb\language\language;
 
 /**
  * Member Avatar & Status Event listener.
@@ -32,19 +33,24 @@ class main_listener implements EventSubscriberInterface
 	/** @var \phpbb\template\template */
 	protected $template;
 
+	/** @var \phpbb\language\language */
+	protected $language;
+
 	/**
 	 * Constructor for listener
 	 *
 	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
 	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
 	 * @param \phpbb\template\template					$template	phpBB template
+	 * @param \phpbb\language\language					$language	phpBB language
 	 * @access public
 	 */
-	public function __construct(avatar $avatar, status $status, template $template)
+	public function __construct(avatar $avatar, status $status, template $template, language $language)
 	{
 		$this->avatar		= $avatar;
 		$this->status		= $status;
 		$this->template		= $template;
+		$this->language		= $language;
 	}
 
 	/**
@@ -57,7 +63,7 @@ class main_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'			=> 'mas_load_lang',
+			'core.user_setup_after'		=> 'mas_load_lang',
 			'core.page_header_after'	=> 'mas_header',
 		);
 	}
@@ -67,18 +73,12 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * MAS Load language files during user setup after
 	 *
-	 * @param object $event The event object
 	 * @return null
 	 * @access public
 	 */
-	public function mas_load_lang($event)
+	public function mas_load_lang()
 	{
-		$lang_set_ext = $event['lang_set_ext'];
-		$lang_set_ext[] = array(
-			'ext_name' => 'dark1/memberavatarstatus',
-			'lang_set' => 'lang_mas',
-		);
-		$event['lang_set_ext'] = $lang_set_ext;
+		$this->language->add_lang('lang_mas', 'dark1/memberavatarstatus');
 	}
 
 
@@ -86,11 +86,10 @@ class main_listener implements EventSubscriberInterface
 	/**
 	 * MAS Header setup during page header after
 	 *
-	 * @param object $event The event object
 	 * @return null
 	 * @access public
 	 */
-	public function mas_header($event)
+	public function mas_header()
 	{
 		$ext_name_mas = 'Member Avatar & Status [MAS]';
 		$ext_by_dark1 = 'Dark❶ [dark1]';
