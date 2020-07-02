@@ -15,21 +15,20 @@ namespace dark1\memberavatarstatus\migrations;
  */
 use phpbb\db\migration\migration;
 
-class mas_0000_main extends migration
+class mas_0008 extends migration
 {
 	static public function depends_on()
 	{
-		return array('\phpbb\db\migration\data\v320\v320');
+		return array('\dark1\memberavatarstatus\migrations\mas_0007_friendlist');
 	}
 
 	public function update_data()
 	{
 		return array(
-			// Module Add
-			array('module.add', array(
-				'acp',
-				'ACP_CAT_DOT_MODS',
-				'ACP_MAS_TITLE'
+			// Remove Config if Exist
+			array('if', array(
+				isset($this->config['dark1_mas']),
+				array('config.remove', array('dark1_mas')),
 			)),
 		);
 	}

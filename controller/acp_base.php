@@ -118,7 +118,6 @@ class acp_base
 		// Set u_action in the template
 		$this->template->assign_vars([
 			'U_ACTION'		=> $this->u_action,
-			'MAS_MODE'		=> $this->mode,
 			'MAS_EXT_MODE'	=> $this->language->lang('ACP_MAS_' . strtoupper($this->mode)),
 			'MAS_EXT_NAME'	=> $ext_name_mas,
 			'MAS_EXT_DEV'	=> $ext_by_dark1,

@@ -1,6 +1,5 @@
 {% INCLUDE 'overall_header.html' %}
 {% INCLUDECSS '@dark1_memberavatarstatus/mas_header.css' %}
-{% INCLUDEJS '@dark1_memberavatarstatus/mas_acp_script.js' %}
 
 <style>
 	.mas-status-dot.mas-color {
@@ -95,7 +94,7 @@
 		<fieldset class="submit-buttons">
 			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
 			&nbsp;&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" onclick="reset_avatar_size('div_dark1_mas_av_sz',{{ MAS_GN_AV_SIZE }})" />
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
 			{{ S_FORM_TOKEN }}
 		</fieldset>
 	</fieldset>

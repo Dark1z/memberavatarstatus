@@ -44,7 +44,7 @@
 				<div>{{ lang('ACP_MAS_AV_SZ_SML_EXPLAIN') }}</div>
 			</dt>
 			<dd>
-				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_rv_av_sz" value="{{ MAS_RV_AV_SIZE }}" oninput="sync_avatar_size('dark1_mas_rv_av_sz','div_dark1_mas_rv_av_sz')" id="dark1_mas_rv_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
+				<input type="number" min="9" max="99" size="3" maxlength="3" step="1" name="dark1_mas_rv_av_sz" value="{{ MAS_RV_AV_SIZE }}" oninput="mas_sync_av_size('dark1_mas_rv_av_sz','div_dark1_mas_rv_av_sz')" id="dark1_mas_rv_av_sz" />&nbsp;{{ lang('ACP_MAS_AV_SIZE_PX') }}
 				<br>
 				<br>
 				<div class="acp-mas-avatar-div-wrapper">
@@ -89,7 +89,7 @@
 		<fieldset class="submit-buttons">
 			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />
 			&nbsp;&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" onclick="reset_avatar_size('div_dark1_mas_rv_av_sz',{{ MAS_RV_AV_SIZE }})" />
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" onclick="mas_reset_av_size('div_dark1_mas_rv_av_sz',{{ MAS_RV_AV_SIZE }})" />
 			{{ S_FORM_TOKEN }}
 		</fieldset>
 	</fieldset>

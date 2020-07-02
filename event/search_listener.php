@@ -100,7 +100,7 @@ class search_listener implements EventSubscriberInterface
 		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
 		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
 		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
-		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', '');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_sh_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', 't.topic_id');
 
 		// Add to Event Array `sql_select` & `sql_from`
 		$temp_sql = $this->mas_convert_sql($sql_ary);

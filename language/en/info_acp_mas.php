@@ -45,7 +45,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_MAS_TITLE'				=> 'Member Avatar & Status [MAS]',
+	'ACP_MAS_TITLE'			=> 'Member Avatar & Status [MAS]',
 
 	// ACP MAS Modes
 	'ACP_MAS_MAIN'			=> 'MAS Overview',
