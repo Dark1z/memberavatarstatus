@@ -7,7 +7,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 ![Travis-CI](https://img.shields.io/badge/Travis-CI-8000FF.svg) : [![Build Status](https://travis-ci.com/dark-1/memberavatarstatus.svg?branch=master)](https://travis-ci.com/dark-1/memberavatarstatus)   
 ![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/build-status/master)   
 ![Actions-CI](https://img.shields.io/badge/Actions-CI-8000FF.svg) : [![Actions Status](https://github.com/dark-1/memberavatarstatus/workflows/Actions%20CI/badge.svg)](https://github.com/dark-1/memberavatarstatus/actions?workflow=Actions%20CI)   
-![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : [![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square) ![Github All Releases](https://img.shields.io/github/downloads/dark-1/memberavatarstatus/total.svg?style=flat-square) ![HitCount](http://hits.dwyl.io/dark-1/memberavatarstatus.svg)](https://github.com/dark-1/memberavatarstatus)   
+![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : [![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square)](https://github.com/dark-1/memberavatarstatus)   
    
    
 ## **Features:**   
@@ -32,6 +32,18 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 18. Currently there are 8 sections in ACP : *Overview* , *General* , *Memberlist* , *Viewonline* , *Viewforum* , *Search* , *Review* , *Friendlist* .   
 19. Display Overview of all Settings on One Page in ACP.   
 20. Display if phpBB's Avatar & Online Tracking is enabled or not in Overview Page in ACP.   
+   
+   
+## **Support for Extensions :**   
+   
+1. **Recent Topics :**   
+    1. phpBB CDB : [Recent Topics CDB](https://www.phpbb.com/customise/db/extension/recent_topics_2)   
+    2. GitHub : [Recent Topics Repository](https://github.com/Sajaki/RecentTopics)   
+    3. Changes required in *Recent Topics* to support MAS : [Recent Topics Changes](https://github.com/dark-1/RecentTopics/commit/53119f863367aedcf7d68ee042d75b52f3869c6e)   
+2. **Precise Similar Topics :**   
+    1. phpBB CDB : [Precise Similar Topics CDB](https://www.phpbb.com/customise/db/extension/precise_similar_topics)   
+    2. GitHub : [Precise Similar Topics Repository](https://github.com/VSEphpbb/similartopics)   
+    3. Changes required in *Precise Similar Topics* to support MAS : **None**   
    
    
 ## **ScreenShot:**   
@@ -121,6 +133,13 @@ Detailed phpBB standard Updation of Extensions here : [phpBB Extensions Updating
 7. D0Ne !!! EnJ0Y  😃   
    
 Detailed phpBB standard Uninstallation of Extensions here : [phpBB Extensions Removing](https://www.phpbb.com/extensions/installing/#removing)   
+   
+   
+## **Links :**   
+   
+**GitHub Repository** : [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
+**phpBB Customisation Database Extension** : [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status)   
+**For more Details Go Here** : [Member Avatar & Status [MAS]](https://dark-1.github.io/memberavatarstatus)   
    
    
 ## License GPLv2
