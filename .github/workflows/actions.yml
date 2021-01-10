@@ -10,7 +10,13 @@ on:
 jobs:
   check:
     name: Check
+    if: (!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]'))
     runs-on: ubuntu-latest
+    env:
+        PHPBB_BRANCH: 3.3.x                     # phpBB Branch
+        EXTNAME: dark1/memberavatarstatus       # CHANGE name of the extension HERE
+        SNIFF: 1                                # Should we run code sniffer on your code?
+        EPV: 1                                  # Should we run EPV (Extension Pre Validator) on your code?
 
     steps:
 
@@ -23,8 +29,6 @@ jobs:
           cp -R . ../tmp
 
     - name: Actions Setup - Clone phpBB
-      env:
-        PHPBB_BRANCH: 3.3.x                 # phpBB Branch
       run: |
           git clone --depth=1 git://github.com/phpbb/phpbb.git phpBB3 --branch=$PHPBB_BRANCH
 
@@ -37,25 +41,17 @@ jobs:
           cd ../../
 
     - name: Actions Setup - Copy from Temp Location
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
       run: |
           mkdir --parents phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
           cp -R ../tmp/* phpBB3/phpBB/ext/$EXTNAME/$EXTNAME
 
     - name: Actions Test - Code Sniffer
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
-        SNIFF: 1                            # Should we run code sniffer on your code?
       run: |
           cd phpBB3
           sh -c "if [ '$SNIFF' != '0' ]; then phpBB/vendor/bin/phpcs -s --extensions=php --standard=build/code_sniffer/ruleset-php-extensions.xml "--ignore=*/$EXTNAME/tests/*" "--ignore=*/$EXTNAME/vendor/*" "phpBB/ext/$EXTNAME"; fi"
           cd ../
 
     - name: Actions Test - EPV (Extension Pre Validator)
-      env:
-        EXTNAME: dark1/memberavatarstatus   # CHANGE name of the extension HERE
-        EPV: 1                              # Should we run EPV (Extension Pre Validator) on your code?
       run: |
           cd phpBB3
           sh -c "if [ '$EPV' != '0' ]; then phpBB/vendor/bin/EPV.php run --dir='phpBB/ext/$EXTNAME' --debug; fi"
