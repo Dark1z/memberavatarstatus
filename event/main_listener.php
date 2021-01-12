@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -62,10 +62,10 @@ class main_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.user_setup_after'		=> 'mas_load_lang',
 			'core.page_header_after'	=> 'mas_header',
-		);
+		];
 	}
 
 
@@ -95,7 +95,7 @@ class main_listener implements EventSubscriberInterface
 		$ext_by_dark1 = 'Dark❶ [dark1]';
 
 		// Assign template var's
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'MAS_EXT_NAME'		=> $ext_name_mas,
 			'MAS_EXT_DEV'		=> $ext_by_dark1,
 			// General
@@ -139,7 +139,7 @@ class main_listener implements EventSubscriberInterface
 			'MAS_FL_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_fl_ol'),
 			// No Avatar IMG
 			'MAS_NO_AVATAR_IMG'	=> $this->avatar->mas_get_no_avatar_img(),
-		));
+		]);
 	}
 
 }

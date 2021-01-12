@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  *
@@ -25,7 +25,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -44,7 +44,7 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MAS_TITLE'			=> 'Member Avatar & Status [MAS]',
 
 	// ACP MAS Modes
@@ -56,4 +56,4 @@ $lang = array_merge($lang, array(
 	'ACP_MAS_MODE_SEARCH'		=> 'Search Settings',
 	'ACP_MAS_MODE_REVIEW'		=> 'Review Settings',
 	'ACP_MAS_MODE_FRIENDLIST'	=> 'Friendlist Settings',
-));
+]);

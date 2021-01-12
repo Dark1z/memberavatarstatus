@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -50,11 +50,11 @@ class search_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.search_get_posts_data'					=> 'mas_search_posts_query',
 			'core.search_get_topic_data'					=> 'mas_search_topic_query',
 			'core.search_modify_tpl_ary'					=> 'mas_search_template',
-		);
+		];
 	}
 
 
@@ -91,10 +91,10 @@ class search_listener implements EventSubscriberInterface
 	public function mas_search_topic_query($event)
 	{
 		// Temp Array
-		$sql_ary = array(
+		$sql_ary = [
 			'SELECT'	=> '',
-			'LEFT_JOIN'	=> array(),
-		);
+			'LEFT_JOIN'	=> [],
+		];
 
 		// Add to Event Array `sql_select` & `sql_from`
 		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_sh_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
@@ -135,10 +135,10 @@ class search_listener implements EventSubscriberInterface
 			// Add Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(
 				$tpl_ary,
-				array(
+				[
 					'POST_AUTHOR_AVATAR_IMG'		=> $avatar,
 					'POST_AUTHOR_S_ONLINE'			=> $online,
-				)
+				]
 			);
 		}
 		else
@@ -154,12 +154,12 @@ class search_listener implements EventSubscriberInterface
 			// Add Both of Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge(
 				$tpl_ary,
-				array(
+				[
 					'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
 					'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
 					'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
 					'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
-				)
+				]
 			);
 		}
 
@@ -202,11 +202,11 @@ class search_listener implements EventSubscriberInterface
 			$sql_where = ' GROUP BY ' . $sql_ary['GROUP_BY'];
 		}
 
-		return array(
+		return [
 				'sql_select'	=> $sql_select,
 				'sql_from'		=> $sql_from,
 				'sql_where'		=> $sql_where,
-			);
+			];
 	}
 
 }

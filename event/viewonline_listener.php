@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -68,12 +68,12 @@ class viewonline_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.viewonline_modify_sql'					=> 'mas_viewonline_page_query',
 			'core.viewonline_modify_user_row'				=> 'mas_viewonline_page_template',
 			'core.obtain_users_online_string_sql'			=> 'mas_viewonline_stat_block_query',
 			'core.obtain_users_online_string_before_modify'	=> 'mas_viewonline_stat_block_template',
-		);
+		];
 	}
 
 
@@ -118,9 +118,9 @@ class viewonline_listener implements EventSubscriberInterface
 		// Add Avatar to template_row
 		$template_row = array_merge(
 			$template_row,
-			array(
+			[
 				'AVATAR_IMG'	=> $avatar,
-			)
+			]
 		);
 
 		// Assign template_row to event -> template_row

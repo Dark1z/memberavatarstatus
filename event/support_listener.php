@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -50,12 +50,12 @@ class support_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'paybas.recenttopics.sql_pull_topics_data'	=> 'mas_recenttopics_topic_query',
 			'paybas.recenttopics.modify_tpl_ary'		=> 'mas_recenttopics_topic_template',
 			'vse.similartopics.get_topic_data'			=> 'mas_similartopics_topic_query',
 			'vse.similartopics.modify_topicrow'			=> 'mas_similartopics_topic_template',
-		);
+		];
 	}
 
 
@@ -108,12 +108,12 @@ class support_listener implements EventSubscriberInterface
 		// Add Both of Avatar & Online Status to tpl_ary
 		$tpl_ary = array_merge(
 			$tpl_ary,
-			array(
+			[
 				'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
 				'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
 				'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
 				'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
-			)
+			]
 		);
 
 		// Assign tpl_ary to event -> tpl_ary
@@ -170,12 +170,12 @@ class support_listener implements EventSubscriberInterface
 		// Add Both of Avatar & Online Status to topic_row
 		$topic_row = array_merge(
 			$topic_row,
-			array(
+			[
 				'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
 				'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
 				'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
 				'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
-			)
+			]
 		);
 
 		// Assign topic_row to event -> topic_row

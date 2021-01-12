@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -17,16 +17,16 @@ class memberlist_info
 {
 	public function module()
 	{
-		return array(
+		return [
 			'filename'	=> '\dark1\memberavatarstatus\acp\memberlist_module',
 			'title'		=> 'ACP_MAS_TITLE',
-			'modes'		=> array(
-				'memberlist'	=> array(
+			'modes'		=> [
+				'memberlist'	=> [
 						'title'	=> 'ACP_MAS_MODE_MEMBERLIST',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
-						'cat'	=> array('ACP_MAS_TITLE')
-				),
-			),
-		);
+						'cat'	=> ['ACP_MAS_TITLE']
+				],
+			],
+		];
 	}
 }

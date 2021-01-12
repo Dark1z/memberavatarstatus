@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -50,10 +50,10 @@ class memberlist_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.memberlist_team_modify_query'				=> 'mas_memberlist_team_query',
 			'core.memberlist_team_modify_template_vars'		=> 'mas_memberlist_team_template',
-		);
+		];
 	}
 
 
@@ -102,10 +102,10 @@ class memberlist_listener implements EventSubscriberInterface
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(
 			$template_vars,
-			array(
+			[
 				'AVATAR_IMG'	=> $avatar,
 				'S_ONLINE'		=> $online,
-			)
+			]
 		);
 
 		// Assign template_vars to event -> template_vars

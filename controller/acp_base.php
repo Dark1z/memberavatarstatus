@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -149,7 +149,7 @@ class acp_base
 	protected function success_form_on_submit()
 	{
 		// Add option settings change action to the admin log
-		$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'ACP_MAS_LOG_SET_SAV', time(), array($this->language->lang('ACP_MAS_MODE_' . strtoupper($this->mode))));
+		$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'ACP_MAS_LOG_SET_SAV', time(), [$this->language->lang('ACP_MAS_MODE_' . strtoupper($this->mode))]);
 
 		// Option settings have been updated and logged
 		// Confirm this to the user and provide link back to previous page

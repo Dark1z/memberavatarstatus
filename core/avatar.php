@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -74,12 +74,12 @@ class avatar
 	 */
 	public function mas_get_no_avatar_img()
 	{
-		$avatar_row = array(
+		$avatar_row = [
 				'avatar'		=> append_sid($this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png'),
 				'avatar_type'	=> AVATAR_REMOTE,
 				'avatar_width'	=> self::NO_AVATAR_SIZE,
 				'avatar_height'	=> self::NO_AVATAR_SIZE,
-			);
+			];
 		return str_replace(
 			'" />',
 			'" title="' . $this->language->lang('MAS_NO_AVATAR_TEXT') . '" />',
@@ -124,10 +124,10 @@ class avatar
 		if ($this->mas_get_config_avatar($config_key))
 		{
 			$sql_ary['SELECT'] .= ', ' . $sql_obj . '.user_avatar as ' . $prefix . 'avatar, ' . $sql_obj . '.user_avatar_type as ' . $prefix . 'avatar_type, ' . $sql_obj . '.user_avatar_width as ' . $prefix . 'avatar_width, ' . $sql_obj . '.user_avatar_height as ' . $prefix . 'avatar_height';
-			$sql_ary['LEFT_JOIN'][] = array(
-					'FROM'	=> array(USERS_TABLE => $sql_obj),
+			$sql_ary['LEFT_JOIN'][] = [
+					'FROM'	=> [USERS_TABLE => $sql_obj],
 					'ON'	=> $sql_uid . ' = ' . $sql_obj . '.user_id' . $lj_on_ex,
-				);
+				];
 		}
 
 		return $sql_ary;
@@ -199,12 +199,12 @@ class avatar
 		if ($this->mas_get_config_avatar($config_key))
 		{
 			// $avatar_row
-			$avatar_row = array(
+			$avatar_row = [
 					'avatar'		=> $row[$prefix . 'avatar'],
 					'avatar_type'	=> $row[$prefix . 'avatar_type'],
 					'avatar_width'	=> $row[$prefix . 'avatar_width'],
 					'avatar_height'	=> $row[$prefix . 'avatar_height'],
-				);
+				];
 			$avatar = phpbb_get_user_avatar($avatar_row);
 		}
 

@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -128,10 +128,10 @@ class status
 		if ($this->mas_get_config_online($config_key))
 		{
 			$sql_ary['SELECT'] .= ', MAX(' . $sql_obj . '.session_time) as ' . $prefix . 'session_time, MIN(' . $sql_obj . '.session_viewonline) as ' . $prefix . 'session_viewonline';
-			$sql_ary['LEFT_JOIN'][] = array(
-					'FROM'	=> array(SESSIONS_TABLE => $sql_obj),
+			$sql_ary['LEFT_JOIN'][] = [
+					'FROM'	=> [SESSIONS_TABLE => $sql_obj],
 					'ON'	=> $sql_uid . ' = ' . $sql_obj . '.session_user_id AND ' . $sql_obj . '.session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND ' . $sql_obj . '.session_user_id <> ' . ANONYMOUS . $lj_on_ex,
-				);
+				];
 
 			if ($group_by != '')
 			{
@@ -182,10 +182,10 @@ class status
 
 		if ($this->mas_get_config_online($config_key))
 		{
-			$online_row = array(
+			$online_row = [
 					'session_time'			=> $row[$prefix . 'session_time'],
 					'session_viewonline'	=> $row[$prefix . 'session_viewonline'],
-				);
+				];
 			$online = $this->mas_get_online_status($online_row);
 		}
 

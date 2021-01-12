@@ -3,7 +3,7 @@
  *
  * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
  *
- * @copyright (c) 2018-2020, Dark❶ [dark1]
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
  * @license GNU General Public License, version 2 (GPL-2.0-only)
  *
  */
@@ -50,14 +50,14 @@ class review_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.topic_review_modify_sql_ary'				=> 'mas_posting_topic_review_query',
 			'core.topic_review_modify_row'					=> 'mas_posting_topic_review_template',
 			'core.message_history_modify_sql_ary'			=> 'mas_pm_history_review_query',
 			'core.message_history_modify_template_vars'		=> 'mas_pm_history_review_template',
 			'core.mcp_topic_modify_sql_ary'					=> 'mas_mcp_topic_review_query',
 			'core.mcp_topic_review_modify_row'				=> 'mas_mcp_topic_review_template',
-		);
+		];
 	}
 
 
@@ -107,10 +107,10 @@ class review_listener implements EventSubscriberInterface
 		// Add Avatar & Online Status to post_row
 		$post_row = array_merge(
 			$post_row,
-			array(
+			[
 				'AVATAR_IMG'	=> $avatar,
 				'S_ONLINE'		=> $online,
-			)
+			]
 		);
 
 		// Assign post_row to event -> post_row
@@ -162,10 +162,10 @@ class review_listener implements EventSubscriberInterface
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge(
 			$template_vars,
-			array(
+			[
 				'AVATAR_IMG'	=> $avatar,
 				'S_ONLINE'		=> $online,
-			)
+			]
 		);
 
 		// Assign template_vars to event -> template_vars
@@ -219,10 +219,10 @@ class review_listener implements EventSubscriberInterface
 		// Add Avatar & Online Status to post_row
 		$post_row = array_merge(
 			$post_row,
-			array(
+			[
 				'AVATAR_IMG'	=> $avatar,
 				'S_ONLINE'		=> $online,
-			)
+			]
 		);
 
 		// Assign post_row to event -> post_row
