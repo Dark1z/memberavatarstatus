@@ -11,7 +11,7 @@
 namespace dark1\memberavatarstatus\acp;
 
 /**
- * Member Avatar & Status ACP module info.
+ * Member Avatar & Status [MAS] ACP module info.
  */
 class viewonline_info
 {

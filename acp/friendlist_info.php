@@ -13,16 +13,16 @@ namespace dark1\memberavatarstatus\acp;
 /**
  * Member Avatar & Status [MAS] ACP module info.
  */
-class main_info
+class friendlist_info
 {
 	public function module()
 	{
 		return array(
-			'filename'	=> '\dark1\memberavatarstatus\acp\main_module',
+			'filename'	=> '\dark1\memberavatarstatus\acp\friendlist_module',
 			'title'		=> 'ACP_MAS_TITLE',
 			'modes'		=> array(
-				'main'	=> array(
-						'title'	=> 'ACP_MAS_MODE_MAIN',
+				'friendlist'	=> array(
+						'title'	=> 'ACP_MAS_MODE_FRIENDLIST',
 						'auth'	=> 'ext_dark1/memberavatarstatus && acl_a_board',
 						'cat'	=> array('ACP_MAS_TITLE')
 				),

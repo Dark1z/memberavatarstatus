@@ -13,7 +13,7 @@ namespace dark1\memberavatarstatus\acp;
 /**
  * Member Avatar & Status [MAS] ACP module.
  */
-class viewonline_module extends base_module
+class friendlist_module extends base_module
 {
 	/**
 	 * ACP Main

@@ -1,0 +1,10 @@
+{% if MAS_FL_AVATAR or MAS_FL_ONLINE %}
+		</div>
+		{% if MAS_FL_ONLINE %}
+			<div class="mas-wrap-status{% if friends_offline.S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot mas-color" title="{% if friends_offline.S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+				</span>
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

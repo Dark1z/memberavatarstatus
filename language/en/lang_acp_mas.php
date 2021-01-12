@@ -102,4 +102,7 @@ $lang = array_merge($lang, array(
 	// Review
 	'ACP_MAS_RV_AV_EXPLAIN'		=> 'Enables the Avatar in Review Block,<br>That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br>Default : No',
 	'ACP_MAS_RV_OL_EXPLAIN'		=> 'Enables the Online Status in Review Block,<br>That is in “Posting Topic Review” , “MCP Topic Review” & “PM History Review” Page.<br>Default : No',
+	// Friendlist
+	'ACP_MAS_FL_AV_EXPLAIN'		=> 'Enables the Avatar in Friendlist,<br>That is in All UCP Pages.<br>Default : No',
+	'ACP_MAS_FL_OL_EXPLAIN'		=> 'Enables the Online Status in Friendlist,<br>That is in All UCP Pages.<br>Default : No',
 ));

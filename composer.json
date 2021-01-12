@@ -3,16 +3,25 @@
 	"type": "phpbb-extension",
 	"description": "Member Avatar & Status",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
-	"version": "3.1.2",
-	"time": "2020-02-20 01:01:01",
-	"keywords": ["phpbb", "extension", "member", "avatar", "online", "status"],
+	"version": "3.2.2",
+	"time": "2021-01-21",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"member",
+		"avatar",
+		"online",
+		"status"
+	],
 	"license": "GPL-2.0-only",
-	"authors": [ {
-		"name": "Dark❶ [dark1]",
-		"email": "phpbb@dark1.tech",
-		"homepage": "https://dark1.tech",
-		"role": "Lead Developer"
-	} ],
+	"authors": [
+		{
+			"name": "Dark❶ [dark1]",
+			"email": "phpbb@dark1.tech",
+			"homepage": "https://dark1.tech",
+			"role": "Lead Developer"
+		}
+	],
 	"require": {
 		"php": ">=5.4.7",
 		"composer/installers": "~1.0"
@@ -20,7 +29,7 @@
 	"extra": {
 		"display-name": "Member Avatar & Status",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.8"
+			"phpbb/phpbb": "~3.2.10 || >=3.3.1"
 		},
 		"version-check": {
 			"host": "www.phpbb.com",
@@ -35,7 +44,7 @@
 		"forum": "https://phpbb.com/customise/db/extension/member_avatar_status/support",
 		"wiki": "https://github.com/dark-1/memberavatarstatus/wiki",
 		"source": "https://github.com/dark-1/memberavatarstatus",
-		"docs": "https://dark-1.github.io/memberavatarstatus",
-		"chat": "https://phpbb.com/community/ucp.php?i=pm&mode=compose&u=1761516"
+		"docs": "https://github.dark1.tech/memberavatarstatus",
+		"chat": "https://github.com/dark-1/memberavatarstatus/discussions"
 	}
 }
