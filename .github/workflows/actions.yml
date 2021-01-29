@@ -41,7 +41,7 @@ jobs:
             - name: Checkout extension
               uses: actions/checkout@v2
               with:
-                  path: phpBB3/phpBB/ext/${{ env.EXTNAME }}/${{ env.EXTNAME }}
+                  path: phpBB3/phpBB/ext/${{ env.EXTNAME }}
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
