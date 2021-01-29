@@ -41,7 +41,7 @@ jobs:
             - name: Checkout extension
               uses: actions/checkout@v2
               with:
-                  path: phpBB3/phpBB/ext/${{ env.EXTNAME }}
+                  path: phpBB3/phpBB/ext/${{ env.EXTNAME }}/${{ env.EXTNAME }}
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -67,7 +67,7 @@ jobs:
               if: ${{ env.SNIFF != 0 }}
               env:
                   NOTESTS: '1'
-              run: .github/ext-sniff.sh $EXTNAME $NOTESTS
+              run: .github/ext-sniff.sh $EXTNAME/$EXTNAME $NOTESTS
               working-directory: ./phpBB3
 
             - name: Check image ICC profiles
@@ -77,7 +77,7 @@ jobs:
 
             - name: Check executable files
               if: ${{ env.EXECUTABLE_FILES != 0 }}
-              run: .github/ext-check-executable-files.sh ./ $EXTNAME
+              run: .github/ext-check-executable-files.sh ./ $EXTNAME/$EXTNAME
               working-directory: ./phpBB3
 
             - name: Run EPV
