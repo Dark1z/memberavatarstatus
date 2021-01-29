@@ -10,7 +10,15 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0001_memberlist extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+/**
+ * Migration stage 0001 : Memberlist
+ */
+class mas_0001_memberlist extends migration
 {
 	static public function depends_on()
 	{

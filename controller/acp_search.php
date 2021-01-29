@@ -26,22 +26,22 @@ use dark1\memberavatarstatus\core\avatar;
  */
 class acp_search extends acp_base
 {
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \dark1\memberavatarstatus\core\avatar*/
+	/** @var avatar*/
 	protected $avatar;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \phpbb\language\language					$language	Language object
-	 * @param \phpbb\log\log							$log		Log object
-	 * @param \phpbb\request\request					$request	Request object
-	 * @param \phpbb\template\template					$template	Template object
-	 * @param \phpbb\user								$user		User object
-	 * @param \phpbb\config\config						$config		Config object
-	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
+	 * @param language		$language	Language object
+	 * @param log			$log		Log object
+	 * @param request		$request	Request object
+	 * @param template		$template	Template object
+	 * @param user			$user		User object
+	 * @param config		$config		Config object
+	 * @param avatar		$avatar		dark1 avatar
 	 */
 	public function __construct(language $language, log $log, request $request, template $template, user $user, config $config, avatar $avatar)
 	{

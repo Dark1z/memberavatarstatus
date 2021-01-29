@@ -10,7 +10,15 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0005_review extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+/**
+ * Migration stage 0005 : Review
+ */
+class mas_0005_review extends migration
 {
 	static public function depends_on()
 	{

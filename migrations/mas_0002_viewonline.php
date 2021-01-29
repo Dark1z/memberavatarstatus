@@ -10,7 +10,15 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0002_viewonline extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+/**
+ * Migration stage 0002 : Viewonline
+ */
+class mas_0002_viewonline extends migration
 {
 	static public function depends_on()
 	{

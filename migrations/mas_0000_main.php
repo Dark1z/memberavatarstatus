@@ -10,7 +10,15 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0000_main extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+/**
+ * Migration stage 0000 : Main
+ */
+class mas_0000_main extends migration
 {
 	public function effectively_installed()
 	{

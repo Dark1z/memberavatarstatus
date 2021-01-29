@@ -21,13 +21,13 @@ use dark1\memberavatarstatus\core\avatar;
  */
 class friendlist_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\avatar*/
+	/** @var avatar*/
 	protected $avatar;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
+	 * @param avatar	$avatar		dark1 avatar
 	 * @access public
 	 */
 	public function __construct(avatar $avatar)

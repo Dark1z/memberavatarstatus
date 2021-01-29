@@ -27,23 +27,23 @@ class status
 	/** @var int Color Default Online */
 	const COL_DEF_ON = '00FF00';
 
-	/** @var \phpbb\auth\auth */
+	/** @var auth */
 	protected $auth;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
 	/**
 	 * Constructor for Member Avatar & Status Core Status Class.
 	 *
-	 * @param \phpbb\auth\auth				$auth				phpBB auth
-	 * @param \phpbb\config\config			$config				phpBB config
+	 * @param auth		$auth				phpBB auth
+	 * @param config	$config				phpBB config
 	 * @access public
 	 */
 	public function __construct(auth $auth, config $config)
 	{
-		$this->auth				= $auth;
-		$this->config			= $config;
+		$this->auth		= $auth;
+		$this->config	= $config;
 	}
 
 

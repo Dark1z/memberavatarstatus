@@ -24,19 +24,19 @@ use phpbb\user;
  */
 class acp_base
 {
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
-	/** @var \phpbb\log\log */
+	/** @var log */
 	protected $log;
 
-	/** @var \phpbb\request\request */
+	/** @var request */
 	protected $request;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
 	/** @var string The module ID */
@@ -51,11 +51,11 @@ class acp_base
 	/**
 	 * Constructor.
 	 *
-	 * @param \phpbb\language\language				$language		Language object
-	 * @param \phpbb\log\log						$log			Log object
-	 * @param \phpbb\request\request				$request		Request object
-	 * @param \phpbb\template\template				$template		Template object
-	 * @param \phpbb\user							$user			User object
+	 * @param language		$language		Language object
+	 * @param log			$log			Log object
+	 * @param request		$request		Request object
+	 * @param template		$template		Template object
+	 * @param user			$user			User object
 	 */
 	public function __construct(language $language, log $log, request $request, template $template, user $user)
 	{

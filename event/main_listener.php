@@ -24,25 +24,25 @@ use phpbb\language\language;
  */
 class main_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\avatar*/
+	/** @var avatar*/
 	protected $avatar;
 
-	/** @var \dark1\memberavatarstatus\core\status*/
+	/** @var status*/
 	protected $status;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
-	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
-	 * @param \phpbb\template\template					$template	phpBB template
-	 * @param \phpbb\language\language					$language	phpBB language
+	 * @param avatar		$avatar		dark1 avatar
+	 * @param status		$status		dark1 status
+	 * @param template		$template	phpBB template
+	 * @param language		$language	phpBB language
 	 * @access public
 	 */
 	public function __construct(avatar $avatar, status $status, template $template, language $language)

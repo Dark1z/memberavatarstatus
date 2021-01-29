@@ -25,29 +25,29 @@ use phpbb\language\language;
  */
 class viewonline_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\avatar*/
+	/** @var avatar*/
 	protected $avatar;
 
-	/** @var \phpbb\auth\auth */
+	/** @var auth */
 	protected $auth;
 
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\avatar			$avatar		dark1 avatar
-	 * @param \phpbb\auth\auth								$auth		phpBB auth
-	 * @param \phpbb\user									$user		phpBB user
-	 * @param \phpbb\config\config							$config		phpBB config
-	 * @param \phpbb\language\language						$language	phpBB language
+	 * @param avatar		$avatar		dark1 avatar
+	 * @param auth			$auth		phpBB auth
+	 * @param user			$user		phpBB user
+	 * @param config		$config		phpBB config
+	 * @param language		$language	phpBB language
 	 * @access public
 	 */
 	public function __construct(avatar $avatar, auth $auth, user $user, config $config, language $language)

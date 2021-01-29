@@ -22,17 +22,17 @@ use dark1\memberavatarstatus\core\status;
  */
 class viewforum_listener implements EventSubscriberInterface
 {
-	/** @var \dark1\memberavatarstatus\core\avatar*/
+	/** @var avatar*/
 	protected $avatar;
 
-	/** @var \dark1\memberavatarstatus\core\status*/
+	/** @var status*/
 	protected $status;
 
 	/**
 	 * Constructor for listener
 	 *
-	 * @param \dark1\memberavatarstatus\core\avatar		$avatar		dark1 avatar
-	 * @param \dark1\memberavatarstatus\core\status		$status		dark1 status
+	 * @param avatar	$avatar		dark1 avatar
+	 * @param status	$status		dark1 status
 	 * @access public
 	 */
 	public function __construct(avatar $avatar, status $status)

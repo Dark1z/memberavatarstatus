@@ -10,7 +10,15 @@
 
 namespace dark1\memberavatarstatus\migrations;
 
-class mas_0003_viewforum extends \phpbb\db\migration\migration
+/**
+ * @ignore
+ */
+use phpbb\db\migration\migration;
+
+/**
+ * Migration stage 0003 : Viewforum
+ */
+class mas_0003_viewforum extends migration
 {
 	static public function depends_on()
 	{

@@ -15,6 +15,9 @@ namespace dark1\memberavatarstatus\migrations;
  */
 use phpbb\db\migration\migration;
 
+/**
+ * Migration stage 0007 : Friendlist
+ */
 class mas_0007_friendlist extends migration
 {
 	static public function depends_on()

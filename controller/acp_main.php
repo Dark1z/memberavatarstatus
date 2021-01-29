@@ -25,7 +25,7 @@ use phpbb\config\config;
  */
 class acp_main extends acp_base
 {
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
 	/** @var string phpBB root path */
@@ -40,15 +40,15 @@ class acp_main extends acp_base
 	/**
 	 * Constructor.
 	 *
-	 * @param \phpbb\language\language				$language					Language object
-	 * @param \phpbb\log\log						$log						Log object
-	 * @param \phpbb\request\request				$request					Request object
-	 * @param \phpbb\template\template				$template					Template object
-	 * @param \phpbb\user							$user						User object
-	 * @param \phpbb\config\config					$config						Config object
-	 * @param string								$phpbb_root_path			phpBB root path
-	 * @param string								$phpbb_adm_relative_path	phpBB adm relative path
-	 * @param string								$phpEx						phpBB phpEx
+	 * @param language		$language					Language object
+	 * @param log			$log						Log object
+	 * @param request		$request					Request object
+	 * @param template		$template					Template object
+	 * @param user			$user						User object
+	 * @param config		$config						Config object
+	 * @param string		$phpbb_root_path			phpBB root path
+	 * @param string		$phpbb_adm_relative_path	phpBB adm relative path
+	 * @param string		$phpEx						phpBB phpEx
 	 */
 	public function __construct(language $language, log $log, request $request, template $template, user $user, config $config, $phpbb_root_path, $phpbb_adm_relative_path, $phpEx)
 	{

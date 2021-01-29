@@ -39,10 +39,10 @@ class avatar
 	/** @var int Avatar Maximum Size Big */
 	const AV_MAX_SZ_BIG = 999;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
 	/** @var string phpBB root path */
@@ -51,9 +51,9 @@ class avatar
 	/**
 	 * Constructor for Member Avatar & Status Core Avatar Class.
 	 *
-	 * @param \phpbb\config\config			$config				phpBB config
-	 * @param \phpbb\language\language		$language			phpBB language
-	 * @param string						$phpbb_root_path	phpBB root path
+	 * @param config		$config				phpBB config
+	 * @param language		$language			phpBB language
+	 * @param string		$phpbb_root_path	phpBB root path
 	 * @access public
 	 */
 	public function __construct(config $config, language $language, $phpbb_root_path)
