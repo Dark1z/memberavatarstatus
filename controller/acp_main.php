@@ -34,8 +34,8 @@ class acp_main extends acp_base
 	/** @var string phpBB adm relative path */
 	protected $phpbb_adm_relative_path;
 
-	/** @var string phpBB phpEx */
-	protected $phpEx;
+	/** @var string phpBB php ext */
+	protected $php_ext;
 
 	/**
 	 * Constructor.
@@ -48,16 +48,16 @@ class acp_main extends acp_base
 	 * @param config		$config						Config object
 	 * @param string		$phpbb_root_path			phpBB root path
 	 * @param string		$phpbb_adm_relative_path	phpBB adm relative path
-	 * @param string		$phpEx						phpBB phpEx
+	 * @param string		$php_ext					phpBB php ext
 	 */
-	public function __construct(language $language, log $log, request $request, template $template, user $user, config $config, $phpbb_root_path, $phpbb_adm_relative_path, $phpEx)
+	public function __construct(language $language, log $log, request $request, template $template, user $user, config $config, $phpbb_root_path, $phpbb_adm_relative_path, $php_ext)
 	{
 		parent::__construct($language, $log, $request, $template, $user);
 
 		$this->config					= $config;
 		$this->phpbb_root_path			= $phpbb_root_path;
 		$this->phpbb_adm_relative_path	= $phpbb_adm_relative_path;
-		$this->phpEx					= $phpEx;
+		$this->php_ext					= $php_ext;
 	}
 
 	/**
@@ -78,7 +78,7 @@ class acp_main extends acp_base
 			$this->success_form_on_submit();
 		}
 
-		$main_adm_path = $this->phpbb_root_path . $this->phpbb_adm_relative_path . 'index.' . $this->phpEx;
+		$main_adm_path = $this->phpbb_root_path . $this->phpbb_adm_relative_path . 'index.' . $this->php_ext;
 
 		// Set output variables for display in the template
 		$this->template->assign_vars([

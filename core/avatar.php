@@ -75,11 +75,11 @@ class avatar
 	public function mas_get_no_avatar_img()
 	{
 		$avatar_row = [
-				'avatar'		=> append_sid($this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png'),
-				'avatar_type'	=> AVATAR_REMOTE,
-				'avatar_width'	=> self::NO_AVATAR_SIZE,
-				'avatar_height'	=> self::NO_AVATAR_SIZE,
-			];
+			'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
+			'avatar_type'	=> AVATAR_REMOTE,
+			'avatar_width'	=> self::NO_AVATAR_SIZE,
+			'avatar_height'	=> self::NO_AVATAR_SIZE,
+		];
 		return str_replace(
 			'" />',
 			'" title="' . $this->language->lang('MAS_NO_AVATAR_TEXT') . '" />',
