@@ -116,12 +116,9 @@ class viewonline_listener implements EventSubscriberInterface
 		$avatar = $this->avatar->mas_get_avatar('dark1_mas_vo_pg', 'user', $row);
 
 		// Add Avatar to template_row
-		$template_row = array_merge(
-			$template_row,
-			[
-				'AVATAR_IMG'	=> $avatar,
-			]
-		);
+		$template_row = array_merge($template_row, [
+			'AVATAR_IMG'	=> $avatar,
+		]);
 
 		// Assign template_row to event -> template_row
 		$event['template_row'] = $template_row;
@@ -161,15 +158,15 @@ class viewonline_listener implements EventSubscriberInterface
 	{
 		// Get Event Array `rowset` , `online_users` & `user_online_link`
 		$rowset = $event['rowset'];
-		$online_users = $event['online_users'];
+		$hidden_users = $event['online_users']['hidden_users'];
 		$user_online_link = $event['user_online_link'];
 
 		if ($this->avatar->mas_get_config_avatar('dark1_mas_vo_sb_av'))
 		{
 			foreach ($rowset as $row)
 			{
-				// Add avatar only for logged in User and not for Hidden User
-				if ($row['user_id'] != ANONYMOUS && (!isset($online_users['hidden_users'][$row['user_id']]) || $this->auth->acl_get('u_viewonline') || $row['user_id'] === $this->user->data['user_id']))
+				// Add avatar only for logged in User and not Hidden User
+				if ($this->mas_viewonline_user_login($row['user_id'], $hidden_users))
 				{
 					// Get Avatar
 					$avatar = $this->avatar->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
@@ -189,6 +186,21 @@ class viewonline_listener implements EventSubscriberInterface
 
 
 	/**
+	 * MAS ViewOnline Check if User Login & not Hidden
+	 *
+	 * @param int $user_id takes User ID
+	 * @param array $hidden_users is Hidden Users
+	 * @return bool is User Login & not Hidden
+	 * @access private
+	 */
+	private function mas_viewonline_user_login($user_id, $hidden_users)
+	{
+		return (bool) $user_id != ANONYMOUS && (!isset($hidden_users[$user_id]) || $this->auth->acl_get('u_viewonline') || $user_id === $this->user->data['user_id']);
+	}
+
+
+
+	/**
 	 * MAS ViewOnline UserName Wrap
 	 *
 	 * @param string $username takes UserName
@@ -203,11 +215,10 @@ class viewonline_listener implements EventSubscriberInterface
 		{
 			$avatar_size = (int) $this->config[$config_key . '_av_sz'];
 			$avatar = !empty($avatar) ? $avatar : $this->avatar->mas_get_no_avatar_img();
-			$wrap = '<div class="mas-wrap">' .
-						'<div class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">' . $avatar . '</div>' .
-						'<div class="mas-username">%user_name%</div>' .
-					'</div>';
-			$username = str_replace(['<div', '</div>', '%user_name%'], ['<span', '</span>', $username], $wrap);
+			$username = '<span class="mas-wrap">' .
+							'<span class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">' . $avatar . '</span>' .
+							'<span class="mas-username">' . $username . '</span>' .
+						'</span>';
 		}
 		return $username;
 	}

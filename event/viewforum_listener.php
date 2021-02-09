@@ -140,13 +140,10 @@ class viewforum_listener implements EventSubscriberInterface
 		$online = $this->status->mas_get_online('dark1_mas_vf_lp', 'forum_last_poster', $row);
 
 		// Add Avatar & Online Status to forum_row
-		$forum_row = array_merge(
-			$forum_row,
-			[
-				'LAST_POSTER_AVATAR_IMG'	=> $avatar,
-				'LAST_POSTER_S_ONLINE'		=> $online,
-			]
-		);
+		$forum_row = array_merge($forum_row, [
+			'LAST_POSTER_AVATAR_IMG'	=> $avatar,
+			'LAST_POSTER_S_ONLINE'		=> $online,
+		]);
 
 		// Assign forum_row to event -> forum_row
 		$event['forum_row'] = $forum_row;
@@ -224,15 +221,12 @@ class viewforum_listener implements EventSubscriberInterface
 		$online_last_poster = $this->status->mas_get_online('dark1_mas_vf_lp', 'topic_last_poster', $row);
 
 		// Add Both of Avatar & Online Status to topic_row
-		$topic_row = array_merge(
-			$topic_row,
-			[
-				'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
-				'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
-				'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
-				'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
-			]
-		);
+		$topic_row = array_merge($topic_row, [
+			'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
+			'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
+			'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
+			'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
+		]);
 
 		// Assign topic_row to event -> topic_row
 		$event['topic_row'] = $topic_row;

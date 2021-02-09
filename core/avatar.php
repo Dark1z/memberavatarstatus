@@ -125,9 +125,9 @@ class avatar
 		{
 			$sql_ary['SELECT'] .= ', ' . $sql_obj . '.user_avatar as ' . $prefix . 'avatar, ' . $sql_obj . '.user_avatar_type as ' . $prefix . 'avatar_type, ' . $sql_obj . '.user_avatar_width as ' . $prefix . 'avatar_width, ' . $sql_obj . '.user_avatar_height as ' . $prefix . 'avatar_height';
 			$sql_ary['LEFT_JOIN'][] = [
-					'FROM'	=> [USERS_TABLE => $sql_obj],
-					'ON'	=> $sql_uid . ' = ' . $sql_obj . '.user_id' . $lj_on_ex,
-				];
+				'FROM'	=> [USERS_TABLE => $sql_obj],
+				'ON'	=> $sql_uid . ' = ' . $sql_obj . '.user_id' . $lj_on_ex,
+			];
 		}
 
 		return $sql_ary;
@@ -200,11 +200,11 @@ class avatar
 		{
 			// $avatar_row
 			$avatar_row = [
-					'avatar'		=> $row[$prefix . 'avatar'],
-					'avatar_type'	=> $row[$prefix . 'avatar_type'],
-					'avatar_width'	=> $row[$prefix . 'avatar_width'],
-					'avatar_height'	=> $row[$prefix . 'avatar_height'],
-				];
+				'avatar'		=> $row[$prefix . 'avatar'],
+				'avatar_type'	=> $row[$prefix . 'avatar_type'],
+				'avatar_width'	=> $row[$prefix . 'avatar_width'],
+				'avatar_height'	=> $row[$prefix . 'avatar_height'],
+			];
 			$avatar = phpbb_get_user_avatar($avatar_row);
 		}
 

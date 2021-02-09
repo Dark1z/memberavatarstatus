@@ -133,13 +133,10 @@ class search_listener implements EventSubscriberInterface
 			$online = $this->status->mas_get_online('dark1_mas_sh_up', '', $row);
 
 			// Add Avatar & Online Status to tpl_ary
-			$tpl_ary = array_merge(
-				$tpl_ary,
-				[
-					'POST_AUTHOR_AVATAR_IMG'		=> $avatar,
-					'POST_AUTHOR_S_ONLINE'			=> $online,
-				]
-			);
+			$tpl_ary = array_merge($tpl_ary, [
+				'POST_AUTHOR_AVATAR_IMG'		=> $avatar,
+				'POST_AUTHOR_S_ONLINE'			=> $online,
+			]);
 		}
 		else
 		{
@@ -152,15 +149,12 @@ class search_listener implements EventSubscriberInterface
 			$online_last_poster = $this->status->mas_get_online('dark1_mas_sh_lp', 'topic_last_poster', $row);
 
 			// Add Both of Avatar & Online Status to tpl_ary
-			$tpl_ary = array_merge(
-				$tpl_ary,
-				[
-					'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
-					'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
-					'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
-					'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
-				]
-			);
+			$tpl_ary = array_merge($tpl_ary, [
+				'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
+				'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
+				'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
+				'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
+			]);
 		}
 
 		// Assign tpl_ary to event -> tpl_ary
@@ -203,10 +197,10 @@ class search_listener implements EventSubscriberInterface
 		}
 
 		return [
-				'sql_select'	=> $sql_select,
-				'sql_from'		=> $sql_from,
-				'sql_where'		=> $sql_where,
-			];
+			'sql_select'	=> $sql_select,
+			'sql_from'		=> $sql_from,
+			'sql_where'		=> $sql_where,
+		];
 	}
 
 }

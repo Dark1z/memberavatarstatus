@@ -100,13 +100,10 @@ class memberlist_listener implements EventSubscriberInterface
 		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->status->mas_get_online('dark1_mas_ml', '', $row) : '';
 
 		// Add Avatar & Online Status to template_vars
-		$template_vars = array_merge(
-			$template_vars,
-			[
-				'AVATAR_IMG'	=> $avatar,
-				'S_ONLINE'		=> $online,
-			]
-		);
+		$template_vars = array_merge($template_vars, [
+			'AVATAR_IMG'	=> $avatar,
+			'S_ONLINE'		=> $online,
+		]);
 
 		// Assign template_vars to event -> template_vars
 		$event['template_vars'] = $template_vars;

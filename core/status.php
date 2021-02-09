@@ -129,9 +129,9 @@ class status
 		{
 			$sql_ary['SELECT'] .= ', MAX(' . $sql_obj . '.session_time) as ' . $prefix . 'session_time, MIN(' . $sql_obj . '.session_viewonline) as ' . $prefix . 'session_viewonline';
 			$sql_ary['LEFT_JOIN'][] = [
-					'FROM'	=> [SESSIONS_TABLE => $sql_obj],
-					'ON'	=> $sql_uid . ' = ' . $sql_obj . '.session_user_id AND ' . $sql_obj . '.session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND ' . $sql_obj . '.session_user_id <> ' . ANONYMOUS . $lj_on_ex,
-				];
+				'FROM'	=> [SESSIONS_TABLE => $sql_obj],
+				'ON'	=> $sql_uid . ' = ' . $sql_obj . '.session_user_id AND ' . $sql_obj . '.session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND ' . $sql_obj . '.session_user_id <> ' . ANONYMOUS . $lj_on_ex,
+			];
 
 			if ($group_by != '')
 			{
@@ -183,9 +183,9 @@ class status
 		if ($this->mas_get_config_online($config_key))
 		{
 			$online_row = [
-					'session_time'			=> $row[$prefix . 'session_time'],
-					'session_viewonline'	=> $row[$prefix . 'session_viewonline'],
-				];
+				'session_time'			=> $row[$prefix . 'session_time'],
+				'session_viewonline'	=> $row[$prefix . 'session_viewonline'],
+			];
 			$online = $this->mas_get_online_status($online_row);
 		}
 

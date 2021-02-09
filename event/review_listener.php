@@ -105,13 +105,10 @@ class review_listener implements EventSubscriberInterface
 		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to post_row
-		$post_row = array_merge(
-			$post_row,
-			[
-				'AVATAR_IMG'	=> $avatar,
-				'S_ONLINE'		=> $online,
-			]
-		);
+		$post_row = array_merge($post_row, [
+			'AVATAR_IMG'	=> $avatar,
+			'S_ONLINE'		=> $online,
+		]);
 
 		// Assign post_row to event -> post_row
 		$event['post_row'] = $post_row;
@@ -160,13 +157,10 @@ class review_listener implements EventSubscriberInterface
 		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to template_vars
-		$template_vars = array_merge(
-			$template_vars,
-			[
-				'AVATAR_IMG'	=> $avatar,
-				'S_ONLINE'		=> $online,
-			]
-		);
+		$template_vars = array_merge($template_vars, [
+			'AVATAR_IMG'	=> $avatar,
+			'S_ONLINE'		=> $online,
+		]);
 
 		// Assign template_vars to event -> template_vars
 		$event['template_vars'] = $template_vars;
@@ -217,13 +211,10 @@ class review_listener implements EventSubscriberInterface
 		$online = $this->status->mas_get_online('dark1_mas_rv', 'user', $row);
 
 		// Add Avatar & Online Status to post_row
-		$post_row = array_merge(
-			$post_row,
-			[
-				'AVATAR_IMG'	=> $avatar,
-				'S_ONLINE'		=> $online,
-			]
-		);
+		$post_row = array_merge($post_row, [
+			'AVATAR_IMG'	=> $avatar,
+			'S_ONLINE'		=> $online,
+		]);
 
 		// Assign post_row to event -> post_row
 		$event['post_row'] = $post_row;

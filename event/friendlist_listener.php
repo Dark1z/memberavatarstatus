@@ -94,13 +94,10 @@ class friendlist_listener implements EventSubscriberInterface
 		$online = ($which === 'online') ? true : false ;
 
 		// Add Avatar & Online Status to tpl_ary
-		$tpl_ary = array_merge(
-			$tpl_ary,
-			[
-				'AVATAR_IMG'	=> $avatar,
-				'S_ONLINE'		=> $online,
-			]
-		);
+		$tpl_ary = array_merge($tpl_ary, [
+			'AVATAR_IMG'	=> $avatar,
+			'S_ONLINE'		=> $online,
+		]);
 
 		// Assign tpl_ary to event -> tpl_ary
 		$event['tpl_ary'] = $tpl_ary;
