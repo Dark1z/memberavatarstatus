@@ -4,8 +4,8 @@
 			<div class="mas-avatar" style="width: {{ MAS_SH_FP_AV_SIZE }}px; height: {{ MAS_SH_FP_AV_SIZE }}px;">
 				{% if searchresults.TOPIC_AUTHOR_AVATAR_IMG %}
 					{{ searchresults.TOPIC_AUTHOR_AVATAR_IMG }}
-				{% elseif similar.LAST_POST_AUTHOR_AVATAR_IMG %}
-					{{ similar.LAST_POST_AUTHOR_AVATAR_IMG }}
+				{% elseif similar.TOPIC_AUTHOR_AVATAR_IMG %}
+					{{ similar.TOPIC_AUTHOR_AVATAR_IMG }}
 				{% else %}
 					{{ MAS_NO_AVATAR_IMG }}
 				{% endif %}
