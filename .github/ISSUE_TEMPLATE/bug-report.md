@@ -3,7 +3,7 @@ name: Bug Report
 about: Create a bug report to improve this project
 title: Has some bug
 labels: "\U0001F41E Bug"
-assignees: dark-1
+assignees: Dark1z
 
 ---
 

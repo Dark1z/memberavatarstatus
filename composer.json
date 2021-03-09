@@ -40,11 +40,11 @@
 	"readme": "./README.md",
 	"support": {
 		"email": "phpbb@dark1.tech",
-		"issues": "https://github.com/dark-1/memberavatarstatus/issues",
+		"issues": "https://github.com/Dark1z/memberavatarstatus/issues",
 		"forum": "https://phpbb.com/customise/db/extension/member_avatar_status/support",
-		"wiki": "https://github.com/dark-1/memberavatarstatus/wiki",
-		"source": "https://github.com/dark-1/memberavatarstatus",
+		"wiki": "https://github.com/Dark1z/memberavatarstatus/wiki",
+		"source": "https://github.com/Dark1z/memberavatarstatus",
 		"docs": "https://github.dark1.tech/memberavatarstatus",
-		"chat": "https://github.com/dark-1/memberavatarstatus/discussions"
+		"chat": "https://github.com/Dark1z/memberavatarstatus/discussions"
 	}
 }

@@ -3,7 +3,7 @@ name: Feature Request
 about: Suggest an idea for this project
 title: Add the feature
 labels: "\U0001F48E Enhancement"
-assignees: dark-1
+assignees: Dark1z
 
 ---
 
