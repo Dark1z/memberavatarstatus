@@ -51,14 +51,14 @@ class status
 	/**
 	 * MAS Get Config Online
 	 *
-	 * @param string $config_key takes Config Key String
+	 * @param string|bool $config_key takes Config Key String
 	 * @return bool Bool with Online Enable
 	 * @access public
 	 */
-	public function mas_get_config_online($config_key)
+	public function mas_get_config_online($config_key = false)
 	{
 		// Check if Online is Enabled.
-		return (bool) ($this->config['load_onlinetrack'] && $this->config['dark1_mas_online'] && $this->config[$config_key]);
+		return (bool) ($this->config['load_onlinetrack'] && $this->config['dark1_mas_online'] && ($config_key !== false) ? $this->config[$config_key] : true);
 	}
 
 
@@ -155,7 +155,7 @@ class status
 	{
 		$online = false;
 
-		if ($this->mas_get_config_online('dark1_mas_online'))
+		if ($this->mas_get_config_online())
 		{
 			$online = (time() - ($this->config['load_online_time'] * 60) < $online_row['session_time'] && ((isset($online_row['session_viewonline']) && $online_row['session_viewonline']) || $this->auth->acl_get('u_viewonline'))) ? true : false;
 		}

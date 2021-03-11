@@ -72,7 +72,7 @@ class memberlist_listener implements EventSubscriberInterface
 
 		// Add Query Details
 		$sql_ary['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_ml', '', 'u', 'user', '')['SELECT'];
-		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', '', '', 'u.user_id, g.group_id');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_ml', 'u.user_id', 's', 'user', '', 'u.user_id, g.group_id');
 
 		// Assign sql_ary to event -> sql_ary
 		$event['sql_ary'] = $sql_ary;
@@ -97,7 +97,7 @@ class memberlist_listener implements EventSubscriberInterface
 		$avatar = $this->avatar->mas_get_avatar('dark1_mas_ml', 'user', $row);
 
 		// Get Online Status
-		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->status->mas_get_online('dark1_mas_ml', '', $row) : '';
+		$online = (!($row['user_type'] == USER_INACTIVE)) ? $this->status->mas_get_online('dark1_mas_ml', 'user', $row) : '';
 
 		// Add Avatar & Online Status to template_vars
 		$template_vars = array_merge($template_vars, [

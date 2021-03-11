@@ -73,7 +73,7 @@ class search_listener implements EventSubscriberInterface
 
 		// Add Query Details
 		$sql_array['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_array, 'dark1_mas_sh_up', '', 'u', 'user', '')['SELECT'];
-		$sql_array = $this->status->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', '', '', 'p.post_id');
+		$sql_array = $this->status->mas_online_sql_query($sql_array, 'dark1_mas_sh_up', 'p.poster_id', 's', 'user', '', 'p.post_id');
 
 		// Assign sql_array to event -> sql_array
 		$event['sql_array'] = $sql_array;
@@ -130,7 +130,7 @@ class search_listener implements EventSubscriberInterface
 			$avatar = $this->avatar->mas_get_avatar('dark1_mas_sh_up', 'user', $row);
 
 			// Get Online Status
-			$online = $this->status->mas_get_online('dark1_mas_sh_up', '', $row);
+			$online = $this->status->mas_get_online('dark1_mas_sh_up', 'user', $row);
 
 			// Add Avatar & Online Status to tpl_ary
 			$tpl_ary = array_merge($tpl_ary, [

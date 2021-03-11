@@ -92,14 +92,14 @@ class avatar
 	/**
 	 * MAS Get Config Avatar
 	 *
-	 * @param string $config_key takes Config Key String
+	 * @param string|bool $config_key takes Config Key String
 	 * @return bool Bool with Avatar Enable
 	 * @access public
 	 */
-	public function mas_get_config_avatar($config_key)
+	public function mas_get_config_avatar($config_key = false)
 	{
 		// Check if Avatar is Enabled.
-		return (bool) ($this->config['allow_avatar'] && $this->config['dark1_mas_avatar'] && $this->config[$config_key]);
+		return (bool) ($this->config['allow_avatar'] && $this->config['dark1_mas_avatar'] && ($config_key !== false) ? $this->config[$config_key] : true);
 	}
 
 

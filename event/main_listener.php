@@ -99,8 +99,8 @@ class main_listener implements EventSubscriberInterface
 			'MAS_EXT_NAME'		=> $ext_name_mas,
 			'MAS_EXT_DEV'		=> $ext_by_dark1,
 			// General
-			'MAS_AVATAR'		=> $this->avatar->mas_get_config_avatar('dark1_mas_avatar'),
-			'MAS_ONLINE'		=> $this->status->mas_get_config_online('dark1_mas_online'),
+			'MAS_AVATAR'		=> $this->avatar->mas_get_config_avatar(),
+			'MAS_ONLINE'		=> $this->status->mas_get_config_online(),
 			'MAS_COLOR_OFFLINE'	=> $this->status->mas_get_config_color('off'),
 			'MAS_COLOR_ONLINE'	=> $this->status->mas_get_config_color('on'),
 			// MemberList
