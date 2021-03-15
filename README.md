@@ -4,7 +4,7 @@
 ## Translator : 
    
 1. English [en] :   
-   1. [Dark❶ [dark1]](https://github.com/dark-1) .   
+   1. [Dark❶ [dark1]](https://github.com/Dark1z) .   
 1. Slovak [sk] :   
    1. [GrgoPitic](https://phpbb.com/community/memberlist.php?mode=viewprofile&u=1765796) .   
 1. French [fr] :   
@@ -16,11 +16,11 @@
 1. Italian [it] :   
    1. [Darkman](https://darkylab.altervista.org/forum/memberlist.php?mode=viewprofile&u=53) .   
    
-### For Detail's & ScreenShot's : [GitHub Page](https://dark-1.github.io/memberavatarstatus/)   
+### For Detail's & ScreenShot's : [GitHub Page](https://github.dark1.tech/memberavatarstatus/)   
    
-GitHub Repository: [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
+GitHub Repository: [memberavatarstatus](https://github.com/Dark1z/memberavatarstatus)   
 phpBB Customisation Database Extension: [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status)   
-For more Details Go Here : [Member Avatar & Status [MAS]](https://dark-1.github.io/memberavatarstatus)   
+For more Details Go Here : [Member Avatar & Status [MAS]](https://github.dark1.tech/memberavatarstatus)   
    
 ## License  [GPLv2](license.txt)   
    
