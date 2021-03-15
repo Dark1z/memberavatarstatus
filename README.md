@@ -4,10 +4,9 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
    
    
 #### Status Badge for Member Avatar & Status [MAS] on phpBB v3.3.x :   
-![Travis-CI](https://img.shields.io/badge/Travis-CI-8000FF.svg) : [![Build Status](https://travis-ci.com/dark-1/memberavatarstatus.svg?branch=master)](https://travis-ci.com/dark-1/memberavatarstatus)   
-![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dark-1/memberavatarstatus/build-status/master)   
-![Actions-CI](https://img.shields.io/badge/Actions-CI-8000FF.svg) : [![Actions Status](https://github.com/dark-1/memberavatarstatus/workflows/Actions%20CI/badge.svg)](https://github.com/dark-1/memberavatarstatus/actions?workflow=Actions%20CI)   
-![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : [![GitHub release](https://img.shields.io/github/release/dark-1/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/dark-1/memberavatarstatus.svg?style=flat-square)](https://github.com/dark-1/memberavatarstatus)   
+![Actions-CI](https://img.shields.io/badge/Actions-CI-8000FF.svg) : [![Actions Status](https://github.com/Dark1z/memberavatarstatus/workflows/Actions%20CI/badge.svg)](https://github.com/Dark1z/memberavatarstatus/actions?workflow=Actions%20CI)   
+![Scrutinizer-CI](https://img.shields.io/badge/Scrutinizer-CI-8000FF.svg) : [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Dark1z/memberavatarstatus/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Dark1z/memberavatarstatus/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/Dark1z/memberavatarstatus/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Dark1z/memberavatarstatus/build-status/master)   
+![Shields.IO](https://img.shields.io/badge/Shields-IO-8000FF.svg?style=flat-square) : [![GitHub release](https://img.shields.io/github/release/Dark1z/memberavatarstatus.svg?style=flat-square) ![license](https://img.shields.io/github/license/Dark1z/memberavatarstatus.svg?style=flat-square)](https://github.com/Dark1z/memberavatarstatus)   
    
    
 ## **Features:**   
@@ -39,7 +38,7 @@ This Extension Lets Admin to display User's Avatar & it's Online Status on *Inde
 1. **Recent Topics :**   
     1. phpBB CDB : [Recent Topics CDB](https://www.phpbb.com/customise/db/extension/recent_topics_2)   
     2. GitHub : [Recent Topics Repository](https://github.com/Sajaki/RecentTopics)   
-    3. Changes required in *Recent Topics* to support MAS : [Recent Topics Changes](https://github.com/dark-1/RecentTopics/commit/53119f863367aedcf7d68ee042d75b52f3869c6e)   
+    3. Changes required in *Recent Topics* to support MAS : [Recent Topics Changes](https://github.com/Dark1z/RecentTopics/commit/53119f863367aedcf7d68ee042d75b52f3869c6e)   
 2. **Precise Similar Topics :**   
     1. phpBB CDB : [Precise Similar Topics CDB](https://www.phpbb.com/customise/db/extension/precise_similar_topics)   
     2. GitHub : [Precise Similar Topics Repository](https://github.com/VSEphpbb/similartopics)   
@@ -137,9 +136,9 @@ Detailed phpBB standard Uninstallation of Extensions here : [phpBB Extensions Re
    
 ## **Links :**   
    
-**GitHub Repository** : [memberavatarstatus](https://github.com/dark-1/memberavatarstatus)   
+**GitHub Repository** : [memberavatarstatus](https://github.com/Dark1z/memberavatarstatus)   
 **phpBB Customisation Database Extension** : [Member Avatar & Status](https://www.phpbb.com/customise/db/extension/member_avatar_status)   
-**For more Details Go Here** : [Member Avatar & Status [MAS]](https://dark-1.github.io/memberavatarstatus)   
+**For more Details Go Here** : [Member Avatar & Status [MAS]](https://github.dark1.tech/memberavatarstatus)   
    
    
 ## License GPLv2
