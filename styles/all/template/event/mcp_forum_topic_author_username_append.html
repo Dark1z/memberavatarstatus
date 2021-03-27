@@ -1,0 +1,10 @@
+{% if MAS_VF_FP_AVATAR or MAS_VF_FP_ONLINE %}
+		</div>
+		{% if MAS_VF_FP_ONLINE %}
+			<div class="mas-wrap-status{% if topicrow.TOPIC_AUTHOR_S_ONLINE %} mas-status-online{% endif %}">
+				<span class="mas-status-dot mas-color" title="{% if topicrow.TOPIC_AUTHOR_S_ONLINE %}{{ lang('ONLINE') }}{% else %}{{ lang('OFFLINE') }}{% endif %}">
+				</span>
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

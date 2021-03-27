@@ -20,11 +20,8 @@ use phpbb\extension\base;
  */
 class ext extends base
 {
-	/** @var string Require phpBB v3.2.10 due to events. */
-	const PHPBB_MIN_3_2_X = '3.2.10';
-
-	/** @var string Require phpBB v3.3.1 due to events. */
-	const PHPBB_MIN_3_3_X = '3.3.1';
+	/** @var string Require phpBB v3.3.4 due to events. */
+	const PHPBB_MIN_3_3_X = '3.3.4';
 
 	/**
 	 * {@inheritdoc}
@@ -44,8 +41,7 @@ class ext extends base
 		$config = $this->container->get('config');
 
 		$phpbb_version = phpbb_version_compare(PHPBB_VERSION, $config['version'], '>=') ? PHPBB_VERSION : $config['version'] ;
-		$min_version = strpos($phpbb_version, '3.2.') === 0 ? self::PHPBB_MIN_3_2_X : self::PHPBB_MIN_3_3_X;
 
-		return phpbb_version_compare($phpbb_version, $min_version, '>=');
+		return phpbb_version_compare($phpbb_version, self::PHPBB_MIN_3_3_X, '>=');
 	}
 }

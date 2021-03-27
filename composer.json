@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Member Avatar & Status",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
-	"version": "3.2.3",
-	"time": "2021-02-11",
+	"version": "3.2.4",
+	"time": "2021-03-21",
 	"keywords": [
 		"phpbb",
 		"extension",
@@ -29,7 +29,7 @@
 	"extra": {
 		"display-name": "Member Avatar & Status",
 		"soft-require": {
-			"phpbb/phpbb": "~3.2.10 || >=3.3.1"
+			"phpbb/phpbb": ">=3.3.4"
 		},
 		"version-check": {
 			"host": "www.phpbb.com",
