@@ -1,0 +1,13 @@
+{% if MAS_VF_FP_AVATAR or MAS_VF_FP_ONLINE %}
+	<div class="mas-wrap">
+		{% if MAS_VF_FP_AVATAR %}
+			<div class="mas-avatar" style="width: {{ MAS_VF_FP_AV_SIZE }}px; height: {{ MAS_VF_FP_AV_SIZE }}px;">
+				{% if topicrow.TOPIC_AUTHOR_AVATAR_IMG %}
+					{{ topicrow.TOPIC_AUTHOR_AVATAR_IMG }}
+				{% else %}
+					{{ MAS_NO_AVATAR_IMG }}
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="mas-username">
+{% endif %}

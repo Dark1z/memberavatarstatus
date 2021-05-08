@@ -57,6 +57,8 @@ class viewforum_listener implements EventSubscriberInterface
 			'core.viewforum_get_announcement_topic_ids_data'	=> 'mas_viewforum_announcement_topic_query',
 			'core.viewforum_modify_topic_list_sql'				=> 'mas_viewforum_topic_query',
 			'core.viewforum_modify_topicrow'					=> 'mas_viewforum_topic_template',
+			'core.mcp_forum_topic_data_modify_sql'				=> 'mas_mcp_forum_topic_query',
+			'core.mcp_view_forum_modify_topicrow'				=> 'mas_mcp_forum_topic_template',
 		];
 	}
 
@@ -207,6 +209,65 @@ class viewforum_listener implements EventSubscriberInterface
 	 * @access public
 	 */
 	public function mas_viewforum_topic_template($event)
+	{
+		// Get Event Array `row` & `topic_row`
+		$row = $event['row'];
+		$topic_row = $event['topic_row'];
+
+		// Get Both Avatar
+		$avatar_first_poster = $this->avatar->mas_get_avatar('dark1_mas_vf_fp', 'topic_first_poster', $row);
+		$avatar_last_poster = $this->avatar->mas_get_avatar('dark1_mas_vf_lp', 'topic_last_poster', $row);
+
+		// Get Both Online Status
+		$online_first_poster = $this->status->mas_get_online('dark1_mas_vf_fp', 'topic_first_poster', $row);
+		$online_last_poster = $this->status->mas_get_online('dark1_mas_vf_lp', 'topic_last_poster', $row);
+
+		// Add Both of Avatar & Online Status to topic_row
+		$topic_row = array_merge($topic_row, [
+			'TOPIC_AUTHOR_AVATAR_IMG'		=> $avatar_first_poster,
+			'TOPIC_AUTHOR_S_ONLINE'			=> $online_first_poster,
+			'LAST_POST_AUTHOR_AVATAR_IMG'	=> $avatar_last_poster,
+			'LAST_POST_AUTHOR_S_ONLINE'		=> $online_last_poster,
+		]);
+
+		// Assign topic_row to event -> topic_row
+		$event['topic_row'] = $topic_row;
+	}
+
+
+
+	/**
+	 * MAS MCP Forum SQL Query Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
+	public function mas_mcp_forum_topic_query($event)
+	{
+		// Get Event Array `sql_ary`
+		$sql_ary = $event['sql_ary'];
+
+		// Add Query Details
+		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vf_fp', 't.topic_poster', 'ufp', 'topic_first_poster', '');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_vf_fp', 't.topic_poster', 'sfp', 'topic_first_poster', '', 't.topic_id');
+		$sql_ary = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'ulp', 'topic_last_poster', '');
+		$sql_ary = $this->status->mas_online_sql_query($sql_ary, 'dark1_mas_vf_lp', 't.topic_last_poster_id', 'slp', 'topic_last_poster', '', 't.topic_id');
+
+		// Assign sql_ary to event -> sql_ary
+		$event['sql_ary'] = $sql_ary;
+	}
+
+
+
+	/**
+	 * MAS MCP Forum Template Setup
+	 *
+	 * @param object $event The event object
+	 * @return null
+	 * @access public
+	 */
+	public function mas_mcp_forum_topic_template($event)
 	{
 		// Get Event Array `row` & `topic_row`
 		$row = $event['row'];
