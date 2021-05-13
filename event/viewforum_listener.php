@@ -56,6 +56,7 @@ class viewforum_listener implements EventSubscriberInterface
 			'core.display_forums_modify_template_vars'			=> 'mas_viewforum_displayforums_template',
 			'core.viewforum_get_announcement_topic_ids_data'	=> 'mas_viewforum_announcement_topic_query',
 			'core.viewforum_modify_topic_list_sql'				=> 'mas_viewforum_topic_query',
+			'core.viewforum_get_shadowtopic_data'				=> 'mas_viewforum_topic_query',
 			'core.viewforum_modify_topicrow'					=> 'mas_viewforum_topic_template',
 			'core.mcp_forum_topic_data_modify_sql'				=> 'mas_mcp_forum_topic_query',
 			'core.mcp_view_forum_modify_topicrow'				=> 'mas_mcp_forum_topic_template',
