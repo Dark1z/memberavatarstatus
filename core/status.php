@@ -58,7 +58,7 @@ class status
 	public function mas_get_config_online($config_key = false)
 	{
 		// Check if Online is Enabled.
-		return (bool) ($this->config['load_onlinetrack'] && $this->config['dark1_mas_online'] && ($config_key !== false) ? $this->config[$config_key] : true);
+		return (bool) ($this->config['load_onlinetrack'] && $this->config['dark1_mas_online'] && ($config_key !== false ? $this->config[$config_key] : true));
 	}
 
 

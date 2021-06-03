@@ -99,7 +99,7 @@ class avatar
 	public function mas_get_config_avatar($config_key = false)
 	{
 		// Check if Avatar is Enabled.
-		return (bool) ($this->config['allow_avatar'] && $this->config['dark1_mas_avatar'] && ($config_key !== false) ? $this->config[$config_key] : true);
+		return (bool) ($this->config['allow_avatar'] && $this->config['dark1_mas_avatar'] && ($config_key !== false ? $this->config[$config_key] : true));
 	}
 
 
