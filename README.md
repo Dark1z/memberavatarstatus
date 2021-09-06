@@ -4,7 +4,8 @@ Please post your translations for **Member Avatar & Status [MAS]** as a **Pull R
    
 ### Translators Kindly Note:   
 * Please PR only complete translations.   
-* When translating files, do not modify the header doc-block comments except to add your credit for the translation on one single line. The following sample doc-block is the only format that will be accept:   
+* When translating files, do not modify the header doc-block comments except to add your credit for the translation on one single line.   
+The following sample doc-block is the only format that will be accept:   
 ```php
 /**
  *
@@ -22,7 +23,7 @@ Please post your translations for **Member Avatar & Status [MAS]** as a **Pull R
  */
 ```
 Note : Updating the copyright year is my job, you can be at ease on that part.   
-* If posting your translations here as attachments, then please package and **.zip** translations in a folder named with the appropriate **iso** code for your language, e.g. : **en**   
+* If posting your translations here as PR, then please package in a folder named with the appropriate **iso** code for your language, e.g. : **en**   
    
 ## Translator : 
    
