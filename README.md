@@ -1,5 +1,28 @@
 # Member Avatar & Status [MAS]
    
+Please post your translations for **Member Avatar & Status [MAS]** as a **Pull Request** on GitHub at branch **lang-pack** Here : [memberavatarstatus > lang-pack](https://github.com/Dark1z/memberavatarstatus/tree/lang-pack)   
+   
+### Translators Kindly Note:   
+* Please PR only complete translations.   
+* When translating files, do not modify the header doc-block comments except to add your credit for the translation on one single line. The following sample doc-block is the only format that will be accept:   
+```php
+/**
+ *
+ * Member Avatar & Status [MAS]. An extension for the phpBB Forum Software package.
+ *
+ * @copyright (c) 2018-2021, Dark❶ [dark1]
+ * @license GNU General Public License, version 2 (GPL-2.0-only)
+ *
+ *
+ * Language : English [en]
+ * Translators :
+ * 1. Dark❶ [dark1]
+ *
+ *
+ */
+```
+Note : Updating the copyright year is my job, you can be at ease on that part.   
+* If posting your translations here as attachments, then please package and **.zip** translations in a folder named with the appropriate **iso** code for your language, e.g. : **en**   
    
 ## Translator : 
    
