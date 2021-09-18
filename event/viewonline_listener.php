@@ -168,9 +168,7 @@ class viewonline_listener implements EventSubscriberInterface
 				// Add avatar only for logged in User and not Hidden User
 				if ($this->mas_viewonline_user_login($row['user_id'], $hidden_users))
 				{
-					// Get Avatar
-					$avatar = $this->avatar->mas_get_avatar('dark1_mas_vo_sb', 'user', $row);
-					$user_online_link[$row['user_id']] = $this->mas_viewonline_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $avatar);
+					$user_online_link[$row['user_id']] = $this->mas_viewonline_username_wrap($user_online_link[$row['user_id']], 'dark1_mas_vo_sb', $row);
 				}
 			}
 		}
@@ -195,7 +193,7 @@ class viewonline_listener implements EventSubscriberInterface
 	 */
 	private function mas_viewonline_user_login($user_id, $hidden_users)
 	{
-		return (bool) $user_id != ANONYMOUS && (!isset($hidden_users[$user_id]) || $this->auth->acl_get('u_viewonline') || $user_id === $this->user->data['user_id']);
+		return (bool) ($user_id != ANONYMOUS && (!isset($hidden_users[$user_id]) || $this->auth->acl_get('u_viewonline') || $user_id === $this->user->data['user_id']));
 	}
 
 
@@ -205,20 +203,27 @@ class viewonline_listener implements EventSubscriberInterface
 	 *
 	 * @param string $username takes UserName
 	 * @param string $config_key takes Config Key String
-	 * @param string $avatar takes User Avatar IMG
+	 * @param string $avatar_row takes User Avatar Row
 	 * @return string String with Wrapped Main & UserName
 	 * @access private
 	 */
-	private function mas_viewonline_username_wrap($username, $config_key, $avatar)
+	private function mas_viewonline_username_wrap($username, $config_key, $avatar_row)
 	{
 		if ($this->avatar->mas_get_config_avatar($config_key . '_av'))
 		{
-			$avatar_size = (int) $this->config[$config_key . '_av_sz'];
+			// Get Avatar Size
+			$avatar_size = $this->avatar->mas_get_config_avatar_size($config_key . '_av_sz', avatar::AV_DEF_SZ_SML, avatar::AV_MAX_SZ_SML);
+
+			// Get Avatar
+			$avatar = $this->avatar->mas_get_avatar($config_key, 'user', $avatar_row);
 			$avatar = !empty($avatar) ? $avatar : $this->avatar->mas_get_no_avatar_img();
-			$username = '<span class="mas-wrap">' .
-							'<span class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">' . $avatar . '</span>' .
-							'<span class="mas-username">' . $username . '</span>' .
-						'</span>';
+
+			$username = (
+				'<span class="mas-wrap">' .
+					'<span class="mas-avatar" style="width: ' . $avatar_size . 'px; height: ' . $avatar_size . 'px;">' . $avatar . '</span>' .
+					'<span class="mas-username">' . $username . '</span>' .
+				'</span>'
+			);
 		}
 		return $username;
 	}
