@@ -203,7 +203,7 @@ class viewonline_listener implements EventSubscriberInterface
 	 *
 	 * @param string $username takes UserName
 	 * @param string $config_key takes Config Key String
-	 * @param string $avatar_row takes User Avatar Row
+	 * @param array $avatar_row takes User Avatar Row
 	 * @return string String with Wrapped Main & UserName
 	 * @access private
 	 */
