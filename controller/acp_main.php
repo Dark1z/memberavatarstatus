@@ -82,8 +82,8 @@ class acp_main extends acp_base
 
 		// Set output variables for display in the template
 		$this->template->assign_vars([
-			'MAS_PHPBB_LK_AV'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=avatar#allow_avatar'),
-			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=load#load_onlinetrack'),
+			'MAS_PHPBB_LK_AV'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=avatar').'#allow_avatar',
+			'MAS_PHPBB_LK_OL'	=> append_sid($main_adm_path, 'i=acp_board&amp;mode=load').'#load_onlinetrack',
 			'MAS_PHPBB_AVATAR'	=> $this->config['allow_avatar'],
 			'MAS_PHPBB_ONLINE'	=> $this->config['load_onlinetrack'],
 			// General
