@@ -68,16 +68,6 @@ class acp_main extends acp_base
 	 */
 	public function handle()
 	{
-		// Is the form being submitted to us?
-		if ($this->request->is_set_post('submit'))
-		{
-			$this->check_form_on_submit();
-
-			// Set the options the user configured
-
-			$this->success_form_on_submit();
-		}
-
 		$acp_board = append_sid($this->phpbb_root_path . $this->phpbb_adm_relative_path . 'index.' . $this->php_ext, 'i=acp_board');
 
 		// Set output variables for display in the template

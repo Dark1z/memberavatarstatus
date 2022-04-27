@@ -143,16 +143,21 @@ class acp_base
 	 * Success Form On Submit.
 	 * Used to Log & Trigger Success Err0r.
 	 *
+	 * @param string	$lang_key	Lang Key
+	 * @param string	$lang_str	Lang String
+	 *
 	 * @return void
 	 * @access protected
 	 */
-	protected function success_form_on_submit()
+	protected function success_form_on_submit($lang_key = 'ACP_MAS_LOG_SET_SAV', $lang_str = null)
 	{
+		$lang_str = !isset($lang_str) ? $this->language->lang('ACP_MAS_MODE_' . strtoupper($this->mode)) : $lang_str;
+
 		// Add option settings change action to the admin log
-		$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'ACP_MAS_LOG_SET_SAV', time(), [$this->language->lang('ACP_MAS_MODE_' . strtoupper($this->mode))]);
+		$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, $lang_key, time(), [$lang_str]);
 
 		// Option settings have been updated and logged
 		// Confirm this to the user and provide link back to previous page
-		trigger_error($this->language->lang('ACP_MAS_LOG_SET_SAV', $this->language->lang('ACP_MAS_MODE_' . strtoupper($this->mode))) . adm_back_link($this->u_action), E_USER_NOTICE);
+		trigger_error($this->language->lang($lang_key, $lang_str) . adm_back_link($this->u_action), E_USER_NOTICE);
 	}
 }
