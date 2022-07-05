@@ -15,6 +15,7 @@ namespace dark1\memberavatarstatus\core;
  */
 use phpbb\config\config;
 use phpbb\language\language;
+use phpbb\db\driver\driver_interface as db_driver;
 
 /**
  * Member Avatar & Status Core Avatar Class.
@@ -39,28 +40,54 @@ class avatar
 	/** @var int Avatar Maximum Size Big */
 	const AV_MAX_SZ_BIG = 999;
 
+	/** @var string[] User Avatar List */
+	private static $user_avatar = [];
+
 	/** @var config */
 	protected $config;
 
 	/** @var language */
 	protected $language;
 
+	/** @var db_driver */
+	protected $db;
+
 	/** @var string phpBB root path */
 	protected $phpbb_root_path;
+
+	/** @var string phpBB php ext */
+	protected $php_ext;
 
 	/**
 	 * Constructor for Member Avatar & Status Core Avatar Class.
 	 *
 	 * @param config		$config				phpBB config
 	 * @param language		$language			phpBB language
+	 * @param db_driver		$db					Database object
 	 * @param string		$phpbb_root_path	phpBB root path
+	 * @param string		$php_ext			phpBB php ext
 	 * @access public
 	 */
-	public function __construct(config $config, language $language, $phpbb_root_path)
+	public function __construct(config $config, language $language, db_driver $db, $phpbb_root_path, $php_ext)
 	{
 		$this->config			= $config;
 		$this->language			= $language;
+		$this->db				= $db;
 		$this->phpbb_root_path	= $phpbb_root_path;
+		$this->php_ext			= $php_ext;
+
+		$this->mas_include();
+	}
+
+	/**
+	* MAS Include
+	*
+	* @return void
+	* @access private
+	*/
+	private function mas_include()
+	{
+		include_once($this->phpbb_root_path . 'includes/functions.' . $this->php_ext);
 	}
 
 
@@ -100,37 +127,6 @@ class avatar
 	{
 		// Check if Avatar is Enabled.
 		return (bool) ($this->config['allow_avatar'] && $this->config['dark1_mas_avatar'] && ($config_key !== false ? $this->config[$config_key] : true));
-	}
-
-
-
-	/**
-	 * MAS Get Avatar SQL Query
-	 *
-	 * @param array $sql_ary takes SQL Array
-	 * @param string $config_key takes Config Key String
-	 * @param string $sql_uid Specifies User ID to be Matched with.
-	 * @param string $sql_obj Specifies SQL Object
-	 * @param string $prefix Specifies the prefix to be Set in SQL Select
-	 * @param string $lj_on_ex Specifies the Left Join On Extra SQL Query
-	 * @return array Array of data
-	 * @access public
-	 */
-	public function mas_avatar_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex)
-	{
-		$config_key .= '_av';
-		$prefix .= ($prefix != '') ? '_' : '';
-
-		if ($this->mas_get_config_avatar($config_key))
-		{
-			$sql_ary['SELECT'] .= ', ' . $sql_obj . '.user_avatar as ' . $prefix . 'avatar, ' . $sql_obj . '.user_avatar_type as ' . $prefix . 'avatar_type, ' . $sql_obj . '.user_avatar_width as ' . $prefix . 'avatar_width, ' . $sql_obj . '.user_avatar_height as ' . $prefix . 'avatar_height';
-			$sql_ary['LEFT_JOIN'][] = [
-				'FROM'	=> [USERS_TABLE => $sql_obj],
-				'ON'	=> $sql_uid . ' = ' . $sql_obj . '.user_id' . $lj_on_ex,
-			];
-		}
-
-		return $sql_ary;
 	}
 
 
@@ -185,30 +181,49 @@ class avatar
 	 * MAS Get Avatar
 	 *
 	 * @param string $config_key takes Config Key String
-	 * @param string $prefix Specifies the prefix to be Searched in the $row
-	 * @param array $row is array of data
+	 * @param int $user_id User ID
 	 * @return string String with Avatar Data
 	 * @access public
 	 */
-	public function mas_get_avatar($config_key, $prefix, $row)
+	public function mas_get_avatar($config_key, $user_id)
 	{
 		$avatar = '';
 		$config_key .= '_av';
-		$prefix .= ($prefix != '') ? '_' : '';
 
+		// Check for Config Avatar
 		if ($this->mas_get_config_avatar($config_key))
 		{
-			// $avatar_row
-			$avatar_row = [
-				'avatar'		=> $row[$prefix . 'avatar'],
-				'avatar_type'	=> $row[$prefix . 'avatar_type'],
-				'avatar_width'	=> $row[$prefix . 'avatar_width'],
-				'avatar_height'	=> $row[$prefix . 'avatar_height'],
-			];
-			$avatar = phpbb_get_user_avatar($avatar_row);
+			// Get stored user avatar
+			$avatar = $this->mas_user_avatar_store($user_id);
 		}
 
 		return $avatar;
+	}
+
+
+
+	/**
+	 * MAS User Avatar Store to retrieve old or create new avatar
+	 *
+	 * @param int $user_id User ID
+	 * @return string User Avatar HTML
+	 * @access private
+	 */
+	private function mas_user_avatar_store(int $user_id)
+	{
+		// Check if user avatar not stored
+		if (!isset(self::$user_avatar[$user_id]))
+		{
+			$sql = 'SELECT user_avatar, user_avatar_type, user_avatar_width, user_avatar_height ' .
+					'FROM ' . USERS_TABLE .
+					'WHERE user_id = ' . (int) $user_id;
+			$result = $this->db->sql_query($sql);
+			$avatar_row = $this->db->sql_fetchrow($result);
+			$this->db->sql_freeresult($result);
+			self::$user_avatar[$user_id] = phpbb_get_user_avatar($avatar_row);
+		}
+
+		return self::$user_avatar[$user_id];
 	}
 
 }
