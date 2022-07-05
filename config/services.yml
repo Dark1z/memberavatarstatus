@@ -5,13 +5,16 @@ services:
         arguments:
             - '@config'
             - '@language'
+            - '@dbal.conn'
             - '%core.root_path%'
+            - '%core.php_ext%'
 
     dark1.memberavatarstatus.status:
         class: dark1\memberavatarstatus\core\status
         arguments:
             - '@auth'
             - '@config'
+            - '@dbal.conn'
 
     dark1.memberavatarstatus.controller.acp.main:
         class: dark1\memberavatarstatus\controller\acp_main

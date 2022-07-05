@@ -15,6 +15,7 @@ namespace dark1\memberavatarstatus\core;
  */
 use phpbb\auth\auth;
 use phpbb\config\config;
+use phpbb\db\driver\driver_interface as db_driver;
 
 /**
  * Member Avatar & Status Core Status Class.
@@ -27,23 +28,31 @@ class status
 	/** @var int Color Default Online */
 	const COL_DEF_ON = '00FF00';
 
+	/** @var bool[] User Online List */
+	private static $user_online = [];
+
 	/** @var auth */
 	protected $auth;
 
 	/** @var config */
 	protected $config;
 
+	/** @var db_driver */
+	protected $db;
+
 	/**
 	 * Constructor for Member Avatar & Status Core Status Class.
 	 *
-	 * @param auth		$auth				phpBB auth
-	 * @param config	$config				phpBB config
+	 * @param auth			$auth		phpBB auth
+	 * @param config		$config		phpBB config
+	 * @param db_driver		$db			Database object
 	 * @access public
 	 */
-	public function __construct(auth $auth, config $config)
+	public function __construct(auth $auth, config $config, db_driver $db)
 	{
 		$this->auth		= $auth;
 		$this->config	= $config;
+		$this->db		= $db;
 	}
 
 
@@ -108,59 +117,18 @@ class status
 
 
 	/**
-	 * MAS Get Online SQL Query
-	 *
-	 * @param array $sql_ary takes SQL Array
-	 * @param string $config_key takes Config Key String
-	 * @param string $sql_uid Specifies User ID to be Matched with.
-	 * @param string $sql_obj Specifies SQL Object
-	 * @param string $prefix Specifies the prefix to be Set in SQL Select
-	 * @param string $lj_on_ex Specifies the Left Join On Extra SQL Query
-	 * @param string $group_by Specifies the Group By SQL Query
-	 * @return array Array of data
-	 * @access public
-	 */
-	public function mas_online_sql_query($sql_ary, $config_key, $sql_uid, $sql_obj, $prefix, $lj_on_ex, $group_by)
-	{
-		$config_key .= '_ol';
-		$prefix .= ($prefix != '') ? '_' : '';
-
-		if ($this->mas_get_config_online($config_key))
-		{
-			$sql_ary['SELECT'] .= ', MAX(' . $sql_obj . '.session_time) as ' . $prefix . 'session_time, MIN(' . $sql_obj . '.session_viewonline) as ' . $prefix . 'session_viewonline';
-			$sql_ary['LEFT_JOIN'][] = [
-				'FROM'	=> [SESSIONS_TABLE => $sql_obj],
-				'ON'	=> $sql_uid . ' = ' . $sql_obj . '.session_user_id AND ' . $sql_obj . '.session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND ' . $sql_obj . '.session_user_id <> ' . ANONYMOUS . $lj_on_ex,
-			];
-
-			if ($group_by != '')
-			{
-				$sql_ary['GROUP_BY'] = (isset($sql_ary['GROUP_BY']) && !empty($sql_ary['GROUP_BY'])) ? $sql_ary['GROUP_BY'] . ', '.$group_by : $group_by;
-			}
-		}
-
-		return $sql_ary;
-	}
-
-
-
-	/**
-	 * MAS Get Online Status
+	 * MAS Get User Online
 	 *
 	 * @param array $online_row takes user details to find Online Status
-	 * @return bool Bool Online Status
-	 * @access public
+	 * @return bool Online Status
+	 * @access private
 	 */
-	public function mas_get_online_status($online_row)
+	private function mas_get_user_online($online_row)
 	{
-		$online = false;
-
-		if ($this->mas_get_config_online())
-		{
-			$online = (time() - ($this->config['load_online_time'] * 60) < $online_row['session_time'] && ((isset($online_row['session_viewonline']) && $online_row['session_viewonline']) || $this->auth->acl_get('u_viewonline'))) ? true : false;
-		}
-
-		return (bool) $online;
+		return (bool) (
+			(time() - ($this->config['load_online_time'] * 60) < $online_row['session_time']) &&
+			((isset($online_row['session_viewonline']) && $online_row['session_viewonline']) || $this->auth->acl_get('u_viewonline'))
+		);
 	}
 
 
@@ -169,27 +137,49 @@ class status
 	 * MAS Get Online
 	 *
 	 * @param string $config_key takes Config Key String
-	 * @param string $prefix Specifies the prefix to be Searched in the $row
-	 * @param array $row is array of data
-	 * @return string String with Online Data
+	 * @param int $user_id User ID
+	 * @return string Online Data
 	 * @access public
 	 */
-	public function mas_get_online($config_key, $prefix, $row)
+	public function mas_get_online($config_key, $user_id)
 	{
 		$online = '';
 		$config_key .= '_ol';
-		$prefix .= ($prefix != '') ? '_' : '';
 
+		// Check for Config Online
 		if ($this->mas_get_config_online($config_key))
 		{
-			$online_row = [
-				'session_time'			=> $row[$prefix . 'session_time'],
-				'session_viewonline'	=> $row[$prefix . 'session_viewonline'],
-			];
-			$online = $this->mas_get_online_status($online_row);
+			// Get stored user online status
+			$online = $this->mas_user_online_store($user_id);
 		}
 
 		return $online;
+	}
+
+
+
+	/**
+	 * MAS User Online Store to retrieve old or create new online status
+	 *
+	 * @param int $user_id User ID
+	 * @return bool User Online Status
+	 * @access private
+	 */
+	private function mas_user_online_store(int $user_id)
+	{
+		// Check if user online status not stored
+		if (!isset(self::$user_online[$user_id]))
+		{
+			$sql = 'SELECT MAX(session_time) as session_time, MIN(session_viewonline) as session_viewonline ' .
+					'FROM ' . SESSIONS_TABLE .
+					'WHERE session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND session_user_id <> ' . ANONYMOUS . ' AND session_user_id = ' . (int) $user_id;
+			$result = $this->db->sql_query($sql);
+			$online_row = $this->db->sql_fetchrow($result);
+			$this->db->sql_freeresult($result);
+			self::$user_online[$user_id] = $this->mas_get_user_online($online_row);
+		}
+
+		return self::$user_online[$user_id];
 	}
 
 }

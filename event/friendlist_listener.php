@@ -45,30 +45,8 @@ class friendlist_listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return [
-			'core.ucp_modify_friends_sql'				=> 'mas_ucp_modify_friends_sql',
 			'core.ucp_modify_friends_template_vars'		=> 'mas_ucp_modify_friends_template_vars',
 		];
-	}
-
-
-
-	/**
-	 * MAS Friendlist SQL Query Setup
-	 *
-	 * @param object $event The event object
-	 * @return null
-	 * @access public
-	 */
-	public function mas_ucp_modify_friends_sql($event)
-	{
-		// Get Event Array `sql_ary`
-		$sql_ary = $event['sql_ary'];
-
-		// Add Query Details
-		$sql_ary['SELECT'] = $this->avatar->mas_avatar_sql_query($sql_ary, 'dark1_mas_fl', '', 'u', 'user', '')['SELECT'];
-
-		// Assign sql_ary to event -> sql_ary
-		$event['sql_ary'] = $sql_ary;
 	}
 
 
@@ -88,7 +66,7 @@ class friendlist_listener implements EventSubscriberInterface
 		$which = $event['which'];
 
 		// Set Avatar
-		$avatar = $this->avatar->mas_get_avatar('dark1_mas_fl', 'user', $row);
+		$avatar = $this->avatar->mas_get_avatar('dark1_mas_fl', $row['user_id']);
 
 		// Get Online Status
 		$online = ($which === 'online') ? true : false ;
