@@ -170,9 +170,9 @@ class status
 		// Check if user online status not stored
 		if (!isset(self::$user_online[$user_id]))
 		{
-			$sql = 'SELECT MAX(session_time) as session_time, MIN(session_viewonline) as session_viewonline ' .
-					'FROM ' . SESSIONS_TABLE .
-					'WHERE session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND session_user_id <> ' . ANONYMOUS . ' AND session_user_id = ' . (int) $user_id;
+			$sql = 'SELECT MAX(session_time) as session_time, MIN(session_viewonline) as session_viewonline' .
+					' FROM ' . SESSIONS_TABLE .
+					' WHERE session_time >= ' . (time() - ($this->config['load_online_time'] * 60)) . ' AND session_user_id <> ' . ANONYMOUS . ' AND session_user_id = ' . (int) $user_id;
 			$result = $this->db->sql_query($sql);
 			$online_row = $this->db->sql_fetchrow($result);
 			$this->db->sql_freeresult($result);
