@@ -214,9 +214,9 @@ class avatar
 		// Check if user avatar not stored
 		if (!isset(self::$user_avatar[$user_id]))
 		{
-			$sql = 'SELECT user_avatar, user_avatar_type, user_avatar_width, user_avatar_height ' .
-					'FROM ' . USERS_TABLE .
-					'WHERE user_id = ' . (int) $user_id;
+			$sql = 'SELECT user_avatar, user_avatar_type, user_avatar_width, user_avatar_height' .
+					' FROM ' . USERS_TABLE .
+					' WHERE user_id = ' . (int) $user_id;
 			$result = $this->db->sql_query($sql);
 			$avatar_row = $this->db->sql_fetchrow($result);
 			$this->db->sql_freeresult($result);
