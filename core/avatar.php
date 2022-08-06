@@ -43,6 +43,9 @@ class avatar
 	/** @var string[] User Avatar List */
 	private static $user_avatar = [];
 
+	/** @var string No Avatar IMG */
+	private static $no_avatar_img = '';
+
 	/** @var config */
 	protected $config;
 
@@ -101,17 +104,23 @@ class avatar
 	 */
 	public function mas_get_no_avatar_img()
 	{
-		$avatar_row = [
-			'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
-			'avatar_type'	=> AVATAR_REMOTE,
-			'avatar_width'	=> self::NO_AVATAR_SIZE,
-			'avatar_height'	=> self::NO_AVATAR_SIZE,
-		];
-		return str_replace(
-			'" />',
-			'" title="' . $this->language->lang('MAS_NO_AVATAR_TEXT') . '" />',
-			phpbb_get_user_avatar($avatar_row, $this->language->lang('MAS_NO_AVATAR_TEXT'), true)
-		);
+		// Check if user avatar not stored
+		if (empty(self::$no_avatar_img))
+		{
+			$avatar_row = [
+				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
+				'avatar_type'	=> AVATAR_REMOTE,
+				'avatar_width'	=> self::NO_AVATAR_SIZE,
+				'avatar_height'	=> self::NO_AVATAR_SIZE,
+			];
+			self::$no_avatar_img = str_replace(
+				'" />',
+				'" title="' . $this->language->lang('MAS_NO_AVATAR_TEXT') . '" />',
+				phpbb_get_user_avatar($avatar_row, $this->language->lang('MAS_NO_AVATAR_TEXT'), true)
+			);
+		}
+
+		return self::$no_avatar_img;
 	}
 
 
