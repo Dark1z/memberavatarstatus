@@ -15,7 +15,7 @@ on:
 
 jobs:
   call-tests:
-
+      if: (!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]'))
       name: Extension tests
       uses: phpbb-extensions/test-framework/.github/workflows/tests.yml@3.3.x
       with:
