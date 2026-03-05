@@ -20,11 +20,11 @@ jobs:
     # START Basic Checks Job (EPV, code sniffer, images check, etc.)
     basic-checks:
         if: (!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]'))
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-22.04
         strategy:
             matrix:
                 include:
-                    - php: '7.1'
+                    - php: '7.2'
                       db: "none"
                       NOTESTS: 1
 
@@ -32,14 +32,14 @@ jobs:
 
         steps:
             - name: Checkout phpBB
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   repository: phpbb/phpbb
                   ref: ${{ env.PHPBB_BRANCH }}
                   path: phpBB3
 
             - name: Checkout extension
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   path: phpBB3/phpBB/ext/${{ env.EXTNAME }}/${{ env.EXTNAME }}
 
@@ -59,8 +59,15 @@ jobs:
               working-directory: ./phpBB3
 
             - name: Setup EPV
-              if: ${{ env.EPV != 0 }}
-              run: composer require phpbb/epv:dev-master --dev --no-interaction --ignore-platform-reqs
+              if: ${{ env.EPV != '0' }}
+              env:
+                  PHP_VERSION: ${{ matrix.php }}
+              run: |
+                  if [[ "$(printf '%s\n' "$PHP_VERSION" "8.0" | sort -V | head -n1)" == "8.0" ]]; then
+                    php ../composer.phar require phpbb/epv:dev-master --dev --no-interaction --ignore-platform-reqs --with-all-dependencies
+                  else
+                    php ../composer.phar require phpbb/epv:dev-master --dev --no-interaction --ignore-platform-reqs
+                  fi
               working-directory: ./phpBB3/phpBB
 
             - name: Run code sniffer
