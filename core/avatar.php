@@ -108,7 +108,7 @@ class avatar
 		if (empty(self::$no_avatar_img))
 		{
 			$avatar_row = [
-				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.png',
+				'avatar'		=> $this->phpbb_root_path . 'ext/dark1/memberavatarstatus/image/avatar.svg',
 				'avatar_type'	=> AVATAR_REMOTE,
 				'avatar_width'	=> self::NO_AVATAR_SIZE,
 				'avatar_height'	=> self::NO_AVATAR_SIZE,
