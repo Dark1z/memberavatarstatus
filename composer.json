@@ -17,8 +17,8 @@
 	"authors": [
 		{
 			"name": "Dark❶",
-			"email": "phpbb@dark1.tech",
-			"homepage": "https://dark1.tech",
+			"email": "dark1z@yahoo.com",
+			"homepage": "https://dark1.rf.gd/",
 			"role": "Lead Developer"
 		}
 	],
@@ -39,12 +39,12 @@
 	},
 	"readme": "./README.md",
 	"support": {
-		"email": "phpbb@dark1.tech",
+		"email": "dark1z@yahoo.com",
 		"issues": "https://github.com/Dark1z/memberavatarstatus/issues",
 		"forum": "https://phpbb.com/customise/db/extension/member_avatar_status/support",
 		"wiki": "https://github.com/Dark1z/memberavatarstatus/wiki",
 		"source": "https://github.com/Dark1z/memberavatarstatus",
-		"docs": "https://github.dark1.tech/memberavatarstatus",
+		"docs": "https://dark1z.github.io/memberavatarstatus",
 		"chat": "https://github.com/Dark1z/memberavatarstatus/discussions"
 	}
 }
