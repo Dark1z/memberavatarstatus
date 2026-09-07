@@ -1,10 +1,10 @@
 {
 	"name": "dark1/memberavatarstatus",
 	"type": "phpbb-extension",
-	"description": "Member Avatar & Status",
+	"description": "Member Avatar & Status supports RTNG",
 	"homepage": "https://phpbb.com/customise/db/extension/member_avatar_status",
-	"version": "3.2.7",
-	"time": "2022-07-21",
+	"version": "3.2.7-pl1",
+	"time": "2026-09-07",
 	"keywords": [
 		"phpbb",
 		"extension",

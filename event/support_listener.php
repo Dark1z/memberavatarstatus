@@ -52,6 +52,7 @@ class support_listener implements EventSubscriberInterface
 	{
 		return [
 			'paybas.recenttopics.modify_tpl_ary'		=> 'mas_recenttopics_topic_template',
+			'imcger.recenttopicsng.modify_tpl_ary'		=> 'mas_recenttopics_topic_template',
 			'vse.similartopics.modify_topicrow'			=> 'mas_similartopics_topic_template',
 		];
 	}
