@@ -6,6 +6,8 @@
 					{{ topicrow.LAST_POST_AUTHOR_AVATAR_IMG }}
 				{% elseif recent_topics.LAST_POST_AUTHOR_AVATAR_IMG %}
 					{{ recent_topics.LAST_POST_AUTHOR_AVATAR_IMG }}
+				{% elseif rtng.LAST_POST_AUTHOR_AVATAR_IMG %}
+					{{ rtng.LAST_POST_AUTHOR_AVATAR_IMG }}
 				{% else %}
 					{{ MAS_NO_AVATAR_IMG }}
 				{% endif %}
